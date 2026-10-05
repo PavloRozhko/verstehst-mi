@@ -1,6 +1,4 @@
-# verstehst-mi
-
-# Steirisch ↔ Deutsch Übersetzer
+# verstehst-mi - Steirisch ↔ Deutsch Übersetzer
 
 Ein Lernprojekt auf dem NVIDIA Jetson Orin Nano: Übersetzung zwischen
 steirischem Dialekt und Hochdeutsch – per Text und Sprache.
