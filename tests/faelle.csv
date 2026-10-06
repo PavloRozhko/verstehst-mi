@@ -43,3 +43,37 @@ de-st,Ich bin hundemüde.,I bin hundsmiad.,
 de-st,Es regnet stark.,Es schifft.,
 de-st,Das ist klar.,Is eh kloar.,
 de-st,Kartoffeln,Erdäpfl,Wort ohne Artikel
+st-de,servas,Servus,alternative Aussprache
+st-de,seas,Servus,alternative Aussprache
+st-de,seus,Servus,alternative Aussprache
+st-de,pfiatdi,Pfiat di,Eingabe ohne Leerzeichen
+st-de,pfiataich,Pfiat eich,Eingabe ohne Leerzeichen
+st-de,i,Ich,Eingabe kurzer Wörter
+st-de,a,auch (uch: ein/eine),Eingabe kurzer Wörter
+st-de,jo,ja,Eingabe kurzer Wörter
+st-de,vü,viel,Eingabe kurzer Wörter
+st-de,dahoam,zu Hause,Hinzufügen zusätzliches Buchstabes
+st-de,owi,hinunter,
+st-de,Hawara,der Kumpel,
+st-de,Howara,der Kumpel,Ersetzen eines Buchstabens a
+st-de,Howora,der Kumpel,Ersetzen von zwei Buchstaben a
+st-de,Erdopfl,die Kartoffeln,Ersetzen eines Buchstabens ä
+st-de,Marilen,die Aprikosen,Ersetzen eines Buchstabens ü
+st-de,Schlogobers,die Schlagsahne,Ersetzen eines Buchstabens a
+st-de,Foschierts,das Hackfleisch,Ersetzen eines Buchstabens a
+st-de,leiwand,,Überprüfung fehlender Wörter
+st-de,Lavur,,Überprüfung fehlender Wörter
+st-de,Goschn,,Prüfung auf verbotene Wörter
+st-de,Schas,,Prüfung auf verbotene Wörter
+st-de,Hockn,die Arbeit; der Job,Ersetzen eines Buchstabens a
+st-de,Haube,die Mütze,Ersetzen eines Buchstabens n
+st-de,Kropfn,der Krapfen; der Berliner,Ersetzen eines Buchstabens a
+st-de,Sessel,der Stuhl,Hinzufügen zusätzliches Buchstabes e
+de-st,hier,do,Überprüfung des zweiten Werts
+de-st,das Trachtenkleid,Dirndl,Überprüfung des zweiten Werts
+de-st,das Mädchen,Dirndl,Überprüfung des erstens Werts
+de-st,der Kumpel,Hawara,
+de-st,Brötchen,Semmel,Einführung ohne Artikel
+de-st,schlampig arbeiten,hudln,
+de-st,unsauber arbeiten,pfuschn,
+de-st,blöd,blad,
