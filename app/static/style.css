@@ -1,0 +1,167 @@
+:root {
+  --gruen: #1f6b3a;          /* Steiermark-Grün */
+  --gruen-hell: #e7f2ea;
+  --text: #1c1c1c;
+  --leise: #666;
+  --flaeche: #ffffff;
+  --hintergrund: #f6f7f4;
+  --rand: #d9ddd5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gruen: #6fcf8c;
+    --gruen-hell: #1d3325;
+    --text: #ececec;
+    --leise: #a3a3a3;
+    --flaeche: #1f2120;
+    --hintergrund: #141514;
+    --rand: #343834;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--hintergrund);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.seite {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--gruen);
+}
+
+.unterzeile {
+  margin: 4px 0 20px;
+  color: var(--leise);
+}
+
+.richtung {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.richtung span { flex: 1; }
+.richtung span:last-child { text-align: right; }
+
+#tauschen {
+  font-size: 1.3rem;
+  width: 48px;
+  height: 40px;
+  border: 1px solid var(--rand);
+  border-radius: 8px;
+  background: var(--flaeche);
+  color: var(--gruen);
+  cursor: pointer;
+}
+
+#eingabe {
+  width: 100%;
+  font-size: 1.15rem;
+  padding: 14px;
+  border: 2px solid var(--rand);
+  border-radius: 10px;
+  background: var(--flaeche);
+  color: var(--text);
+}
+
+#eingabe:focus {
+  outline: none;
+  border-color: var(--gruen);
+}
+
+.schalter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 20px;
+  color: var(--leise);
+  font-size: 0.9rem;
+}
+
+h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--leise);
+  margin: 24px 0 8px;
+}
+
+.karte {
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.karte.haupt {
+  border-left: 5px solid var(--gruen);
+}
+
+.karte .ziel {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.karte.haupt .ziel { font-size: 1.5rem; }
+
+.karte .quelle {
+  color: var(--leise);
+  margin-top: 2px;
+}
+
+.karte .info {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--leise);
+}
+
+.marke {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--gruen-hell);
+  color: var(--gruen);
+  margin-right: 6px;
+}
+
+button.karte {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button.karte:hover { border-color: var(--gruen); }
+
+.leer {
+  color: var(--leise);
+  padding: 16px 0;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  color: var(--leise);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}

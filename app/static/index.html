@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>verstehst mi? – Steirisch ↔ Hochdeutsch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="seite">
+    <header>
+      <h1>verstehst mi?</h1>
+      <p class="unterzeile">Steirisch ↔ Hochdeutsch</p>
+    </header>
+
+    <div class="richtung">
+      <span id="von">Steirisch</span>
+      <button id="tauschen" type="button" aria-label="Richtung tauschen">⇄</button>
+      <span id="nach">Hochdeutsch</span>
+    </div>
+
+    <form id="formular" autocomplete="off">
+      <input id="eingabe" type="text" maxlength="300"
+             placeholder="z. B. Griaß di, wia geht's da?" autofocus>
+    </form>
+
+    <label class="schalter">
+      <input id="derb" type="checkbox">
+      derbe Ausdrücke anzeigen
+    </label>
+
+    <section id="ergebnis" aria-live="polite"></section>
+
+    <footer>
+      <span id="status"></span>
+      ✅ = von Muttersprachlern geprüft
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
