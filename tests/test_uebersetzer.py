@@ -13,7 +13,9 @@ from app.uebersetzer import (
     DEUTSCH_STEIRISCH,
     STEIRISCH_DEUTSCH,
     Uebersetzer,
+    lautschluessel,
     normalisieren,
+    vergleichbar,
     varianten,
 )
 
@@ -61,6 +63,17 @@ def test_normalisieren_vereinheitlicht_apostroph_varianten():
 
 def test_normalisieren_entfernt_klammern():
     assert normalisieren("Halt den Mund! (derb)") == "halt den mund"
+
+
+def test_lautschluessel_gleicht_schreibvarianten_an():
+    assert lautschluessel("howora") == lautschluessel("hawara")
+    assert lautschluessel("marüln") == lautschluessel("mariln")
+
+
+def test_kurze_woerter_nur_mit_aehnlich_langen_kandidaten():
+    assert vergleichbar("haube", "haubn")          # Tippfehler: gleiche Länge
+    assert not vergleichbar("schas", "schnapsn")   # anderes Wort: 3 Zeichen länger
+    assert vergleichbar("mohlzeit", "mahlzeit des tages")  # lange Eingaben immer
 
 
 def test_varianten_trennt_bedeutungen_und_entfernt_artikel():

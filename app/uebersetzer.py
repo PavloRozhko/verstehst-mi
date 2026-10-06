@@ -26,6 +26,14 @@ DEUTSCH_STEIRISCH = "de-st"
 SCHWELLE = 0.75
 # Sehr kurze Eingaben brauchen eine höhere Ähnlichkeit, sonst gibt es Zufallstreffer
 SCHWELLE_KURZ = 0.85
+KURZ_BIS = 4        # Zeichen
+# Bei kurzen Wörtern darf der Kandidat nur wenig länger/kürzer sein:
+# "Haube" -> "Haubn" ja (Tippfehler), "Schas" -> "Schnapsn" nein (anderes Wort)
+LAENGE_PRUEFEN_BIS = 6      # Zeichen
+MAX_LAENGENUNTERSCHIED = 2  # Zeichen
+# Lautschlüssel erst ab dieser Länge – bei kurzen Wörtern ist er zu ungenau
+# (z. B. "schas" -> "scha" ≈ "scho")
+LAUT_AB = 6         # Zeichen
 
 ARTIKEL = ("der ", "die ", "das ", "ein ", "eine ")
 
@@ -76,6 +84,37 @@ def aehnlichkeit(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
 
+def vergleichbar(suche, kandidat):
+    """Kurze Eingaben nur mit ähnlich langen Kandidaten vergleichen."""
+    if len(suche) > LAENGE_PRUEFEN_BIS:
+        return True
+    return abs(len(suche) - len(kandidat)) <= MAX_LAENGENUNTERSCHIED
+
+
+def beste_aehnlichkeit(suche, kandidaten):
+    werte = [aehnlichkeit(suche, k) for k in kandidaten if vergleichbar(suche, k)]
+    return max(werte, default=0.0)
+
+
+def lautschluessel(text):
+    """Vereinfachte 'Aussprache' für Dialekt-Schreibvarianten.
+
+    Im Dialekt schreibt jeder anders: Hawara/Howora, Marüln/Marilen.
+    Ähnlich klingende Buchstaben werden gleichgesetzt, Doppelbuchstaben vereinfacht:
+    "howora" -> "hawara", "marüln" -> "mariln"
+    """
+    for alt, neu in (("ie", "i"), ("ü", "i"), ("y", "i"), ("ö", "e"), ("ä", "e"), ("o", "a")):
+        text = text.replace(alt, neu)
+    return re.sub(r"(.)\1", r"\1", text)
+
+
+# Der Lautschlüssel ist grob (jedes o wird a). Er zählt daher nur bei sehr hoher
+# Ähnlichkeit, sonst gibt es Zufallstreffer wie "Goschn" -> "Gatsch".
+LAUT_SCHWELLE = 0.85
+# Ein Treffer nur über den Lautschlüssel ist nie ganz exakt
+LAUT_MAXIMUM = 0.95
+
+
 def teil_score(suche, varianten_liste):
     """Prüft, ob die Suche als ganze Wörter in einer Variante vorkommt.
 
@@ -101,10 +140,13 @@ class Uebersetzer:
 
         self.eintraege = []
         for z in zeilen:
+            dialekt = varianten(z["dialekt"], z["typ"])
             self.eintraege.append({
                 "zeile": z,
-                STEIRISCH_DEUTSCH: varianten(z["dialekt"], z["typ"]),
+                STEIRISCH_DEUTSCH: dialekt,
                 DEUTSCH_STEIRISCH: varianten(z["hochdeutsch"], z["typ"]),
+                # Lautschlüssel nur für den Dialekt: dort sind Schreibvarianten das Problem
+                "laut": [lautschluessel(v) for v in dialekt],
             })
 
     def uebersetzen(self, text, richtung=STEIRISCH_DEUTSCH, mit_derb=False, limit=5):
@@ -116,7 +158,8 @@ class Uebersetzer:
         if not suche:
             return []
 
-        schwelle = SCHWELLE_KURZ if len(suche) <= 4 else SCHWELLE
+        schwelle = SCHWELLE_KURZ if len(suche) <= KURZ_BIS else SCHWELLE
+        suche_laut = lautschluessel(suche)
         treffer = []
 
         for eintrag in self.eintraege:
@@ -124,7 +167,11 @@ class Uebersetzer:
             if z["derb"] and not mit_derb:
                 continue
 
-            beste = max(aehnlichkeit(suche, v) for v in eintrag[richtung])
+            beste = beste_aehnlichkeit(suche, eintrag[richtung])
+            if richtung == STEIRISCH_DEUTSCH and beste < 1.0 and len(suche) >= LAUT_AB:
+                laut = beste_aehnlichkeit(suche_laut, eintrag["laut"])
+                if laut >= LAUT_SCHWELLE:
+                    beste = max(beste, min(laut, LAUT_MAXIMUM))
             if beste == 1.0:
                 art = "exakt"
             elif beste >= schwelle:

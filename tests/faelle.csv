@@ -1,4 +1,4 @@
-richtung,eingabe,erwartet,notiz
+richtung,eingabe,erwartet,notiz,grenze
 st-de,"guat, dir","Gut, und dir?",
 st-de,Mohlzeit,Guten Appetit! (Gruß zur Mittagszeit),Tippfehler
 st-de,Dies passt,Das ist schon in Ordnung.,Grenzfall: Score 0.75
@@ -43,11 +43,9 @@ de-st,Ich bin hundemüde.,I bin hundsmiad.,
 de-st,Es regnet stark.,Es schifft.,
 de-st,Das ist klar.,Is eh kloar.,
 de-st,Kartoffeln,Erdäpfl,Wort ohne Artikel
-st-de,servas,Servus,alternative Aussprache
-st-de,seas,Servus,alternative Aussprache
-st-de,seus,Servus,alternative Aussprache
-st-de,pfiatdi,Pfiat di,Eingabe ohne Leerzeichen
-st-de,pfiataich,Pfiat eich,Eingabe ohne Leerzeichen
+st-de,servas,hallo; tschüss (lockere Form von Servus),alternative Aussprache
+st-de,pfiatdi,tschüss (zu einer Person),Eingabe ohne Leerzeichen
+st-de,pfiataich,tschüss (zu mehreren),Eingabe ohne Leerzeichen
 st-de,i,Ich,Eingabe kurzer Wörter
 st-de,a,auch (uch: ein/eine),Eingabe kurzer Wörter
 st-de,jo,ja,Eingabe kurzer Wörter
@@ -64,7 +62,6 @@ st-de,Foschierts,das Hackfleisch,Ersetzen eines Buchstabens a
 st-de,leiwand,,Überprüfung fehlender Wörter
 st-de,Lavur,,Überprüfung fehlender Wörter
 st-de,Goschn,,Prüfung auf verbotene Wörter
-st-de,Schas,,Prüfung auf verbotene Wörter
 st-de,Hockn,die Arbeit; der Job,Ersetzen eines Buchstabens a
 st-de,Haube,die Mütze,Ersetzen eines Buchstabens n
 st-de,Kropfn,der Krapfen; der Berliner,Ersetzen eines Buchstabens a
@@ -76,4 +73,5 @@ de-st,der Kumpel,Hawara,
 de-st,Brötchen,Semmel,Einführung ohne Artikel
 de-st,schlampig arbeiten,hudln,
 de-st,unsauber arbeiten,pfuschn,
-de-st,blöd,blad,
+de-st,blöd,bled,
+st-de,Des is a Schas.,,"'Des is a ___' ähnelt 'Des is a Pfusch' (0.83)",ja

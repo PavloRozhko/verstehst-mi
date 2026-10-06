@@ -9,6 +9,10 @@ Die Testfälle stehen in tests/faelle.csv – ein neuer Test ist einfach eine ne
 "erwartet" ist die Übersetzung (bei st-de der hochdeutsche Text, bei de-st der Dialekt).
 Der Test besteht, wenn "erwartet" unter den besten Treffern ist.
 
+Optionale Spalte "grenze": steht dort "ja", ist der Fall eine BEKANNTE GRENZE der
+Methode. Der Test läuft trotzdem, wird aber als "xfail" (erwarteter Fehlschlag)
+gezählt. Besteht er eines Tages, meldet pytest "XPASS" – dann kann "ja" weg.
+
 Diese Tests brauchen die Datenbank: vorher `python3 scripts/import_csv.py` ausführen.
 """
 
@@ -17,7 +21,7 @@ from pathlib import Path
 
 import pytest
 
-from app.uebersetzer import STANDARD_DB, STEIRISCH_DEUTSCH, Uebersetzer
+from app.uebersetzer import STANDARD_DB, STEIRISCH_DEUTSCH, Uebersetzer, normalisieren
 
 FAELLE = Path(__file__).resolve().parent / "faelle.csv"
 
@@ -35,9 +39,17 @@ def faelle_laden():
                 zeile["eingabe"],
                 zeile["erwartet"].strip(),
                 id=f"{zeile['richtung']}: {zeile['eingabe']}",
+                marks=bekannte_grenze(zeile),
             )
             for zeile in csv.DictReader(datei)
         ]
+
+
+def bekannte_grenze(zeile):
+    """Markiert Fälle mit grenze=ja als erwarteten Fehlschlag."""
+    if (zeile.get("grenze") or "").strip().lower() == "ja":
+        return pytest.mark.xfail(reason=zeile.get("notiz") or "bekannte Grenze", strict=False)
+    return ()
 
 
 def ziel(treffer, richtung):
@@ -63,5 +75,6 @@ def test_echter_fall(uebersetzer, richtung, eingabe, erwartet):
 
     # Mehrere Treffer können gleich gut sein (z. B. "tschüss" -> Servus, Baba ...)
     bester_score = treffer[0].score
-    beste = [ziel(t, richtung) for t in treffer if t.score == bester_score]
-    assert erwartet in beste, f"Erwartet: {erwartet!r}. Bekommen: {gefunden}"
+    # Vergleich ohne Groß-/Kleinschreibung und Satzzeichen: "Ich" = "ich"
+    beste = [normalisieren(ziel(t, richtung)) for t in treffer if t.score == bester_score]
+    assert normalisieren(erwartet) in beste, f"Erwartet: {erwartet!r}. Bekommen: {gefunden}"
