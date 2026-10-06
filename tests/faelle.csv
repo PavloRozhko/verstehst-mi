@@ -1,0 +1,45 @@
+richtung,eingabe,erwartet,notiz
+st-de,"guat, dir","Gut, und dir?",
+st-de,Mohlzeit,Guten Appetit! (Gruß zur Mittagszeit),Tippfehler
+st-de,Dies passt,Das ist schon in Ordnung.,Grenzfall: Score 0.75
+st-de,Dies ma wurscht,Das ist mir egal.,Variante Des/Deis/Dies
+st-de,"Hearst, hiaz is gnua!","Hör mal, jetzt reicht es!",
+st-de,I hob ned.,,Satz nicht im Wörterbuch
+st-de,I muass hackln.,Ich muss arbeiten.,
+st-de,Bist scho firti?,Bist du schon fertig?,
+st-de,Der Chef is grantig.,Der Chef ist heute schlecht gelaunt.,Wort fehlt
+st-de,I bin Krankenstand.,Ich bin krankgeschrieben.,Wort fehlt
+st-de,Wos kost dies?,Was kostet das?,
+st-de,Hob's a Erdäpfl?,Haben Sie auch Kartoffeln?,Variante
+st-de,"Oida, dies is leiwand!",,als Wienerisch markiert (falsch)
+st-de,I bin glei do!,Ich bin gleich da.,
+st-de,Servas beinand!,Hallo zusammen!,
+st-de,I hob vagessn.,Ich habe es vergessen.,
+st-de,Jo eh.,"Ja, eh! (Ja, sowieso / natürlich)",
+st-de,I bi voi angfressn.,Ich bin total genervt.,
+st-de,I bi voi ongfrossn.,Ich bin total genervt.,mehrere Tippfehler
+st-de,Der is ma zwida.,Der ist mir unsympathisch.,
+st-de,Dies wa's.,Das war's.,
+st-de,Moch kan Stress!,Mach keinen Stress!,
+st-de,I bi gonz voi.,Ich bin ganz satt.,
+st-de,Dies schmeckt ma ned.,Das schmeckt mir nicht.,
+st-de,Geh a bissl fiari!,Geh ein bisschen nach vorne!,
+st-de,Hoit di Goschn!,,derb: standardmäßig ausgeblendet
+st-de,Wird scho passn.,Wird schon funktionieren.,
+st-de,Gemma ham.,Gehen wir nach Hause.,
+st-de,Geh scheißn!,,derb: standardmäßig ausgeblendet
+st-de,Sackerl,die Tüte,Wort
+de-st,Gehen wir schon nach Hause.,Gemma ham.,zusätzliches Wort
+de-st,Gehen wir nach Hause.,Gemma ham.,
+de-st,Ich gehe nur auf ein Getränk.,I geh nur auf oans.,
+de-st,Ich gehe nur auf a Getränk.,I geh nur auf oans.,Tippfehler
+de-st,Warum jammerst du schon wieder?,Wos suderst denn scho wieda?,
+de-st,Warum jammerst du?,Wos suderst denn scho wieda?,Teil einer Phrase
+de-st,Steig ein!,Hupf eini!,
+de-st,Heute ist ein schlechtes Wetter.,Heit is a Sauwetta.,
+de-st,Ich schaue nur.,I schau nur.,
+de-st,Jetzt macht man Schluss für heute.,Hiaz moch ma Schluss für heit.,
+de-st,Ich bin hundemüde.,I bin hundsmiad.,
+de-st,Es regnet stark.,Es schifft.,
+de-st,Das ist klar.,Is eh kloar.,
+de-st,Kartoffeln,Erdäpfl,Wort ohne Artikel
