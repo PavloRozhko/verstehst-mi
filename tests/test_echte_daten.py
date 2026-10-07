@@ -7,6 +7,8 @@ Die Testfälle stehen in tests/faelle.csv – ein neuer Test ist einfach eine ne
     st-de     Hoit di Goschn!                     leer = es darf KEIN Treffer kommen
 
 "erwartet" ist die Übersetzung (bei st-de der hochdeutsche Text, bei de-st der Dialekt).
+Richtung "sprache": "eingabe" ist das, was Whisper erkannt hat, "erwartet" ist der
+Dialekt-Eintrag, der gefunden werden soll (Suche in beiden Spalten).
 Der Test besteht, wenn "erwartet" unter den besten Treffern ist.
 
 Optionale Spalte "grenze": steht dort "ja", ist der Fall eine BEKANNTE GRENZE der
@@ -57,6 +59,12 @@ def ziel(treffer, richtung):
     return treffer.hochdeutsch if richtung == STEIRISCH_DEUTSCH else treffer.dialekt
 
 
+def suchen(uebersetzer, eingabe, richtung):
+    if richtung == "sprache":
+        return uebersetzer.sprache_suchen(eingabe, mit_derb=True)
+    return uebersetzer.uebersetzen(eingabe, richtung)
+
+
 @pytest.fixture(scope="module")
 def uebersetzer():
     return Uebersetzer()
@@ -64,7 +72,7 @@ def uebersetzer():
 
 @pytest.mark.parametrize("richtung, eingabe, erwartet", faelle_laden())
 def test_echter_fall(uebersetzer, richtung, eingabe, erwartet):
-    treffer = uebersetzer.uebersetzen(eingabe, richtung)
+    treffer = suchen(uebersetzer, eingabe, richtung)
     gefunden = [f"{ziel(t, richtung)} ({t.art} {t.score})" for t in treffer]
 
     if not erwartet:

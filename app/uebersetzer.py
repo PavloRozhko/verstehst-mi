@@ -102,9 +102,13 @@ def lautschluessel(text):
     Im Dialekt schreibt jeder anders: Hawara/Howora, Marüln/Marilen.
     Ähnlich klingende Buchstaben werden gleichgesetzt, Doppelbuchstaben vereinfacht:
     "howora" -> "hawara", "marüln" -> "mariln"
+
+    Leerzeichen werden entfernt: die Spracherkennung trennt Wörter oft anders
+    ("Gemobossessen" statt "Gemma wos essn").
     """
     for alt, neu in (("ie", "i"), ("ü", "i"), ("y", "i"), ("ö", "e"), ("ä", "e"), ("o", "a")):
         text = text.replace(alt, neu)
+    text = text.replace(" ", "")
     return re.sub(r"(.)\1", r"\1", text)
 
 
@@ -194,6 +198,22 @@ class Uebersetzer:
 
         treffer.sort(key=lambda t: t.score, reverse=True)
         return treffer[:limit]
+
+    def sprache_suchen(self, text, mit_derb=False, limit=5):
+        """Suche für gesprochene Eingaben: in BEIDEN Spalten.
+
+        Die Spracherkennung kennt keinen Dialekt und schreibt oft halb Hochdeutsch:
+        "Waun is Feierobnd?" wird zu "Wann ist Feier umt?". Das passt besser zur
+        hochdeutschen Spalte. Deshalb wird in beiden Richtungen gesucht und pro
+        Eintrag der bessere Treffer behalten.
+        """
+        beste = {}
+        for richtung in (STEIRISCH_DEUTSCH, DEUTSCH_STEIRISCH):
+            for t in self.uebersetzen(text, richtung, mit_derb=mit_derb, limit=limit * 2):
+                schluessel = (t.dialekt, t.hochdeutsch)
+                if schluessel not in beste or t.score > beste[schluessel].score:
+                    beste[schluessel] = t
+        return sorted(beste.values(), key=lambda t: t.score, reverse=True)[:limit]
 
 
 def main():

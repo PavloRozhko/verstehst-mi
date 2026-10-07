@@ -75,3 +75,12 @@ de-st,schlampig arbeiten,hudln,
 de-st,unsauber arbeiten,pfuschn,
 de-st,blöd,bled,
 st-de,Des is a Schas.,,"'Des is a ___' ähnelt 'Des is a Pfusch' (0.83)",ja
+sprache,Wann ist Feier umt?,Waun is Feierobnd?,Whisper small; Treffer über hochdeutsche Spalte,
+sprache,Schleicht die.,Schleich di!,Whisper small,
+sprache,Ab hier geht's schon noch.,A Bier geht scho no.,Whisper small,
+sprache,Gauen Sie mal helfen.,Kaunst ma helfen?,Whisper small,
+sprache,Das ist mal wurscht.,Deis is ma wurscht.,Whisper small,
+sprache,"So, in Bitte.","Zoin, bitte!",Whisper small,
+sprache,Gemobossessen,Gemma wos essn?,Whisper small; Wörter zusammengeschrieben,
+sprache,Heute GOSCHEN!,Hoit di Goschn!,Whisper small; zu weit weg – Prompt testen,ja
+sprache,Moitzei!,Mahlzeit!,Whisper small; zu weit weg – Prompt testen,ja
