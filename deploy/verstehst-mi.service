@@ -1,0 +1,38 @@
+# systemd-Dienst: startet verstehst-mi automatisch, sobald der Jetson hochfährt.
+#
+# NICHT direkt kopieren – das Skript scripts/autostart_einrichten.sh setzt
+# @PROJEKT@ und @BENUTZER@ ein und installiert den Dienst.
+
+[Unit]
+Description=verstehst-mi – Steirisch ↔ Hochdeutsch
+# Erst starten, wenn das WLAN verbunden ist
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=@BENUTZER@
+WorkingDirectory=@PROJEKT@
+
+# Whisper-Modell nur von der Festplatte laden, nie im Internet nachsehen
+# (sonst wartet der Start ohne Internet auf eine Zeitüberschreitung)
+Environment=HF_HUB_OFFLINE=1
+Environment=PYTHONUNBUFFERED=1
+
+# Volle Taktfrequenz (jetson_clocks gilt nur bis zum nächsten Neustart).
+# "+" = mit Root-Rechten, "-" = Fehler hier stoppen den Start nicht.
+ExecStartPre=-+/usr/bin/jetson_clocks
+
+# Datenbank aus den CSV-Dateien neu bauen (nach einem git pull immer aktuell)
+ExecStartPre=@PROJEKT@/.venv/bin/python scripts/import_csv.py
+
+ExecStart=@PROJEKT@/.venv/bin/uvicorn app.main:app \
+    --host 0.0.0.0 --port 8000 \
+    --ssl-keyfile certs/schluessel.pem --ssl-certfile certs/zertifikat.pem
+
+# Stürzt der Server ab, nach 5 s neu starten
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
