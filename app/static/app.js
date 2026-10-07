@@ -25,6 +25,7 @@ document.getElementById("tauschen").addEventListener("click", () => {
 
 // --- Suchen: beim Tippen (mit kurzer Pause) und bei Enter ------------------
 eingabe.addEventListener("input", () => {
+  sprachhinweis.textContent = "";
   clearTimeout(timer);
   timer = setTimeout(suchen, 300);
 });
@@ -114,10 +115,98 @@ function anzeigen(daten) {
   ergebnis.replaceChildren(...teile);
 }
 
-// --- Status: Anzahl der Einträge -------------------------------------------
+// --- Spracheingabe ----------------------------------------------------------
+// 1× tippen: Aufnahme startet. Nochmal tippen (oder nach 10 s): Aufnahme endet
+// und wird an /api/sprache geschickt. Dort erkennt Whisper den Text.
+
+const mikro = document.getElementById("mikro");
+const sprachhinweis = document.getElementById("sprachhinweis");
+const MAX_AUFNAHME_MS = 10000;
+
+let aufnahme = null;     // MediaRecorder, solange aufgenommen wird
+let stoppTimer = null;
+
+// Der Browser erlaubt das Mikrofon nur über HTTPS oder auf localhost
+const mikrofonMoeglich = Boolean(navigator.mediaDevices?.getUserMedia && window.MediaRecorder);
+
+mikro.addEventListener("click", () => {
+  if (aufnahme) {
+    aufnahme.stop();
+  } else {
+    aufnahmeStarten();
+  }
+});
+
+async function aufnahmeStarten() {
+  if (!mikrofonMoeglich) {
+    sprachhinweis.textContent =
+      "Das Mikrofon geht nur über HTTPS oder auf localhost. Bitte Text eintippen.";
+    return;
+  }
+
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch {
+    sprachhinweis.textContent = "Kein Zugriff aufs Mikrofon. Bitte im Browser erlauben.";
+    return;
+  }
+
+  const teile = [];
+  aufnahme = new MediaRecorder(stream);
+  aufnahme.addEventListener("dataavailable", (e) => teile.push(e.data));
+  aufnahme.addEventListener("stop", () => {
+    clearTimeout(stoppTimer);
+    stream.getTracks().forEach((spur) => spur.stop());  // Mikrofon wieder freigeben
+    const blob = new Blob(teile, { type: aufnahme.mimeType });
+    aufnahme = null;
+    mikro.classList.remove("aktiv");
+    senden(blob);
+  });
+
+  aufnahme.start();
+  stoppTimer = setTimeout(() => aufnahme?.stop(), MAX_AUFNAHME_MS);
+  mikro.classList.add("aktiv");
+  mikro.setAttribute("aria-label", "Aufnahme beenden");
+  sprachhinweis.textContent = "Sprich jetzt … (nochmal 🎤 tippen zum Beenden)";
+}
+
+async function senden(blob) {
+  mikro.disabled = true;
+  mikro.setAttribute("aria-label", "Sprechen");
+  sprachhinweis.textContent = "Wird erkannt …";
+
+  try {
+    const antwort = await fetch(`/api/sprache?derb=${derb.checked}`, {
+      method: "POST",
+      headers: { "Content-Type": blob.type || "application/octet-stream" },
+      body: blob,
+    });
+    const daten = await antwort.json().catch(() => ({}));
+    if (!antwort.ok) throw new Error(daten.detail || `HTTP ${antwort.status}`);
+
+    if (!daten.erkannt) {
+      sprachhinweis.textContent = "Nix verstanden. Bitte nochmal deutlich sprechen.";
+      return;
+    }
+    sprachhinweis.textContent = `Erkannt: „${daten.erkannt}“ (${daten.sekunden} s)`;
+    eingabe.value = "";  // sonst passt das Eingabefeld nicht zum Ergebnis
+    anzeigen(daten);
+  } catch (fehler) {
+    sprachhinweis.textContent = "Hoppala: " + fehler.message;
+  } finally {
+    mikro.disabled = false;
+  }
+}
+
+// --- Status: Anzahl der Einträge, Spracherkennung bereit? --------------------
 fetch("/api/status")
   .then((r) => r.json())
   .then((s) => {
     document.getElementById("status").textContent = `${s.eintraege} Einträge im Wörterbuch`;
+    if (!s.sprache) {
+      mikro.disabled = true;
+      mikro.title = "Spracherkennung ist nicht bereit";
+    }
   })
   .catch(() => {});

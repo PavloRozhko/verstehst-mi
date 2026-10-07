@@ -69,8 +69,14 @@ header h1 {
   cursor: pointer;
 }
 
+#formular {
+  display: flex;
+  gap: 8px;
+}
+
 #eingabe {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   font-size: 1.15rem;
   padding: 14px;
   border: 2px solid var(--rand);
@@ -84,11 +90,46 @@ header h1 {
   border-color: var(--gruen);
 }
 
+#mikro {
+  flex: none;
+  width: 56px;
+  font-size: 1.4rem;
+  border: 2px solid var(--rand);
+  border-radius: 10px;
+  background: var(--flaeche);
+  cursor: pointer;
+}
+
+#mikro:hover:not(:disabled) { border-color: var(--gruen); }
+#mikro:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Während der Aufnahme: roter, pulsierender Rand */
+#mikro.aktiv {
+  border-color: #c62828;
+  background: #fdecea;
+  animation: pulsieren 1s ease-in-out infinite;
+}
+
+@keyframes pulsieren {
+  50% { box-shadow: 0 0 0 6px rgba(198, 40, 40, 0.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #mikro.aktiv { animation: none; }
+}
+
+#sprachhinweis {
+  min-height: 1.2em;
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: var(--leise);
+}
+
 .schalter {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin: 10px 0 20px;
+  margin: 6px 0 20px;
   color: var(--leise);
   font-size: 0.9rem;
 }
