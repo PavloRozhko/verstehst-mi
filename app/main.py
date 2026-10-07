@@ -18,7 +18,10 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.concurrency import run_in_threadpool
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
+
+from app.netz import lan_ip, qr_svg
 
 from app.sprache import AudioFehler, Spracherkennung
 from app.uebersetzer import DEUTSCH_STEIRISCH, STEIRISCH_DEUTSCH, Uebersetzer
@@ -124,6 +127,36 @@ async def sprache(request: Request, derb: bool = Query(False)):
 @app.get("/api/status")
 def status():
     return {"eintraege": len(uebersetzer.eintraege), "sprache": erkennung.bereit}
+
+
+def seiten_adresse(request):
+    """Adresse, die Handys im WLAN aufrufen sollen, z. B. https://192.168.1.50:8000
+
+    Protokoll und Port kommen aus der aktuellen Anfrage (läuft der Server mit HTTPS,
+    steht auch im QR-Code https). Die IP wird immer neu ermittelt – auch wenn die
+    Seite am Jetson selbst über localhost geöffnet wird.
+    """
+    port = request.url.port
+    standard = {"http": 80, "https": 443}[request.url.scheme]
+    port_teil = f":{port}" if port and port != standard else ""
+    return f"{request.url.scheme}://{lan_ip()}{port_teil}"
+
+
+@app.get("/api/adresse")
+def adresse(request: Request):
+    return {"url": seiten_adresse(request)}
+
+
+@app.get("/api/qr.svg")
+def qr(request: Request):
+    return Response(qr_svg(seiten_adresse(request)), media_type="image/svg+xml",
+                    headers={"Cache-Control": "no-store"})
+
+
+@app.get("/qr")
+def qr_seite():
+    """Seite für Beamer/Bildschirm: großer QR-Code + Anleitung."""
+    return FileResponse(STATIC / "qr.html")
 
 
 # Statische Dateien (HTML, CSS, JS) – muss als Letztes kommen, sonst verdeckt es /api

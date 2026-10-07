@@ -206,3 +206,62 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
 }
+/* --- Seite /qr (für Beamer oder Bildschirm am Jetson) ----------------------- */
+
+.qr-seite main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.qr-seite h1 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--gruen);
+}
+
+/* Der QR-Code bleibt auch im Dunkelmodus schwarz auf weiß – sonst scannt er schlecht */
+.qr-karte {
+  display: inline-block;
+  background: #fff;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--rand);
+}
+
+.qr-karte img {
+  display: block;
+  width: min(360px, 80vw);
+  height: auto;
+}
+
+.adresse {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+  font-weight: 600;
+  margin: 16px 0 28px;
+  word-break: break-all;
+}
+
+.anleitung {
+  text-align: left;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--flaeche);
+  border: 1px solid var(--rand);
+  border-radius: 12px;
+  padding: 4px 20px 12px;
+}
+
+.anleitung h2 { margin-top: 16px; }
+.anleitung h3 { margin: 12px 0 4px; font-size: 1rem; color: var(--gruen); }
+.anleitung ol { margin: 0; padding-left: 1.3em; }
+
+.spalten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 24px;
+}
+
+footer a { color: var(--gruen); }

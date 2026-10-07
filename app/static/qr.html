@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>verstehst mi? – QR-Code</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="qr-seite">
+  <main>
+    <h1>verstehst mi?</h1>
+    <p class="unterzeile">Steirisch ↔ Hochdeutsch – einfach mit dem Handy scannen</p>
+
+    <div class="qr-karte">
+      <img src="/api/qr.svg" alt="QR-Code mit der Adresse der Seite" width="360" height="360">
+    </div>
+    <p id="adresse" class="adresse">…</p>
+
+    <section class="anleitung">
+      <h2>Beim ersten Öffnen</h2>
+      <p>Das Handy warnt: <em>„Verbindung ist nicht privat“</em>. Das ist hier normal –
+         die Seite läuft nur im Schul-WLAN, ohne Internet.</p>
+      <div class="spalten">
+        <div>
+          <h3>iPhone (Safari)</h3>
+          <ol>
+            <li>„Details einblenden“</li>
+            <li>„diese Website besuchen“</li>
+            <li>Nochmal „Website besuchen“</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Android (Chrome)</h3>
+          <ol>
+            <li>„Erweitert“</li>
+            <li>„Weiter zu … (unsicher)“</li>
+          </ol>
+        </div>
+      </div>
+      <p>Dann 🎤 tippen und das Mikrofon erlauben.</p>
+    </section>
+  </main>
+
+  <script>
+    // Adresse als Text anzeigen (für alle, die nicht scannen können)
+    fetch("/api/adresse")
+      .then((r) => r.json())
+      .then((d) => { document.getElementById("adresse").textContent = d.url; })
+      .catch(() => {});
+  </script>
+</body>
+</html>
