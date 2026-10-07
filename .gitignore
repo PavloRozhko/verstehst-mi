@@ -219,3 +219,6 @@ __marimo__/
 
 *.db
 models/
+
+# HTTPS-Zertifikat und privater Schlüssel (scripts/zertifikat_erstellen.sh)
+certs/
