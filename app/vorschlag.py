@@ -76,22 +76,26 @@ class Vorschlag:
     sekunden: float = 0.0
 
 
-def sicherer_treffer(suchwort, treffer):
+def sicherer_treffer(suchwort, treffer, richtung=DEUTSCH_STEIRISCH):
     if treffer.score == 1.0:
         return True
     if treffer.score < WORT_SCHWELLE or len(suchwort) < AEHNLICH_AB:
         return False
     stamm = suchwort[:-1] if len(suchwort) > 3 else suchwort
-    return any(v.startswith(stamm) for v in varianten(treffer.hochdeutsch, "wort"))
+    gesucht_in = treffer.hochdeutsch if richtung == DEUTSCH_STEIRISCH else treffer.dialekt
+    return any(v.startswith(stamm) for v in varianten(gesucht_in, "wort"))
 
 
-def woerter_suchen(uebersetzer, satz):
-    """Sucht jedes Wort des Satzes einzeln (nur Wörter, nur sichere Treffer)."""
+def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
+    """Sucht jedes Wort des Satzes einzeln (nur Wörter, nur sichere Treffer).
+
+    richtung: DEUTSCH_STEIRISCH (Satz ist Hochdeutsch) oder STEIRISCH_DEUTSCH (Satz ist Dialekt)
+    """
     paare, gesehen = [], set()
     for wort in normalisieren(satz).split():
         treffer = [
-            t for t in uebersetzer.uebersetzen(wort, DEUTSCH_STEIRISCH, limit=5)
-            if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t)
+            t for t in uebersetzer.uebersetzen(wort, richtung, limit=5)
+            if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t, richtung)
         ]
         for t in treffer[:MAX_PRO_WORT]:
             if t.dialekt not in gesehen:
@@ -124,16 +128,16 @@ def frage_text(satz, paare):
     return f"Satz: {satz}\nGeprüfte Wörter:\n{liste}"
 
 
-def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
-    """Fragt das Modell und gibt (Antwort, Sekunden) zurück."""
+def ollama_chat(system, frage, modell=MODELL, url=OLLAMA, num_predict=60):
+    """Eine Frage an Ollama. Gibt (Antwort, Sekunden) zurück."""
     anfrage = {
         "model": modell,
         "messages": [
-            {"role": "system", "content": SYSTEM},
-            {"role": "user", "content": frage_text(satz, paare)},
+            {"role": "system", "content": system},
+            {"role": "user", "content": frage},
         ],
         "stream": False,
-        "options": {"temperature": 0, "num_predict": 60},
+        "options": {"temperature": 0, "num_predict": num_predict},
         "keep_alive": "10m",
     }
     req = urllib.request.Request(
@@ -144,6 +148,11 @@ def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
     with urllib.request.urlopen(req, timeout=180) as antwort:
         ergebnis = json.load(antwort)
     return ergebnis["message"]["content"].strip(), time.perf_counter() - start
+
+
+def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
+    """Hochdeutsch -> Steirisch (Spike 1). Gibt (Antwort, Sekunden) zurück."""
+    return ollama_chat(SYSTEM, frage_text(satz, paare), modell=modell, url=url)
 
 
 def alle_dialektwoerter(uebersetzer):
