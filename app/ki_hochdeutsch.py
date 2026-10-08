@@ -61,15 +61,19 @@ def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
 
 
 def ohne_llm(satz, paare):
-    """Vergleichswert: jedes gefundene Wort durch seine erste Bedeutung ersetzen."""
+    """Vergleichswert: jedes gefundene Wort durch seine erste Bedeutung ersetzen.
+
+    Ausdrücke aus zwei Wörtern ("auf d'Nocht") ersetzt der Vergleichswert nicht.
+    """
     ersatz = {}
     for p in paare:
-        ersatz.setdefault(p.suchwort, varianten(p.hochdeutsch, "wort")[0])
+        if " " not in p.suchwort:
+            ersatz.setdefault(p.suchwort, varianten(p.hochdeutsch, "wort")[0])
     return " ".join(ersatz.get(w, w) for w in normalisieren(satz).split())
 
 
 def nicht_gefunden(satz, paare):
-    gefunden = {p.suchwort for p in paare}
+    gefunden = {w for p in paare for w in p.suchwort.split()}
     return [w for w in normalisieren(satz).split() if w not in gefunden]
 
 

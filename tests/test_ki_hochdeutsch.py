@@ -77,3 +77,21 @@ def test_ein_eintrag_pro_wort_reicht():
 
 def test_ohne_llm_nimmt_erste_bedeutung():
     assert ki.ohne_llm("Des is owa guat", [OWA]) == "des is herunter guat"
+
+
+@pytest.mark.parametrize("satz, dialekt", [
+    ("Des is ma z'teia.", "teia"),        # z' = zu
+    ("Guate Nocht, Oida.", "Nocht"),
+    ("Moagn kummt d'Sunn.", "Sunn"),      # d' = die
+])
+def test_vorsilbe_d_z_wird_abgetrennt(uebersetzer, satz, dialekt):
+    paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
+    assert dialekt in {p.dialekt for p in paare}
+
+
+def test_ausdruck_aus_zwei_woertern(uebersetzer):
+    satz = "Wos tuast heit auf d'Nocht?"
+    paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
+    assert ("auf d'Nocht", "am Abend; abends") in {(p.dialekt, p.hochdeutsch) for p in paare}
+    assert "auf" not in ki.nicht_gefunden(satz, paare)
+    assert "dnocht" not in ki.nicht_gefunden(satz, paare)

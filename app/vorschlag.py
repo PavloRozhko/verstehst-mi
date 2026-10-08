@@ -12,6 +12,7 @@ Regel "B" (vereinbart am 08.10.): Verben aus der Liste darf das Modell beugen
 """
 
 import json
+import re
 import time
 import urllib.request
 from dataclasses import dataclass, field
@@ -86,21 +87,56 @@ def sicherer_treffer(suchwort, treffer, richtung=DEUTSCH_STEIRISCH):
     return any(v.startswith(stamm) for v in varianten(gesucht_in, "wort"))
 
 
+# Im Dialekt hängen Artikel und "zu" oft am Wort: d'Nocht (die Nacht), z'teia (zu teuer)
+VORSILBE = re.compile(r"\b[dz]['’´`](\w+)", re.IGNORECASE)
+
+
+def suchformen(satz):
+    """Zu jedem Wort die Formen, nach denen gesucht wird.
+
+    "Des is ma z'teia." -> {"zteia": ["zteia", "teia"], ...}
+    """
+    abgetrennt = {normalisieren(m.group(0)): normalisieren(m.group(1))
+                  for m in VORSILBE.finditer(satz)}
+    return {w: [w] + ([abgetrennt[w]] if w in abgetrennt else [])
+            for w in normalisieren(satz).split()}
+
+
+def sichere_treffer(uebersetzer, wort, richtung):
+    return [
+        t for t in uebersetzer.uebersetzen(wort, richtung, limit=5)
+        if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t, richtung)
+    ]
+
+
 def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
     """Sucht jedes Wort des Satzes einzeln (nur Wörter, nur sichere Treffer).
 
     richtung: DEUTSCH_STEIRISCH (Satz ist Hochdeutsch) oder STEIRISCH_DEUTSCH (Satz ist Dialekt)
+
+    Zuerst Ausdrücke aus zwei Wörtern, die im Wörterbuch als EIN Eintrag stehen
+    ("auf d'Nocht" = am Abend) – nur exakt. Dann jedes Wort einzeln.
     """
     paare, gesehen = [], set()
-    for wort in normalisieren(satz).split():
-        treffer = [
-            t for t in uebersetzer.uebersetzen(wort, richtung, limit=5)
-            if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t, richtung)
-        ]
+
+    def aufnehmen(suchwort, treffer):
         for t in treffer[:MAX_PRO_WORT]:
             if t.dialekt not in gesehen:
                 gesehen.add(t.dialekt)
-                paare.append(Wortpaar(wort, t.dialekt, t.hochdeutsch))
+                paare.append(Wortpaar(suchwort, t.dialekt, t.hochdeutsch))
+
+    woerter = normalisieren(satz).split()
+    for paar in (" ".join(woerter[i:i + 2]) for i in range(len(woerter) - 1)):
+        aufnehmen(paar, [t for t in sichere_treffer(uebersetzer, paar, richtung)
+                         if t.score == 1.0])
+
+    formen = suchformen(satz)
+    for wort in woerter:
+        for form in formen[wort]:
+            treffer = sichere_treffer(uebersetzer, form, richtung)
+            if treffer:
+                aufnehmen(wort, treffer)
+                break
     return paare
 
 
