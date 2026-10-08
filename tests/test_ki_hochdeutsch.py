@@ -25,9 +25,10 @@ def test_findet_dialektwoerter(uebersetzer):
 
 
 def test_nicht_gefunden(uebersetzer):
-    satz = "Heit is vü z'tuan."
+    # "Blunzngraf" ist erfunden und steht sicher nie im Wörterbuch
+    satz = "Heit vü Blunzngraf."
     paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
-    assert ki.nicht_gefunden(satz, paare) == ["is", "ztuan"]
+    assert ki.nicht_gefunden(satz, paare) == ["blunzngraf"]
 
 
 def test_phrase_im_woerterbuch_braucht_kein_llm(uebersetzer):
@@ -48,7 +49,8 @@ def test_versteckte_phrase_fragt_llm(uebersetzer):
     e = ki.uebersetzen(uebersetzer, "Heit is vü z'tuan.", fragen=fragen, phrase_zuerst=False)
     assert "- heit = heute" in gefragt[0]
     assert e.text == "Heute gibt es viel zu tun."
-    assert e.bedeutung_fehlt == []
+    # heute und viel kommen in der Antwort vor (unabhängig davon, welche Wörter neu dazukommen)
+    assert not {"heit", "vü"} & {p.suchwort for p in e.bedeutung_fehlt}
 
 
 OWA = Wortpaar("owa", "owa", "herunter (auch: aber)")

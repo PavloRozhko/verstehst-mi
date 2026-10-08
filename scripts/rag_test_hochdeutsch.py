@@ -14,8 +14,13 @@ Go-Kriterien (vor dem ersten Lauf festgelegt):
   - 0 Sätze, in denen das Modell einer geprüften Bedeutung widerspricht
   - Wörter, die nicht im Wörterbuch stehen, werden angezeigt (macht das Programm)
 
+Satz 2 (für den zweiten Lauf nach dem Ergänzen der Wörter-Tabelle): neu gezogen mit
+Seed 20261011, ohne die Phrasen aus Satz 1 – festgelegt am 08.10., BEVOR neue Wörter
+aus den Phrasen gewonnen wurden. Aus den Phrasen von Satz 2 wurden keine Wörter übernommen.
+
 Aufruf (im Projektordner, mit aktiviertem .venv; Dienst verstehst-mi darf laufen):
-    python scripts/rag_test_hochdeutsch.py
+    python scripts/rag_test_hochdeutsch.py              # Satz 1
+    python scripts/rag_test_hochdeutsch.py --satz 2     # Satz 2
     python scripts/rag_test_hochdeutsch.py --ohne-ollama
 
 Ergebnis: models/rag_test/hochdeutsch_<modell>.csv – Spalte "bewertung" ausfüllen.
@@ -37,7 +42,7 @@ AUSGABE = PROJEKT / "models" / "rag_test"
 MAX_SEKUNDEN = 5.0
 
 # (Dialekt, geprüfte hochdeutsche Bedeutung) – aus data/phrasen.csv
-SAETZE = [
+SATZ_1 = [
     ("Deis Gschropp heat ned auf zum Plärrn.", "Das Kind hört nicht auf zu weinen."),
     ("Heit is vü z'tuan.", "Heute gibt es viel zu tun."),
     ("Wos tuast heit auf d'Nocht?", "Was machst du heute Abend?"),
@@ -50,12 +55,27 @@ SAETZE = [
     ("Wos is'n des für a Gschiss?", "Was ist das für ein unnötiges Getue?"),
 ]
 
+SATZ_2 = [
+    ("Do hauts ma den Vogl aussi.", "Das ist ja völlig irre."),
+    ("I bin gonz voi.", "Ich bin ganz satt."),
+    ("Wos suderst denn scho wieda?", "Warum jammerst du schon wieder?"),
+    ("Is no wos do?", "Ist noch etwas da?"),
+    ("Hiaz moch ma Schluss für heit.", "Jetzt machen wir Schluss für heute."),
+    ("Des is ma z'teia.", "Das ist mir zu teuer."),
+    ("Der Chef is heit grantig.", "Der Chef ist heute schlecht gelaunt."),
+    ("Des schmeckt ma ned.", "Das schmeckt mir nicht."),
+    ("Sei ned so gschamig!", "Sei nicht so schüchtern!"),
+    ("Mia mochn a Paus.", "Wir machen eine Pause."),
+]
+
 
 def main():
     parser = argparse.ArgumentParser(description="Spike 2: Dialekt -> Hochdeutsch")
     parser.add_argument("--modell", default=MODELL)
+    parser.add_argument("--satz", type=int, choices=(1, 2), default=1)
     parser.add_argument("--ohne-ollama", action="store_true")
     args = parser.parse_args()
+    saetze = SATZ_1 if args.satz == 1 else SATZ_2
 
     if not STANDARD_DB.exists():
         raise SystemExit("Datenbank fehlt – zuerst python scripts/import_csv.py ausführen")
@@ -77,7 +97,7 @@ def main():
 
     AUSGABE.mkdir(parents=True, exist_ok=True)
     name = "ohne_llm" if args.ohne_ollama else args.modell.replace(":", "_").replace("/", "_")
-    datei = AUSGABE / f"hochdeutsch_{name}.csv"
+    datei = AUSGABE / f"hochdeutsch_{name}_satz{args.satz}.csv"
 
     zeiten, mit_hinweis = [], 0
     with open(datei, "w", newline="", encoding="utf-8-sig") as f:
@@ -85,7 +105,7 @@ def main():
         schreiber.writerow(["dialekt", "erwartet (geprüft)", "ki_uebersetzung", "ohne_llm",
                             "gefundene_woerter", "nicht_im_woerterbuch", "bedeutung_fehlt",
                             "sekunden", "bewertung (gut/teils/falsch)", "kommentar"])
-        for satz, erwartet in SAETZE:
+        for satz, erwartet in saetze:
             e = ki.uebersetzen(uebersetzer, satz, fragen=fragen, phrase_zuerst=False)
             paare = ", ".join(f"{p.dialekt}={p.hochdeutsch}" for p in e.paare)
             fehlt = ", ".join(p.dialekt for p in e.bedeutung_fehlt)
