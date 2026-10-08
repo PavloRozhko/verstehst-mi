@@ -1,0 +1,204 @@
+"""KI-Vorschlag (Experiment): einen hochdeutschen Satz, der NICHT im Wörterbuch steht,
+mit Hilfe geprüfter Wörter ins Steirische übertragen.
+
+Ablauf (RAG = "Retrieval-Augmented Generation", also: erst nachschlagen, dann schreiben):
+  1. Steht der ganze Satz schon im Wörterbuch?  -> dann gilt der geprüfte Eintrag, kein LLM.
+  2. Jedes Wort im Wörterbuch suchen (nur sichere Treffer).
+  3. Das Sprachmodell bekommt Satz + gefundene Wörter und darf NUR diese als Dialekt verwenden.
+  4. Jedes Wort der Antwort wird geprüft und markiert (siehe markieren()).
+
+Regel "B" (vereinbart am 08.10.): Verben aus der Liste darf das Modell beugen
+("hom" -> "hob"). Solche Formen sind NICHT geprüft und werden eigens markiert.
+"""
+
+import json
+import time
+import urllib.request
+from dataclasses import dataclass, field
+
+from app.uebersetzer import (
+    DEUTSCH_STEIRISCH,
+    SCHWELLE,
+    Uebersetzer,
+    aehnlichkeit,
+    normalisieren,
+    varianten,
+)
+
+OLLAMA = "http://localhost:11434/api/chat"
+MODELL = "gemma3:4b"
+
+# Für ein einzelnes Wort reicht "ähnlich" nicht: "nach" fand "Mei" (= ach), "der" fand "oda".
+# Ein ähnlicher Treffer zählt nur, wenn die Bedeutung mit dem Suchwort fast gleich beginnt
+# ("habe" -> "haben" ja, "nach" -> "ach" nein).
+WORT_SCHWELLE = 0.85
+# Kurze Wörter nur exakt: "bitte" fand sonst "hantig" (= bitter), "keine" fand "kana" (= keiner)
+AEHNLICH_AB = 6     # Zeichen
+MAX_PRO_WORT = 2
+
+# Ein Antwortwort gilt als gebeugte Form eines gefundenen Wortes, wenn es gleich beginnt
+# und ähnlich ist ("hob"/"hobn"/"host" ~ "hom"). Grob, deshalb nur als "bitte prüfen" markiert.
+ABGELEITET_AB = 0.5
+GLEICHER_ANFANG = 2     # Zeichen
+
+# Markierungen für jedes Wort der Antwort
+GEPRUEFT = "geprüft"            # steht so in der Liste der gefundenen Wörter
+WOERTERBUCH = "wörterbuch"      # geprüftes Wort, aber nicht für diesen Satz gefunden
+HOCHDEUTSCH = "hochdeutsch"     # unverändert aus dem Originalsatz übernommen
+ABGELEITET = "abgeleitet"       # vermutlich gebeugte Form eines gefundenen Wortes (Regel B)
+VERDAECHTIG = "verdächtig"      # nichts davon -> möglicherweise erfunden
+
+SYSTEM = """Du überträgst einen hochdeutschen Satz in den steirischen Dialekt.
+Du bekommst eine Liste GEPRÜFTER Wörter aus einem Wörterbuch (Hochdeutsch = Steirisch).
+
+Regeln:
+- Für steirische Wörter verwendest du NUR Wörter aus der Liste.
+- Verben aus der Liste darfst du an den Satz anpassen (Person, Zeit).
+- Für alles, was nicht in der Liste steht, schreibst du das hochdeutsche Wort aus dem Originalsatz.
+- Erfinde keine Dialektwörter, auch wenn du welche kennst.
+- Gib nur den fertigen Satz aus: keine Erklärung, keine Anführungszeichen."""
+
+
+@dataclass
+class Wortpaar:
+    suchwort: str       # Wort aus dem Eingabesatz (normalisiert)
+    dialekt: str
+    hochdeutsch: str
+
+
+@dataclass
+class Vorschlag:
+    satz: str
+    woerterbuch_phrase: str | None = None     # gefunden -> kein LLM nötig
+    paare: list[Wortpaar] = field(default_factory=list)
+    text: str = ""                            # Antwort des Modells
+    markierungen: list[tuple[str, str]] = field(default_factory=list)  # (Wort, Markierung)
+    sekunden: float = 0.0
+
+
+def sicherer_treffer(suchwort, treffer):
+    if treffer.score == 1.0:
+        return True
+    if treffer.score < WORT_SCHWELLE or len(suchwort) < AEHNLICH_AB:
+        return False
+    stamm = suchwort[:-1] if len(suchwort) > 3 else suchwort
+    return any(v.startswith(stamm) for v in varianten(treffer.hochdeutsch, "wort"))
+
+
+def woerter_suchen(uebersetzer, satz):
+    """Sucht jedes Wort des Satzes einzeln (nur Wörter, nur sichere Treffer)."""
+    paare, gesehen = [], set()
+    for wort in normalisieren(satz).split():
+        treffer = [
+            t for t in uebersetzer.uebersetzen(wort, DEUTSCH_STEIRISCH, limit=5)
+            if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t)
+        ]
+        for t in treffer[:MAX_PRO_WORT]:
+            if t.dialekt not in gesehen:
+                gesehen.add(t.dialekt)
+                paare.append(Wortpaar(wort, t.dialekt, t.hochdeutsch))
+    return paare
+
+
+def phrase_suchen(uebersetzer, satz):
+    """Gibt den Dialekt-Eintrag zurück, wenn der ganze Satz (fast) im Wörterbuch steht."""
+    for t in uebersetzer.uebersetzen(satz, DEUTSCH_STEIRISCH, limit=1):
+        if t.typ == "phrase" and t.score >= SCHWELLE:
+            return t.dialekt
+    return None
+
+
+def ohne_llm(satz, paare):
+    """Vergleichswert ohne Sprachmodell: jedes Wort durch den ersten Treffer ersetzen."""
+    ersatz = {}
+    for p in paare:
+        ersatz.setdefault(p.suchwort, p.dialekt)
+    return " ".join(ersatz.get(w, w) for w in normalisieren(satz).split())
+
+
+def frage_text(satz, paare):
+    if paare:
+        liste = "\n".join(f"- {p.hochdeutsch} = {p.dialekt}" for p in paare)
+    else:
+        liste = "(keine)"
+    return f"Satz: {satz}\nGeprüfte Wörter:\n{liste}"
+
+
+def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
+    """Fragt das Modell und gibt (Antwort, Sekunden) zurück."""
+    anfrage = {
+        "model": modell,
+        "messages": [
+            {"role": "system", "content": SYSTEM},
+            {"role": "user", "content": frage_text(satz, paare)},
+        ],
+        "stream": False,
+        "options": {"temperature": 0, "num_predict": 60},
+        "keep_alive": "10m",
+    }
+    req = urllib.request.Request(
+        url, data=json.dumps(anfrage).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    start = time.perf_counter()
+    with urllib.request.urlopen(req, timeout=180) as antwort:
+        ergebnis = json.load(antwort)
+    return ergebnis["message"]["content"].strip(), time.perf_counter() - start
+
+
+def alle_dialektwoerter(uebersetzer):
+    """Alle geprüften Dialekt-Wörter (normalisiert), auch einzelne Wörter aus Phrasen."""
+    woerter = set()
+    for e in uebersetzer.eintraege:
+        for v in e["st-de"]:
+            woerter.update(v.split())
+    return woerter
+
+
+def markieren(antwort, satz, paare, woerterbuch):
+    """Ordnet jedem Wort der Antwort eine Markierung zu (siehe Konstanten oben)."""
+    gefunden = set()
+    for p in paare:
+        for v in varianten(p.dialekt, "wort"):
+            gefunden.update(v.split())
+    original = set(normalisieren(satz).split())
+
+    ergebnis = []
+    for wort in normalisieren(antwort).split():
+        if wort in gefunden:
+            art = GEPRUEFT
+        elif wort in original:
+            art = HOCHDEUTSCH
+        elif wort in woerterbuch:
+            art = WOERTERBUCH
+        elif len(wort) >= 3 and any(
+            len(g) >= 3 and wort[:GLEICHER_ANFANG] == g[:GLEICHER_ANFANG]
+            and aehnlichkeit(wort, g) >= ABGELEITET_AB
+            for g in gefunden
+        ):
+            art = ABGELEITET
+        else:
+            art = VERDAECHTIG
+        ergebnis.append((wort, art))
+    return ergebnis
+
+
+def vorschlagen(uebersetzer, satz, fragen=ollama_fragen, woerterbuch=None):
+    """Kompletter Ablauf für einen Satz. `fragen` ist austauschbar (Tests ohne Ollama)."""
+    vorschlag = Vorschlag(satz=satz)
+    vorschlag.woerterbuch_phrase = phrase_suchen(uebersetzer, satz)
+    if vorschlag.woerterbuch_phrase:
+        return vorschlag
+    vorschlag.paare = woerter_suchen(uebersetzer, satz)
+    vorschlag.text, vorschlag.sekunden = fragen(satz, vorschlag.paare)
+    if woerterbuch is None:
+        woerterbuch = alle_dialektwoerter(uebersetzer)
+    vorschlag.markierungen = markieren(vorschlag.text, satz, vorschlag.paare, woerterbuch)
+    return vorschlag
+
+
+if __name__ == "__main__":
+    import sys
+    u = Uebersetzer()
+    for s in sys.argv[1:] or ["Das Wetter ist heute schlecht."]:
+        print(s, "->", phrase_suchen(u, s) or ohne_llm(s, woerter_suchen(u, s)))
