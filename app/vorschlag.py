@@ -68,6 +68,7 @@ class Wortpaar:
     dialekt: str
     hochdeutsch: str
     abgeleitet: bool = False    # über eine Verbform gefunden (app/verbformen.py), nicht geprüft
+    derb: bool = False          # derber Ausdruck (wird nur mit mit_derb=True gefunden)
 
 
 @dataclass
@@ -105,20 +106,21 @@ def suchformen(satz):
             for w in normalisieren(satz).split()}
 
 
-def sichere_treffer(uebersetzer, wort, richtung):
+def sichere_treffer(uebersetzer, wort, richtung, mit_derb=False):
     return [
-        t for t in uebersetzer.uebersetzen(wort, richtung, limit=5)
+        t for t in uebersetzer.uebersetzen(wort, richtung, mit_derb=mit_derb, limit=5)
         if t.typ == "wort" and t.art != "in Phrase" and sicherer_treffer(wort, t, richtung)
     ]
 
 
-def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
+def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH, mit_derb=False):
     """Sucht jedes Wort des Satzes einzeln (nur Wörter, nur sichere Treffer).
 
     richtung: DEUTSCH_STEIRISCH (Satz ist Hochdeutsch) oder STEIRISCH_DEUTSCH (Satz ist Dialekt)
 
     Zuerst Ausdrücke aus zwei Wörtern, die im Wörterbuch als EIN Eintrag stehen
     ("auf d'Nocht" = am Abend) – nur exakt. Dann jedes Wort einzeln.
+    mit_derb=True: auch derbe Ausdrücke finden (für die KI-Übersetzung, siehe ki_hochdeutsch).
     """
     paare, gesehen = [], set()
 
@@ -127,24 +129,24 @@ def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
             if t.dialekt not in gesehen:
                 gesehen.add(t.dialekt)
                 paare.append(Wortpaar(suchwort, t.dialekt, t.hochdeutsch,
-                                      abgeleitet=t.art == "abgeleitet"))
+                                      abgeleitet=t.art == "abgeleitet", derb=t.derb))
 
     woerter = normalisieren(satz).split()
     for paar in (" ".join(woerter[i:i + 2]) for i in range(len(woerter) - 1)):
-        aufnehmen(paar, [t for t in sichere_treffer(uebersetzer, paar, richtung)
+        aufnehmen(paar, [t for t in sichere_treffer(uebersetzer, paar, richtung, mit_derb)
                          if t.score == 1.0])
 
     formen = suchformen(satz)
     for wort in woerter:
         for form in formen[wort]:
-            treffer = sichere_treffer(uebersetzer, form, richtung)
+            treffer = sichere_treffer(uebersetzer, form, richtung, mit_derb)
             if treffer:
                 aufnehmen(wort, treffer)
                 break
         else:
             # Nichts gefunden: vielleicht eine gebeugte Verbform (Experiment A, nur Dialekt)
             if richtung == STEIRISCH_DEUTSCH:
-                aufnehmen(wort, infinitiv_suchen(uebersetzer, wort))
+                aufnehmen(wort, infinitiv_suchen(uebersetzer, wort, mit_derb))
     return paare
 
 

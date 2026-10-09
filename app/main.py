@@ -157,7 +157,7 @@ def ki_uebersetzung(text: str = Query(..., max_length=300)):
         "uebersetzung": e.woerterbuch_phrase or e.text or None,
         "woerter": [
             {"wort": p.suchwort, "dialekt": p.dialekt, "hochdeutsch": p.hochdeutsch,
-             "abgeleitet": p.abgeleitet}
+             "abgeleitet": p.abgeleitet, "derb": p.derb}
             for p in e.paare
         ],
         "nicht_gefunden": e.nicht_gefunden,

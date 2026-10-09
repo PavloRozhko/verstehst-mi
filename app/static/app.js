@@ -117,6 +117,14 @@ function anzeigen(daten, text) {
       : "Kein Treffer im Wörterbuch. Probier eine andere Schreibweise oder ein einzelnes Wort."));
   }
   if (kiMoeglich) teile.push(kiBereich(text));
+  // Gegenrichtung: bewusst keine KI (sie würde Dialekt erfinden, Spike 1)
+  const satzOhneTreffer = richtung === "de-st" && daten.uebersetzungen.length === 0
+    && text.trim().split(/\s+/).length >= 2;
+  if (satzOhneTreffer) {
+    teile.push(element("p", "fussnote",
+      "Ganze Sätze übersetzt die KI nur Steirisch → Hochdeutsch. " +
+      "In die andere Richtung würde sie Dialekt erfinden."));
+  }
   ergebnis.replaceChildren(...teile);
 }
 
@@ -187,6 +195,7 @@ function wortListe(daten) {
       li.append(element("span", "wort-geprueft", w.dialekt), ` = ${w.hochdeutsch} `,
         element("span", "marke", "✅ geprüft"));
     }
+    if (w.derb) li.append(element("span", "marke marke-derb", "derb"));
     liste.append(li);
   }
   for (const wort of daten.nicht_gefunden) {

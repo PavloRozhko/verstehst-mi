@@ -244,6 +244,11 @@ button.karte:hover { border-color: var(--gruen); }
   color: var(--gelb-text);
 }
 
+.marke-derb {
+  background: var(--rot-hell);
+  color: var(--rot);
+}
+
 .satz { line-height: 1.8; }
 
 .wort-geprueft,

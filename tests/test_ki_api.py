@@ -59,7 +59,7 @@ def test_ki_uebersetzung(client, monkeypatch):
     assert daten["uebersetzung"] == "Was machst du heute?"
     assert daten["nicht_gefunden"] == ["blunzngraf"]
     assert {"wort": "heit", "dialekt": "heit", "hochdeutsch": "heute",
-            "abgeleitet": False} in daten["woerter"]
+            "abgeleitet": False, "derb": False} in daten["woerter"]
     assert daten["hinweis"] is None
 
 
@@ -156,3 +156,13 @@ def test_aufwaermen_ohne_ollama():
     assert modell.aufwaermen() is False
     assert not modell.bereit and not modell.laedt
     assert modell.letzter_fehler
+
+
+def test_derbes_wort_ist_markiert(client, monkeypatch):
+    # "Bist deppat!" steht als Phrase im Wörterbuch – deshalb ein anderer Satz
+    daten = anfrage(client, monkeypatch, FalschesModell(antwort="Der Kumpel ist dumm."),
+                    text="Der Hawara is deppat.")
+    assert daten["quelle"] == "ki"
+    deppat = next(w for w in daten["woerter"] if w["wort"] == "deppat")
+    assert deppat["derb"] is True
+    assert "deppat" not in daten["nicht_gefunden"]

@@ -95,3 +95,23 @@ def test_ausdruck_aus_zwei_woertern(uebersetzer):
     assert ("auf d'Nocht", "am Abend; abends") in {(p.dialekt, p.hochdeutsch) for p in paare}
     assert "auf" not in ki.nicht_gefunden(satz, paare)
     assert "dnocht" not in ki.nicht_gefunden(satz, paare)
+
+
+def test_derb_nur_fuer_ki(uebersetzer):
+    """Derbe Wörter: in der normalen Wortsuche versteckt, für die KI-Übersetzung gefunden."""
+    normal = woerter_suchen(uebersetzer, "Der Hawara is deppat.", STEIRISCH_DEUTSCH)
+    assert "deppat" not in {p.suchwort for p in normal}
+
+    mit_derb = woerter_suchen(uebersetzer, "Der Hawara is deppat.", STEIRISCH_DEUTSCH,
+                              mit_derb=True)
+    paar = next(p for p in mit_derb if p.suchwort == "deppat")
+    assert paar.derb is True
+
+
+def test_ki_uebersetzung_findet_derbe_woerter(uebersetzer):
+    # "Bist deppat!" steht als Phrase im Wörterbuch – deshalb ein anderer Satz
+    e = ki.uebersetzen(uebersetzer, "Der Hawara is deppat.",
+                       fragen=lambda s, p: ("Der Kumpel ist dumm.", 0.1))
+    assert e.woerterbuch_phrase is None
+    assert "deppat" not in e.nicht_gefunden
+    assert any(p.derb for p in e.paare)

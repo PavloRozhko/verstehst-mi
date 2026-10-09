@@ -6,6 +6,8 @@ Das Modell schreibt NUR Hochdeutsch – Dialekt kommt immer vom Benutzer.
 Ablauf:
   1. Steht der Satz im Wörterbuch?  -> geprüfter Eintrag, kein LLM.
   2. Jedes Dialektwort im Wörterbuch suchen (app/vorschlag.woerter_suchen).
+     Derbe Ausdrücke zählen mit (seit 09.10.): Wer "deppat" hört, soll die Bedeutung
+     erfahren. Sie sind in der Antwort als derb markiert.
   3. Das Modell bekommt Satz + geprüfte Bedeutungen und schreibt den Satz auf Hochdeutsch.
   4. Prüfen (ohne LLM, nur Hinweise zum Nachsehen):
      - welche Wörter NICHT im Wörterbuch stehen (dort musste das Modell raten)
@@ -49,7 +51,7 @@ class KiUebersetzung:
 
 
 def phrase_suchen(uebersetzer, satz):
-    for t in uebersetzer.uebersetzen(satz, STEIRISCH_DEUTSCH, limit=1):
+    for t in uebersetzer.uebersetzen(satz, STEIRISCH_DEUTSCH, mit_derb=True, limit=1):
         if t.typ == "phrase" and t.score >= SCHWELLE:
             return t.hochdeutsch
     return None
@@ -122,7 +124,7 @@ def uebersetzen(uebersetzer, satz, fragen=ollama_fragen, phrase_zuerst=True):
         ergebnis.woerterbuch_phrase = phrase_suchen(uebersetzer, satz)
         if ergebnis.woerterbuch_phrase:
             return ergebnis
-    ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
+    ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH, mit_derb=True)
     ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)
     ergebnis.text, ergebnis.sekunden = fragen(satz, ergebnis.paare)
     ergebnis.bedeutung_fehlt = bedeutung_fehlt(ergebnis.text, ergebnis.paare)
@@ -202,7 +204,7 @@ def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
     """
     def nur_woerter(hinweis):
         ergebnis = KiUebersetzung(satz=satz, quelle=NUR_WOERTER, hinweis=hinweis)
-        ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
+        ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH, mit_derb=True)
         ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)
         return ergebnis
 
