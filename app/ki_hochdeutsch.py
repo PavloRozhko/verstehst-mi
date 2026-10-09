@@ -46,6 +46,7 @@ class KiUebersetzung:
     text: str = ""
     bedeutung_fehlt: list[Wortpaar] = field(default_factory=list)
     sekunden: float = 0.0
+    wie_hochdeutsch: list[str] = field(default_factory=list)   # siehe hochdeutsch_abtrennen
     quelle: str = ""            # "wörterbuch", "ki" oder "nur_woerter" (siehe uebersetzen_fuer_app)
     hinweis: str | None = None  # kurze Meldung für die Oberfläche, z. B. "KI lädt noch"
 
@@ -195,6 +196,26 @@ class KiModell:
             return self._chat(frage_text(satz, paare), num_predict=60, timeout=ANTWORT_TIMEOUT)
 
 
+def hochdeutsche_woerter(uebersetzer):
+    """Alle Wörter aus der HOCHDEUTSCHEN Spalte der geprüften Daten ("der", "so", "und" …)."""
+    return {w for e in uebersetzer.eintraege
+            for w in normalisieren(e["zeile"]["hochdeutsch"]).split()}
+
+
+def hochdeutsch_abtrennen(uebersetzer, ergebnis):
+    """Unbekannte Wörter, die auch Hochdeutsch sind, nicht als "geraten" zeigen.
+
+    "Der Hawara is deppat." -> "der" steht nicht als Dialektwort im Wörterbuch, kommt aber
+    in der hochdeutschen Spalte vor. Lernende verstehen es; rot markiert verwirrt es nur.
+    Grenze: Ein Dialektwort, das zufällig wie ein anderes hochdeutsches Wort aussieht,
+    wird dann nicht mehr als unbekannt markiert.
+    """
+    hochdeutsch = hochdeutsche_woerter(uebersetzer)
+    ergebnis.wie_hochdeutsch = [w for w in ergebnis.nicht_gefunden if w in hochdeutsch]
+    ergebnis.nicht_gefunden = [w for w in ergebnis.nicht_gefunden if w not in hochdeutsch]
+    return ergebnis
+
+
 def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
     """Wie uebersetzen(), aber ohne Fehler nach außen. Setzt quelle und hinweis:
 
@@ -206,7 +227,7 @@ def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
         ergebnis = KiUebersetzung(satz=satz, quelle=NUR_WOERTER, hinweis=hinweis)
         ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH, mit_derb=True)
         ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)
-        return ergebnis
+        return hochdeutsch_abtrennen(uebersetzer, ergebnis)
 
     phrase = phrase_suchen(uebersetzer, satz)
     if phrase:
@@ -233,4 +254,4 @@ def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
     if not ergebnis.text:
         return nur_woerter("KI hat nichts geantwortet – nur Wortbedeutungen.")
     ergebnis.quelle = KI
-    return ergebnis
+    return hochdeutsch_abtrennen(uebersetzer, ergebnis)

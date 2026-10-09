@@ -166,3 +166,11 @@ def test_derbes_wort_ist_markiert(client, monkeypatch):
     deppat = next(w for w in daten["woerter"] if w["wort"] == "deppat")
     assert deppat["derb"] is True
     assert "deppat" not in daten["nicht_gefunden"]
+
+
+def test_hochdeutsche_woerter_sind_nicht_unbekannt(client, monkeypatch):
+    # "der" steht nicht als Dialektwort im Wörterbuch, ist aber Hochdeutsch
+    daten = anfrage(client, monkeypatch, FalschesModell(antwort="Der Kumpel ist dumm."),
+                    text="Der Hawara is deppat, Blunzngraf.")
+    assert daten["wie_hochdeutsch"] == ["der"]
+    assert daten["nicht_gefunden"] == ["blunzngraf"]

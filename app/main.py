@@ -161,6 +161,7 @@ def ki_uebersetzung(text: str = Query(..., max_length=300)):
             for p in e.paare
         ],
         "nicht_gefunden": e.nicht_gefunden,
+        "wie_hochdeutsch": e.wie_hochdeutsch,   # nicht im Wörterbuch, aber auch Hochdeutsch
         "bedeutung_fehlt": [p.dialekt for p in e.bedeutung_fehlt],
         "hinweis": e.hinweis,
         "sekunden": sekunden,
