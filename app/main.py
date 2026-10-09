@@ -7,6 +7,9 @@ Dann im Browser: http://<jetson-adresse>:8000
 
 Ohne Spracherkennung starten (schneller, z. B. zum Testen der Oberfläche):
     VERSTEHST_MI_OHNE_SPRACHE=1 uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+Ohne KI-Übersetzung starten (nur Wortbedeutungen, Ollama wird nicht gefragt):
+    VERSTEHST_MI_OHNE_KI=1 uvicorn app.main:app --host 0.0.0.0 --port 8000
 """
 
 import logging
@@ -21,6 +24,7 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 
+from app import ki_hochdeutsch
 from app.netz import lan_ip, qr_svg
 
 from app.sprache import AudioFehler, Spracherkennung
@@ -35,15 +39,22 @@ log = logging.getLogger("uvicorn.error")
 # Das Wörterbuch wird einmal beim Start geladen
 uebersetzer = Uebersetzer()
 erkennung = Spracherkennung()
+# None = KI ausgeschaltet; sonst wird gemma3 beim Start im Hintergrund geladen (~70 s)
+ki_modell = None if os.environ.get("VERSTEHST_MI_OHNE_KI") == "1" else ki_hochdeutsch.KiModell()
 
 
 @asynccontextmanager
 async def lebenszyklus(app):
-    """Läuft einmal beim Start des Servers: lädt das Whisper-Modell.
+    """Läuft einmal beim Start des Servers: lädt Whisper und (im Hintergrund) gemma3.
 
     Klappt das nicht (z. B. Modell fehlt und kein Internet), läuft der Server
-    trotzdem weiter – nur ohne Spracheingabe.
+    trotzdem weiter – nur ohne Spracheingabe bzw. ohne KI-Übersetzung.
     """
+    if ki_modell is None:
+        log.info("KI-Übersetzung ausgeschaltet (VERSTEHST_MI_OHNE_KI=1)")
+    else:
+        # im Hintergrund: der Server ist sofort erreichbar, die KI kommt nach ~70 s dazu
+        ki_modell.im_hintergrund_aufwaermen()
     if os.environ.get("VERSTEHST_MI_OHNE_SPRACHE") == "1":
         log.info("Spracherkennung ausgeschaltet (VERSTEHST_MI_OHNE_SPRACHE=1)")
     else:
@@ -124,9 +135,42 @@ async def sprache(request: Request, derb: bool = Query(False)):
     return {"erkannt": text, "sekunden": sekunden, **fuer_anzeige(treffer)}
 
 
+@app.get("/api/ki_uebersetzung")
+def ki_uebersetzung(text: str = Query(..., max_length=300)):
+    """Steirisch -> Hochdeutsch für ganze Sätze (Experiment, "ungeprüft").
+
+    quelle: "wörterbuch" (geprüfte Phrase), "ki" (KI aus geprüften Wörtern) oder
+    "nur_woerter" (KI nicht bereit – nur die Wortbedeutungen, siehe hinweis).
+    Gibt nie einen Fehler zurück, nur weil die KI fehlt.
+    """
+    if not text.strip():
+        raise HTTPException(status_code=400, detail="Bitte einen Satz eingeben")
+
+    start = time.perf_counter()
+    e = ki_hochdeutsch.uebersetzen_fuer_app(uebersetzer, text, ki_modell)
+    sekunden = round(time.perf_counter() - start, 1)
+    log.info("KI-Übersetzung (%s) in %.1f s: %r -> %r", e.quelle, sekunden, text,
+             e.woerterbuch_phrase or e.text)
+    return {
+        "text": text,
+        "quelle": e.quelle,
+        "uebersetzung": e.woerterbuch_phrase or e.text or None,
+        "woerter": [
+            {"wort": p.suchwort, "dialekt": p.dialekt, "hochdeutsch": p.hochdeutsch,
+             "abgeleitet": p.abgeleitet}
+            for p in e.paare
+        ],
+        "nicht_gefunden": e.nicht_gefunden,
+        "bedeutung_fehlt": [p.dialekt for p in e.bedeutung_fehlt],
+        "hinweis": e.hinweis,
+        "sekunden": sekunden,
+    }
+
+
 @app.get("/api/status")
 def status():
-    return {"eintraege": len(uebersetzer.eintraege), "sprache": erkennung.bereit}
+    return {"eintraege": len(uebersetzer.eintraege), "sprache": erkennung.bereit,
+            "ki": bool(ki_modell and ki_modell.bereit)}
 
 
 def seiten_adresse(request):

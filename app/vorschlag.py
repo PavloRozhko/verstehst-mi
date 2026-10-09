@@ -172,8 +172,12 @@ def frage_text(satz, paare):
     return f"Satz: {satz}\nGeprüfte Wörter:\n{liste}"
 
 
-def ollama_chat(system, frage, modell=MODELL, url=OLLAMA, num_predict=60):
-    """Eine Frage an Ollama. Gibt (Antwort, Sekunden) zurück."""
+def ollama_chat(system, frage, modell=MODELL, url=OLLAMA, num_predict=60,
+                keep_alive="10m", timeout=180):
+    """Eine Frage an Ollama. Gibt (Antwort, Sekunden) zurück.
+
+    keep_alive: wie lange Ollama das Modell danach im Speicher hält (-1 = für immer).
+    """
     anfrage = {
         "model": modell,
         "messages": [
@@ -182,14 +186,14 @@ def ollama_chat(system, frage, modell=MODELL, url=OLLAMA, num_predict=60):
         ],
         "stream": False,
         "options": {"temperature": 0, "num_predict": num_predict},
-        "keep_alive": "10m",
+        "keep_alive": keep_alive,
     }
     req = urllib.request.Request(
         url, data=json.dumps(anfrage).encode("utf-8"),
         headers={"Content-Type": "application/json"},
     )
     start = time.perf_counter()
-    with urllib.request.urlopen(req, timeout=180) as antwort:
+    with urllib.request.urlopen(req, timeout=timeout) as antwort:
         ergebnis = json.load(antwort)
     return ergebnis["message"]["content"].strip(), time.perf_counter() - start
 

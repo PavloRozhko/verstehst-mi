@@ -144,7 +144,21 @@ versteckt; die Regel muss den Infinitiv finden. Die Einteilung wurde von Hand ge
   und von Hand bewertet); die Phrasen von Satz 3 sind ausgenommen
 - alle bisherigen Tests grün, keine spürbare Verlangsamung
 
-Ergebnis: folgt.
+**Ergebnis (09.10., `scripts/verbformen_test.py`):**
+
+| Kriterium | Ergebnis | |
+|---|---|---|
+| reguläre Formen | **18/18** | ✅ |
+| falsche Infinitive | **0** (alle 20 unregelmäßigen: nichts gefunden) | ✅ |
+| Klitikon (nur beobachtet) | 2/3 (`gfreit's`, `gfriat's`; nicht `schaust'n`) | – |
+| Treffer in Phrasen | 4, alle richtig: `red` → redn, `schau` → schaun, `kenn` → kenna, `suderst` → sudern | ✅ |
+| Tests / Zeit | alle grün; 173 → 180 ms pro Satz (Wortsuche) | ✅ |
+
+`suderst` war einer der zwei Fehler von Satz 2. Satz 2 ist aber schon verbraucht – ob die
+Regel der KI-Übersetzung wirklich hilft, zeigt erst Satz 3.
+
+**Entscheidung: go.** Die Regel läuft nur, wenn ein Wort sonst nicht gefunden wird, und nur
+in der Richtung Steirisch → Hochdeutsch. Gefundene Infinitive heißen „abgeleitet“.
 
 ## Einschränkungen
 
@@ -174,6 +188,7 @@ python scripts/import_csv.py
 python scripts/rag_test.py                          # Spike 1
 python scripts/rag_test_hochdeutsch.py --satz 1     # Spike 2, Satz 1
 python scripts/rag_test_hochdeutsch.py --satz 2     # Spike 2, Satz 2
+python scripts/verbformen_test.py                   # Experiment A (ohne LLM)
 # jeweils mit --ohne-ollama: nur Wortsuche, ohne Sprachmodell
 ```
 

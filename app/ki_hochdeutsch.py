@@ -12,11 +12,16 @@ Ablauf:
      - welche geprüfte Bedeutung in der Antwort nicht vorkommt (vielleicht widersprochen)
 """
 
+import logging
 import re
+import threading
+import time
 from dataclasses import dataclass, field
 
 from app.uebersetzer import SCHWELLE, STEIRISCH_DEUTSCH, normalisieren, varianten
 from app.vorschlag import MODELL, OLLAMA, Wortpaar, ollama_chat, woerter_suchen
+
+log = logging.getLogger("uvicorn.error")
 
 SYSTEM = """Du hilfst Menschen, die Deutsch lernen und in der Steiermark leben.
 Du bekommst einen Satz im steirischen Dialekt und eine Liste GEPRÜFTER Wörter aus einem
@@ -39,6 +44,8 @@ class KiUebersetzung:
     text: str = ""
     bedeutung_fehlt: list[Wortpaar] = field(default_factory=list)
     sekunden: float = 0.0
+    quelle: str = ""            # "wörterbuch", "ki" oder "nur_woerter" (siehe uebersetzen_fuer_app)
+    hinweis: str | None = None  # kurze Meldung für die Oberfläche, z. B. "KI lädt noch"
 
 
 def phrase_suchen(uebersetzer, satz):
@@ -119,4 +126,109 @@ def uebersetzen(uebersetzer, satz, fragen=ollama_fragen, phrase_zuerst=True):
     ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)
     ergebnis.text, ergebnis.sekunden = fragen(satz, ergebnis.paare)
     ergebnis.bedeutung_fehlt = bedeutung_fehlt(ergebnis.text, ergebnis.paare)
+    return ergebnis
+
+
+# --- Für die App (Backend, 09.10.) -------------------------------------------------------
+
+# Antwortzeit im Normalfall: unter 1 s. Mehr Geduld hat am Handy niemand.
+ANTWORT_TIMEOUT = 20      # Sekunden
+# Das erste Laden des Modells dauert auf dem Jetson etwa 70 s
+LADE_TIMEOUT = 300        # Sekunden
+
+WOERTERBUCH = "wörterbuch"
+KI = "ki"
+NUR_WOERTER = "nur_woerter"
+
+
+class KiModell:
+    """Hält gemma3 bei Ollama dauerhaft im Speicher und fragt es nacheinander.
+
+    - aufwaermen(): lädt das Modell (keep_alive = -1: nie wieder entladen)
+    - Klappt eine Frage nicht, gilt das Modell als nicht bereit und wird im
+      Hintergrund neu geladen. Bis dahin gibt es nur die Wortbedeutungen.
+    """
+
+    def __init__(self, modell=MODELL, url=OLLAMA):
+        self.modell = modell
+        self.url = url
+        self.bereit = False
+        self.laedt = False
+        self.letzter_fehler = None              # Text des letzten Ladefehlers (für den Hinweis)
+        self._sperre = threading.Lock()         # immer nur EINE Frage an den Jetson
+        self._lade_sperre = threading.Lock()
+
+    def _chat(self, frage, num_predict, timeout):
+        return ollama_chat(SYSTEM, frage, modell=self.modell, url=self.url,
+                           num_predict=num_predict, keep_alive=-1, timeout=timeout)
+
+    def aufwaermen(self):
+        """Lädt das Modell (blockiert). Gibt True zurück, wenn es geklappt hat."""
+        if not self._lade_sperre.acquire(blocking=False):
+            return False            # lädt schon in einem anderen Thread
+        self.laedt = True
+        start = time.perf_counter()
+        try:
+            with self._sperre:
+                self._chat(frage_text("Servus!", []), num_predict=1, timeout=LADE_TIMEOUT)
+            self.bereit = True
+            self.letzter_fehler = None
+            log.info("KI-Modell %s bereit nach %.1f s", self.modell, time.perf_counter() - start)
+        except Exception as fehler:
+            self.bereit = False
+            self.letzter_fehler = str(fehler)
+            log.warning("KI-Modell %s nicht erreichbar: %s", self.modell, fehler)
+        finally:
+            self.laedt = False
+            self._lade_sperre.release()
+        return self.bereit
+
+    def im_hintergrund_aufwaermen(self):
+        if not self.laedt:
+            threading.Thread(target=self.aufwaermen, daemon=True).start()
+
+    def fragen(self, satz, paare):
+        """Wie ollama_fragen, aber mit kurzer Zeitgrenze und nur eine Frage gleichzeitig."""
+        with self._sperre:
+            return self._chat(frage_text(satz, paare), num_predict=60, timeout=ANTWORT_TIMEOUT)
+
+
+def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
+    """Wie uebersetzen(), aber ohne Fehler nach außen. Setzt quelle und hinweis:
+
+      wörterbuch   – der Satz steht geprüft im Wörterbuch (kein LLM)
+      ki           – KI-Übersetzung (ungeprüft) aus geprüften Wortbedeutungen
+      nur_woerter  – KI nicht bereit oder Fehler: nur die Wortbedeutungen
+    """
+    def nur_woerter(hinweis):
+        ergebnis = KiUebersetzung(satz=satz, quelle=NUR_WOERTER, hinweis=hinweis)
+        ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH)
+        ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)
+        return ergebnis
+
+    phrase = phrase_suchen(uebersetzer, satz)
+    if phrase:
+        return KiUebersetzung(satz=satz, woerterbuch_phrase=phrase, quelle=WOERTERBUCH)
+
+    if ki_modell is None:
+        return nur_woerter("KI ist ausgeschaltet.")
+    if not ki_modell.bereit:
+        # Ist das letzte Laden gescheitert, läuft Ollama vermutlich nicht
+        if getattr(ki_modell, "letzter_fehler", None) and not ki_modell.laedt:
+            hinweis = "KI gerade nicht erreichbar – nur Wortbedeutungen."
+        else:
+            hinweis = "KI lädt noch – bitte gleich noch einmal versuchen."
+        ki_modell.im_hintergrund_aufwaermen()
+        return nur_woerter(hinweis)
+
+    try:
+        ergebnis = uebersetzen(uebersetzer, satz, fragen=ki_modell.fragen, phrase_zuerst=False)
+    except Exception as fehler:
+        log.warning("KI-Übersetzung fehlgeschlagen: %s", fehler)
+        ki_modell.bereit = False
+        ki_modell.im_hintergrund_aufwaermen()
+        return nur_woerter("KI gerade nicht erreichbar – nur Wortbedeutungen.")
+    if not ergebnis.text:
+        return nur_woerter("KI hat nichts geantwortet – nur Wortbedeutungen.")
+    ergebnis.quelle = KI
     return ergebnis
