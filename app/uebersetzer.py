@@ -138,7 +138,7 @@ class Uebersetzer:
         verbindung = sqlite3.connect(db_pfad)
         verbindung.row_factory = sqlite3.Row
         zeilen = verbindung.execute(
-            "SELECT dialekt, hochdeutsch, typ, thema, derb FROM eintraege"
+            "SELECT dialekt, hochdeutsch, typ, thema, wortart, derb FROM eintraege"
         ).fetchall()
         verbindung.close()
 

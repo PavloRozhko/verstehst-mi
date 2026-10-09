@@ -20,11 +20,13 @@ from dataclasses import dataclass, field
 from app.uebersetzer import (
     DEUTSCH_STEIRISCH,
     SCHWELLE,
+    STEIRISCH_DEUTSCH,
     Uebersetzer,
     aehnlichkeit,
     normalisieren,
     varianten,
 )
+from app.verbformen import infinitiv_suchen
 
 OLLAMA = "http://localhost:11434/api/chat"
 MODELL = "gemma3:4b"
@@ -65,6 +67,7 @@ class Wortpaar:
     suchwort: str       # Wort aus dem Eingabesatz (normalisiert)
     dialekt: str
     hochdeutsch: str
+    abgeleitet: bool = False    # über eine Verbform gefunden (app/verbformen.py), nicht geprüft
 
 
 @dataclass
@@ -123,7 +126,8 @@ def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
         for t in treffer[:MAX_PRO_WORT]:
             if t.dialekt not in gesehen:
                 gesehen.add(t.dialekt)
-                paare.append(Wortpaar(suchwort, t.dialekt, t.hochdeutsch))
+                paare.append(Wortpaar(suchwort, t.dialekt, t.hochdeutsch,
+                                      abgeleitet=t.art == "abgeleitet"))
 
     woerter = normalisieren(satz).split()
     for paar in (" ".join(woerter[i:i + 2]) for i in range(len(woerter) - 1)):
@@ -137,6 +141,10 @@ def woerter_suchen(uebersetzer, satz, richtung=DEUTSCH_STEIRISCH):
             if treffer:
                 aufnehmen(wort, treffer)
                 break
+        else:
+            # Nichts gefunden: vielleicht eine gebeugte Verbform (Experiment A, nur Dialekt)
+            if richtung == STEIRISCH_DEUTSCH:
+                aufnehmen(wort, infinitiv_suchen(uebersetzer, wort))
     return paare
 
 
