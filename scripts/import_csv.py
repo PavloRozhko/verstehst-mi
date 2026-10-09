@@ -12,7 +12,7 @@ Regeln:
 import csv
 import sqlite3
 from pathlib import Path
-1
+
 PROJEKT = Path(__file__).resolve().parent.parent
 DATEN = PROJEKT / "data"
 DB_DATEI = DATEN / "verstehst_mi.db"
