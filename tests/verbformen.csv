@@ -1,0 +1,42 @@
+id,form,bedeutung,infinitiv,infinitiv_id,kategorie
+477,hob,habe (ich),hom,125,unregelmäßig
+478,hob's,habe es,hom,125,unregelmäßig
+479,host,hast (du),hom,125,unregelmäßig
+480,host'n,hast du denn,hom,125,unregelmäßig
+481,hot,hat,hom,125,unregelmäßig
+482,hamma,haben wir,hom,125,unregelmäßig
+483,Haum's,haben Sie,hom,125,unregelmäßig
+484,ghobt,gehabt,hom,125,unregelmäßig
+490,moch,mache; mach (Befehl); machen (in: moch ma = machen wir),mochn,126,regulär
+491,mochst,machst (du),mochn,126,regulär
+492,mocht,macht,mochn,126,regulär
+493,gmocht,gemacht,mochn,126,regulär
+494,tuast,tust (du); machst (du),tuan,416,regulär
+495,tua,tu (Befehl); tue (ich),tuan,416,regulär
+496,kummt,kommt,kumman,124,regulär
+497,kummts,kommt (ihr),kumman,124,regulär
+498,kumm,komm (Befehl); komme (ich),kumman,124,regulär
+499,kummst,kommst (du),kumman,124,regulär
+500,muass,muss,miassn,133,unregelmäßig
+501,muasst,musst (du),miassn,133,unregelmäßig
+502,kau,kann (ich),kenna,132,unregelmäßig
+503,kaunst,kannst (du),kenna,132,unregelmäßig
+504,wüst,willst (du),woin,131,unregelmäßig
+507,gsehn,gesehen,segn,506,unregelmäßig
+508,siecht,sieht,segn,506,unregelmäßig
+509,schaust'n,schaust du denn,schaun,122,Klitikon
+510,sogst,sagst (du),sogn,134,regulär
+513,foahr,fahre (ich),foahn,413,unregelmäßig
+514,foahrst,fährst (du),foahn,413,unregelmäßig
+515,foahrt,fährt,foahn,413,unregelmäßig
+516,wort,warte (Befehl); warten,woartn,419,unregelmäßig
+518,los,"hör (Befehl, von losn = zuhören)",losn,388,regulär
+519,heat,hört,hean,123,regulär
+521,tratz,"neck (Befehl, von tratzn = necken)",tratzn,398,regulär
+522,hupf,hüpf; spring (Befehl),hupfn,411,regulär
+523,gfrei,freue (ich mich),gfrein,136,regulär
+524,gfreit's,freut es; freut's,gfrein,136,Klitikon
+525,gfriat's,friert es,gfrian,432,Klitikon
+528,dabarmst,tust (mir) leid (von dabarmen),dabarma,408,regulär
+529,fuxt,ärgert,fuxn,399,regulär
+532,vagangen,verlaufen (sich); vergangen,vagehn (si),414,unregelmäßig

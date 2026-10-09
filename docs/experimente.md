@@ -109,6 +109,43 @@ unbekannten Wörter angezeigt.
 „KI-Übersetzung (ungeprüft)“ angezeigt, zusammen mit den geprüften Wortbedeutungen und den
 markierten unbekannten Wörtern.
 
+### Satz 3 (Abschlussmessung, festgelegt am 09.10.)
+
+10 neue Phrasen (Seed 20261009, ohne Satz 1 und 2). Zusätzlich werden die Wörter versteckt,
+die am 08.10. aus diesen Phrasen gewonnen wurden – sonst wäre Satz 3 leichter als Satz 2.
+Gleiche Go-Kriterien. **Nur ein Lauf, am 13.10.**, nach den Verbformen (A) und dem Backend.
+Ergebnis: folgt.
+
+## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
+
+**Problem:** Im Wörterbuch steht meist nur der Infinitiv (`suachn` = suchen). Im Satz kommt
+das Verb gebeugt vor (`suachst`, `gsuacht`) und wird nicht gefunden.
+
+**Idee (ohne LLM):** Steht ein Wort nicht im Wörterbuch, typische Endungen abtrennen
+(`-st`, `-t`, `-ts`, `g-…-t`, `g-…-n`, nackter Stamm) und einen geprüften Infinitiv suchen.
+Nur regelmäßige Verben. Ergebnis wird als **„abgeleitet“** angezeigt, nicht als „geprüft“.
+
+**Testsatz (ohne neue Prüfung durch Muttersprachler):** `tests/verbformen.csv` – alle
+41 geprüften gebeugten Formen, deren Infinitiv im Wörterbuch steht. Im Test wird die Form
+versteckt; die Regel muss den Infinitiv finden. Die Einteilung wurde von Hand gemacht,
+**bevor** die Regel geschrieben wurde:
+
+| Kategorie | Anzahl | Bedeutung |
+|---|---|---|
+| regulär | 18 | Stamm bleibt gleich (`mochst` → `mochn`, `heat` → `hean`) |
+| Klitikon | 3 | angehängtes `'s` / `'n` (`gfreit's`) – nur beobachtet, nicht bewertet |
+| unregelmäßig | 20 | Stamm ändert sich (`host` → `hom`, `muass` → `miassn`, `foahrst` → `foahn`) |
+
+**Go-Kriterien (vor dem ersten Lauf festgelegt):**
+
+- mindestens 80 % der regulären Formen → richtiger Infinitiv (≥ 15 von 18)
+- 0 falsche Infinitive im ganzen Testsatz (bei unregelmäßigen ist „nichts gefunden“ richtig)
+- höchstens 3 falsche Treffer bei den übrigen Wörtern der Phrasen (jeder wird angezeigt
+  und von Hand bewertet); die Phrasen von Satz 3 sind ausgenommen
+- alle bisherigen Tests grün, keine spürbare Verlangsamung
+
+Ergebnis: folgt.
+
 ## Einschränkungen
 
 - Nur 2 × 10 Sätze: Die Ergebnisse (5/10 und 7/10) sind eine Tendenz, keine Messung.
