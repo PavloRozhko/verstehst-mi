@@ -50,7 +50,7 @@ async function suchen() {
     if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
     const daten = await antwort.json();
     // Nur anzeigen, wenn sich die Eingabe inzwischen nicht geändert hat
-    if (daten.text === eingabe.value.trim()) anzeigen(daten);
+    if (daten.text === eingabe.value.trim()) anzeigen(daten, text);
   } catch (fehler) {
     ergebnis.replaceChildren(element("p", "leer", "Server nicht erreichbar: " + fehler.message));
   }
@@ -101,18 +101,144 @@ function abschnitt(titel, treffer, optionen) {
   return [element("h2", null, titel), ...treffer.map((t) => karte(t, optionen))];
 }
 
-function anzeigen(daten) {
+function anzeigen(daten, text) {
   const teile = [
     ...abschnitt("Übersetzung", daten.uebersetzungen, { haupt: true }),
     ...abschnitt("Meintest du …?", daten.vorschlaege, { anklickbar: true }),
     ...abschnitt("In Sätzen", daten.beispiele, { anklickbar: true }),
   ];
 
+  const kiMoeglich = richtung === "st-de" && daten.uebersetzungen.length === 0
+    && text.trim().split(/\s+/).length >= 2;
+
   if (teile.length === 0) {
-    teile.push(element("p", "leer",
-      "Kein Treffer im Wörterbuch. Probier eine andere Schreibweise oder ein einzelnes Wort."));
+    teile.push(element("p", "leer", kiMoeglich
+      ? "Der ganze Satz steht nicht im Wörterbuch."
+      : "Kein Treffer im Wörterbuch. Probier eine andere Schreibweise oder ein einzelnes Wort."));
   }
+  if (kiMoeglich) teile.push(kiBereich(text));
   ergebnis.replaceChildren(...teile);
+}
+
+// --- KI-Übersetzung Steirisch -> Hochdeutsch (/api/ki_uebersetzung) ------------
+// Nur auf Knopfdruck: der Jetson rechnet immer nur EINE KI-Anfrage gleichzeitig.
+// Die KI setzt den Satz aus GEPRÜFTEN Wortbedeutungen zusammen. Was sie dabei
+// raten musste, wird markiert – das Ergebnis heißt immer "ungeprüft".
+
+function normalisieren(wort) {
+  // wie app/uebersetzer.normalisieren() für ein einzelnes Wort
+  return wort.toLowerCase().replace(/['´`’‘]/g, "").replace(/ß/g, "ss")
+    .replace(/[^\p{L}\p{N}_]/gu, "");
+}
+
+function kiBereich(text) {
+  const bereich = element("section", "ki-bereich");
+  const knopf = element("button", "ki-knopf", "🤖 Ganzen Satz mit KI übersetzen");
+  knopf.type = "button";
+  knopf.addEventListener("click", () => kiFragen(text, bereich, knopf));
+  bereich.append(knopf);
+  return bereich;
+}
+
+async function kiFragen(text, bereich, knopf) {
+  knopf.disabled = true;
+  knopf.textContent = "🤖 KI übersetzt …";
+  try {
+    const antwort = await fetch(`/api/ki_uebersetzung?${new URLSearchParams({ text })}`);
+    const daten = await antwort.json().catch(() => ({}));
+    if (!antwort.ok) throw new Error(daten.detail || `HTTP ${antwort.status}`);
+    if (bereich.isConnected) bereich.replaceChildren(...kiErgebnis(daten, text, bereich));
+  } catch (fehler) {
+    knopf.disabled = false;
+    knopf.textContent = "🤖 Nochmal versuchen";
+    bereich.append(element("p", "warnung", "Hoppala: " + fehler.message));
+  }
+}
+
+// Der Satz mit farbig markierten Wörtern: geprüft / abgeleitet / unbekannt
+function satzMarkiert(text, daten) {
+  const geprueft = new Set();
+  const abgeleitet = new Set();
+  for (const w of daten.woerter) {
+    for (const teil of w.wort.split(" ")) (w.abgeleitet ? abgeleitet : geprueft).add(teil);
+  }
+  const unbekannt = new Set(daten.nicht_gefunden);
+
+  const satz = element("div", "quelle satz");
+  for (const stueck of text.split(/(\s+)/)) {
+    const n = normalisieren(stueck);
+    let klasse = null;
+    if (unbekannt.has(n)) klasse = "wort-unbekannt";
+    else if (geprueft.has(n)) klasse = "wort-geprueft";
+    else if (abgeleitet.has(n)) klasse = "wort-abgeleitet";
+    satz.append(klasse ? element("span", klasse, stueck) : stueck);
+  }
+  return satz;
+}
+
+function wortListe(daten) {
+  const liste = element("ul", "wortliste");
+  for (const w of daten.woerter) {
+    const li = element("li");
+    if (w.abgeleitet) {
+      li.append(element("span", "wort-abgeleitet", w.wort), ` → ${w.dialekt} = ${w.hochdeutsch} `,
+        element("span", "marke marke-abgeleitet", "abgeleitet"));
+    } else {
+      li.append(element("span", "wort-geprueft", w.dialekt), ` = ${w.hochdeutsch} `,
+        element("span", "marke", "✅ geprüft"));
+    }
+    liste.append(li);
+  }
+  for (const wort of daten.nicht_gefunden) {
+    const li = element("li");
+    li.append(element("span", "wort-unbekannt", wort), " – nicht im Wörterbuch");
+    liste.append(li);
+  }
+  return liste;
+}
+
+function kiErgebnis(daten, text, bereich) {
+  if (daten.quelle === "wörterbuch") {
+    const k = element("div", "karte haupt");
+    k.append(element("div", "ziel", daten.uebersetzung), element("div", "quelle", text));
+    const info = element("div", "info");
+    info.append(element("span", "marke", "✅ geprüft (ganzer Satz im Wörterbuch)"));
+    k.append(info);
+    return [element("h2", null, "Übersetzung"), k];
+  }
+
+  const teile = [];
+  if (daten.quelle === "ki") {
+    const k = element("div", "karte ki");
+    k.append(element("div", "ziel", daten.uebersetzung), satzMarkiert(text, daten));
+    const info = element("div", "info");
+    info.append(element("span", "marke marke-ki", "🤖 KI-Übersetzung (ungeprüft)"),
+      ` ${daten.sekunden} s`);
+    k.append(info);
+    teile.push(element("h2", null, "KI-Übersetzung"), k);
+    if (daten.bedeutung_fehlt.length > 0) {
+      teile.push(element("p", "warnung",
+        `⚠ Bitte prüfen: Die geprüfte Bedeutung von „${daten.bedeutung_fehlt.join("“, „")}“ ` +
+        "kommt in der KI-Übersetzung nicht vor."));
+    }
+  } else {
+    const k = element("div", "karte");
+    k.append(satzMarkiert(text, daten));
+    teile.push(element("h2", null, "Wort für Wort"), k);
+    const hinweis = element("p", "warnung", daten.hinweis || "Keine KI-Übersetzung.");
+    const nochmal = element("button", "ki-knopf klein", "🤖 Nochmal versuchen");
+    nochmal.type = "button";
+    nochmal.addEventListener("click", () => kiFragen(text, bereich, nochmal));
+    hinweis.append(" ", nochmal);
+    teile.push(hinweis);
+  }
+
+  teile.push(element("h2", null, "Wörter im Satz"), wortListe(daten));
+  if (daten.nicht_gefunden.length > 0 && daten.quelle === "ki") {
+    teile.push(element("p", "fussnote",
+      "Rot markierte Wörter kennt das Wörterbuch nicht – dort hat die KI geraten."));
+  }
+  return teile;
 }
 
 // --- Spracheingabe ----------------------------------------------------------
@@ -191,7 +317,7 @@ async function senden(blob) {
     }
     sprachhinweis.textContent = `Erkannt: „${daten.erkannt}“ (${daten.sekunden} s)`;
     eingabe.value = "";  // sonst passt das Eingabefeld nicht zum Ergebnis
-    anzeigen(daten);
+    anzeigen(daten, daten.erkannt);
   } catch (fehler) {
     sprachhinweis.textContent = "Hoppala: " + fehler.message;
   } finally {
@@ -203,7 +329,8 @@ async function senden(blob) {
 fetch("/api/status")
   .then((r) => r.json())
   .then((s) => {
-    document.getElementById("status").textContent = `${s.eintraege} Einträge im Wörterbuch`;
+    document.getElementById("status").textContent =
+      `${s.eintraege} Einträge im Wörterbuch · KI ${s.ki ? "bereit" : "nicht bereit"}`;
     if (!s.sprache) {
       mikro.disabled = true;
       mikro.title = "Spracherkennung ist nicht bereit";

@@ -6,6 +6,11 @@
   --flaeche: #ffffff;
   --hintergrund: #f6f7f4;
   --rand: #d9ddd5;
+  --gelb: #c98a00;           /* KI / abgeleitet: ungeprüft */
+  --gelb-hell: #fff4d6;
+  --gelb-text: #7a5300;
+  --rot: #b3261e;            /* nicht im Wörterbuch */
+  --rot-hell: #fde7e5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +22,11 @@
     --flaeche: #1f2120;
     --hintergrund: #141514;
     --rand: #343834;
+    --gelb: #e0b04a;
+    --gelb-hell: #3a3018;
+    --gelb-text: #f0cf7e;
+    --rot: #ff8a80;
+    --rot-hell: #3d1f1d;
   }
 }
 
@@ -195,6 +205,85 @@ button.karte:hover { border-color: var(--gruen); }
 .leer {
   color: var(--leise);
   padding: 16px 0;
+}
+
+/* --- KI-Übersetzung ------------------------------------------------------- */
+
+.ki-knopf {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 14px;
+  font: inherit;
+  font-weight: 600;
+  border: 2px dashed var(--gelb);
+  border-radius: 10px;
+  background: var(--flaeche);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.ki-knopf:hover:not(:disabled) { background: var(--gelb-hell); }
+.ki-knopf:disabled { opacity: 0.6; cursor: progress; }
+
+.ki-knopf.klein {
+  display: inline-block;
+  width: auto;
+  margin: 6px 0 0;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+/* KI-Ergebnis: gelb statt grün, damit es nie wie ein geprüfter Eintrag aussieht */
+.karte.ki { border-left: 5px solid var(--gelb); }
+.karte.ki .ziel { font-size: 1.4rem; }
+
+.marke-ki,
+.marke-abgeleitet {
+  background: var(--gelb-hell);
+  color: var(--gelb-text);
+}
+
+.satz { line-height: 1.8; }
+
+.wort-geprueft,
+.wort-abgeleitet,
+.wort-unbekannt {
+  padding: 0 3px;
+  border-radius: 4px;
+}
+
+.wort-geprueft { background: var(--gruen-hell); color: var(--gruen); }
+.wort-abgeleitet { background: var(--gelb-hell); color: var(--gelb-text); }
+.wort-unbekannt {
+  background: var(--rot-hell);
+  color: var(--rot);
+  text-decoration: underline wavy;
+  text-underline-offset: 3px;
+}
+
+.wortliste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wortliste li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rand);
+}
+
+.warnung {
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--gelb-hell);
+  color: var(--text);
+}
+
+.fussnote {
+  font-size: 0.85rem;
+  color: var(--leise);
 }
 
 footer {
