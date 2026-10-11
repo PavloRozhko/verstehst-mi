@@ -114,6 +114,19 @@ markierten unbekannten Wörtern.
 10 neue Phrasen (Seed 20261009, ohne Satz 1 und 2). Zusätzlich werden die Wörter versteckt,
 die am 08.10. aus diesen Phrasen gewonnen wurden – sonst wäre Satz 3 leichter als Satz 2.
 Gleiche Go-Kriterien. **Nur ein Lauf, am 13.10.**, nach den Verbformen (A) und dem Backend.
+
+**Vorgezogen auf den 11.10.** (festgelegt vor dem Lauf): Die Voraussetzungen (A, Backend)
+sind erfüllt. Seit dem Festlegen wurde nur an Spracheingabe und Oberfläche gearbeitet, nicht
+an der KI-Kette. Die Phrasen von Satz 3 hat vor dem Lauf niemand angesehen. Es bleibt bei
+**einem** Lauf.
+
+**Vergleich mit DeepL (festgelegt vor dem Lauf):** Dieselben 10 Phrasen werden von Hand in
+DeepL (kostenlose Web-Version) eingegeben, Ausgangssprache „Deutsch“ eingestellt (Steirisch
+gibt es dort nicht). Notiert wird auch, welche Sprache DeepL von selbst erkennt. Bewertung
+gleich wie oben (*gut / teils / falsch*), durch dieselbe Person. Kein Go-Kriterium – nur
+Vergleich. Einschränkung: DeepL hat unser geprüftes Wörterbuch nicht; der Vergleich zeigt
+also den Wert der geprüften Daten, nicht welches Modell „besser“ ist.
+
 Ergebnis: folgt.
 
 ## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
