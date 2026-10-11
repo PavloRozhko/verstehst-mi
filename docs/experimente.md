@@ -197,7 +197,41 @@ Seite. Sprecher ist kein Muttersprachler – das Ergebnis gilt für diese Ausspr
 - Leise (C, F) deutlich schlechter als normal → Hinweis „nah ans Mikrofon“ für die Vorführung.
 - Ziele für A oder D verfehlt → in der Vorführung Tippen als Hauptweg, Sprache als Zusatz.
 
-Ergebnis: folgt.
+**Ergebnis (11.10., zu Hause, Handy im WLAN):**
+
+| Kriterium | Ergebnis | |
+|---|---|---|
+| A, im Prompt | **10/10** richtig oder vorschlag | ✅ |
+| A, nicht im Prompt | 8/13 richtig oder vorschlag, 4 keiner, 1 falsch | – |
+| B Hintergrund / C leise | 5/6 / 2/3 | – |
+| D ohne Sprache | Stille und Geräusch: nichts; **Husten: zweimal erfundener Text** („Der Schalz, der Schalz, …“), je ca. 13 s | ❌ |
+| E KI-Knopf | **0 gut**, 2 teils, 4 falsch | ❌ |
+| Zeit | Median **1,5 s** (ohne die zwei Ausreißer von 13 s) | ✅ |
+
+Einzelwerte: `docs/sprachtest_protokoll.csv`.
+
+**Beobachtungen:**
+
+- **E scheitert an der Spracherkennung, nicht am Modell.** In allen 6 Sätzen kam schon falscher
+  Text beim Modell an (`Das Bette ist heizlich`, `Herst, gumm ham`). Das Modell „repariert“ ihn
+  zu einem flüssigen, aber falschen Satz („Die Polizei hat das Fahrrad vergessen“,
+  „Herzlich willkommen“). Sprache → KI vervielfacht Fehler, und das Ergebnis klingt überzeugend.
+  Gegenbeispiel außerhalb von E (Nr. 12): `Ich fuwa mi am Radl` → richtig „Ich fahre mit dem Fahrrad“.
+- **Erfundener Text blockiert den Jetson** (13 s statt 1,5 s); andere Handys müssen warten.
+- **Leise ist schwächer:** Flur-Sätze leise 0/2 (`Da Krampus kummt!` leise → nichts erkannt).
+- **Mindestens zweimal falsch erkannt** (geprüfte Wörter): `wia` (3×), `I` (4× → „Ich“),
+  `Hawara`, `beinand`, `Geh` (je 2×).
+- Sprecher ist kein Muttersprachler; die Sätze in E sind selbst gebaut und ungeprüft.
+
+**Entscheidungen:**
+
+- Nach der festgelegten Regel (D verfehlt): **in der Vorführung Tippen als Hauptweg,
+  Sprache als Zusatz** – Sprache vor allem für Phrasen aus dem Wörterbuch.
+- Für E gab es vorher keine Regel. Am 11.10. entschieden: Die KI wird in der Vorführung mit
+  **getipptem** Text gezeigt. Der erkannte Text kommt künftig ins Eingabefeld, damit man ihn
+  vor Suche und KI korrigieren kann.
+- 14.10.: Filter für erfundenen Text (Wiederholungen, `no_speech_prob`), Wörter oben ins
+  Whisper-Prompt. Danach ist dieser Test keine Messung mehr.
 
 ## Einschränkungen
 
