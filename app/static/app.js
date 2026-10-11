@@ -287,6 +287,12 @@ async function aufnahmeStarten() {
     return;
   }
 
+  // Neue Aufnahme = neuer Satz: altes Eingabefeld und altes Ergebnis weg,
+  // sonst steht bei "Nix verstanden" noch der vorige Satz da
+  clearTimeout(timer);
+  eingabe.value = "";
+  ergebnis.replaceChildren();
+
   const teile = [];
   aufnahme = new MediaRecorder(stream);
   aufnahme.addEventListener("dataavailable", (e) => teile.push(e.data));

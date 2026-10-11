@@ -264,7 +264,29 @@ Phrasen aus Block A, die im Prompt stehen.
 in Git. Geräusche erzeugen weiter Text → in der Vorführung bleibt Tippen der Hauptweg (gilt
 ohnehin, siehe Experiment S).
 
-Ergebnis: folgt.
+**Ergebnis (11.10., Jetson, Handy im WLAN):**
+
+| Kriterium | Ergebnis | |
+|---|---|---|
+| Geräusche: 0 von 10 mit Text | **0 von 10** | ✅ |
+| Geräusche: jede Antwort ≤ 3 s | höchstens **2,1 s** (vorher 13 s) | ✅ |
+| Kontrolle: nichts verworfen | **0 von 10** verworfen | ✅ |
+| Kontrolle: ≥ 9 von 10 richtig/vorschlag | **10 von 10** (6 richtig, 4 vorschlag), je 1,1–1,2 s | ✅ |
+| Tests | 230 passed, 3 xfailed | ✅ |
+
+Einzelwerte: `docs/filtertest_protokoll.csv`.
+
+**Beobachtungen:**
+
+- Der Filter war nötig: In 3 von 10 Geräuschen hat Whisper wieder Text erfunden
+  („Puh! Puh! …“, „Schau, schau, …“, „Hörn. Hörn. …“). Alle drei wurden verworfen, zwei
+  davon über die Token-Grenze nach 2,1 s.
+- In den übrigen 7 Fällen fand schon die Stille-Erkennung (VAD) keine Sprache (0,1–1,2 s).
+- `no_speech_prob` trennt in diesem kleinen Test deutlich: erfundener Text 0,62–0,90,
+  echte Sprache 0,01–0,05. Wird vorerst nicht als Filter genutzt (nur 13 Werte).
+
+**Entscheidung: go.** Der Filter bleibt. Tippen bleibt trotzdem der Hauptweg in der
+Vorführung (Experiment S: Whisper verhört sich bei nicht geübten Sätzen oft).
 
 ## Einschränkungen
 
