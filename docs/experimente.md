@@ -126,8 +126,59 @@ gibt es dort nicht). Notiert wird auch, welche Sprache DeepL von selbst erkennt.
 gleich wie oben (*gut / teils / falsch*), durch dieselbe Person. Kein Go-Kriterium – nur
 Vergleich. Einschränkung: DeepL hat unser geprüftes Wörterbuch nicht; der Vergleich zeigt
 also den Wert der geprüften Daten, nicht welches Modell „besser“ ist.
+Nachtrag vor der Eingabe in DeepL: „Deutsch → Deutsch“ bietet DeepL nicht an. Darum
+Ausgangssprache Deutsch, **Zielsprache Englisch**; bewertet wurde der Sinn der englischen
+Übersetzung.
 
-Ergebnis: folgt.
+**Ergebnis (11.10.):** Zwei Personen haben unabhängig bewertet (Pavlo; Claude – dessen
+Bewertung wurde vorher mit sha256 festgehalten). Übereinstimmung: 8 von 10, bei *gut* 10 von 10.
+
+| Nr | Dialekt | KI-Übersetzung | Pavlo | Claude | DeepL (→ Englisch) | DeepL |
+|---|---|---|---|---|---|---|
+| 1 | Des is ma Blunzn. | Das ist eine Blutwurst. | falsch | falsch | That's a real head-scratcher. | falsch |
+| 2 | Es kummt a Gwitta. | Ein Gewitter kommt. | gut | gut | A storm is coming. | gut |
+| 3 | Is des koid heit! | Es ist heute kalt! | gut | gut | It's cold today! | gut |
+| 4 | Moagn is a a Tog. | Morgen ist ein Tag. | teils | teils | Moagn is a Tog. (als Bretonisch erkannt) | falsch |
+| 5 | Deis passt so, danke. | Das passt, danke. | teils | teils | That works fine, thanks. | teils |
+| 6 | I kenn mi ned aus. | Ich kenne mich nicht aus. | gut | gut | I don't know much about it. | gut |
+| 7 | Pass auf, es is glott! | Pass auf, es passt! | falsch | falsch | Watch out, it's hot! (Alternative: slippery) | teils |
+| 8 | A Bier geht scho no. | Auch ein Bier geht noch. | falsch | teils | One more beer is fine. | gut |
+| 9 | Gib ma des amoi. | Nimm dieses Mal. | falsch | falsch | Give me that, will you? (+ 3 Alternativen) | teils |
+| 10 | A Brettljausn und a Gspritzta, bitte. | Auch eine kalte Platte … und eine Weinschorle, bitte. | falsch | teils | A Brettljausn and a Gspritzta, please. | falsch |
+
+| Kriterium | Ergebnis | |
+|---|---|---|
+| Zeit | 0,7 s (Median), höchstens 1,3 s | ✅ |
+| Bedeutung | **3 gut** (beide Bewerter) / 2–4 teils / 3–5 falsch → **3/10** | ❌ |
+| Widersprüche | Pavlo: 4 (Nr. 1, 7, 8, 9) · Claude: 1 fraglich (Nr. 9) | ❌ |
+
+**Vergleich mit DeepL:** verstehst-mi 3 gut (Pavlo: 3 / 2 / 5) – DeepL 4 gut / 3 teils /
+3 falsch. Auf diesem Satz war DeepL also etwas besser. Die Fehler sind verschieden: DeepL lässt
+Unbekanntes oft **unübersetzt** stehen (`Brettljausn`, `Moagn is a Tog`) – man sieht, dass es
+nicht verstanden hat. Unser Modell schreibt **flüssige, aber falsche** Sätze.
+
+**Ursachen (aus den Daten):**
+
+- `a = auch (auch: ein/eine)`: dreimal wurde „auch“ gewählt (Nr. 4, 8, 10). Im Eintrag steht
+  „auch“ einmal als Bedeutung und einmal als Hinweis – für ein kleines Modell verwirrend.
+- Redewendung (Nr. 1): `Blunzn` wörtlich übersetzt; Redewendungen fehlen im Wörterbuch.
+- Verstecktes Wort (Nr. 7, `glott`): als unbekannt angezeigt, vom Modell falsch geraten.
+
+**Wichtig für die Einordnung:** Alle 10 Phrasen stehen im Wörterbuch. In der App bekommt man
+für sie die **geprüfte** Übersetzung; der KI-Knopf erscheint dort gar nicht. Die KI wird nur
+für Sätze benutzt, die nicht im Wörterbuch stehen. Über alle drei Sätze: 5 + 7 + 3 =
+**15 von 30 gut (50 %)**.
+
+**Entscheidung: no-go für „KI als verlässliche Übersetzung“.** Die KI bleibt als
+**Experiment** in der App: nur auf Knopfdruck, als „ungeprüft“ gekennzeichnet, mit geprüften
+Wortbedeutungen und markierten unbekannten Wörtern. In der Vorführung werden diese Zahlen
+offen gezeigt.
+
+**Datenkorrektur danach (11.10., Wirkung nicht gemessen):** Einträge, in denen „auch“ als
+Hinweis stand, einheitlich mit Semikolon geschrieben – Bedeutungen unverändert:
+`a` = ein/eine; auch · `owa` = herunter; aber · `Fetzn` = der Lappen; der Rausch ·
+`sauba` = sauber; toll. Einen neuen, unbenutzten Testsatz gibt es nicht mehr; Satz 3 noch
+einmal laufen zu lassen wäre Anpassen an den Test. Die Wirkung bleibt daher offen.
 
 ## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
 
@@ -303,7 +354,8 @@ Vorführung (Experiment S: Whisper verhört sich bei nicht geübten Sätzen oft)
 
 ## Einschränkungen
 
-- Nur 2 × 10 Sätze: Die Ergebnisse (5/10 und 7/10) sind eine Tendenz, keine Messung.
+- Nur 3 × 10 Sätze: Die Ergebnisse (5/10, 7/10, 3/10) schwanken stark – eine Tendenz,
+  keine genaue Messung. Zusammen: 15 von 30 gut.
 - Die Testsätze stammen aus dem Wörterbuch. Ein Teil der Wörter wurde aus denselben Phrasen
   gewonnen, das Ergebnis ist also eher etwas zu gut.
 - Das erste Laden des Modells dauert etwa 70 s. Für die Vorführung muss das Modell beim Start
