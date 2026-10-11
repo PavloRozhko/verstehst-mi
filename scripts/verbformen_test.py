@@ -26,18 +26,20 @@ sys.path.insert(0, str(PROJEKT / "scripts"))
 
 from app.uebersetzer import STANDARD_DB, STEIRISCH_DEUTSCH, Uebersetzer, normalisieren  # noqa: E402
 from app.verbformen import infinitiv_suchen  # noqa: E402
-from app.vorschlag import sichere_treffer, suchformen  # noqa: E402
+from app.wortsuche import sichere_treffer, suchformen  # noqa: E402
 from rag_test_hochdeutsch import SATZ_3  # noqa: E402
 
 MIN_REGULAER = 15
 
 
 def lesen(pfad):
+    """Liest eine CSV-Datei als Liste von Zeilen (dict)."""
     with open(pfad, encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
 
 
 def ohne_form(uebersetzer, dialekt, hochdeutsch):
+    """Kopie des Wörterbuchs, in der die gebeugte Form fehlt – die Regel muss sie finden."""
     kopie = copy.copy(uebersetzer)
     kopie.eintraege = [e for e in uebersetzer.eintraege
                        if (e["zeile"]["dialekt"], e["zeile"]["hochdeutsch"])
@@ -89,6 +91,7 @@ def phrasen_woerter(uebersetzer):
 
 
 def main():
+    """Experiment A messen: Formen aus tests/verbformen.csv und Treffer in den Phrasen."""
     if not STANDARD_DB.exists():
         raise SystemExit("Datenbank fehlt – zuerst python scripts/import_csv.py ausführen")
     uebersetzer = Uebersetzer()

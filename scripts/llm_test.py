@@ -79,6 +79,7 @@ Regeln:
 
 
 def eintrag_laden(verbindung, dialekt):
+    """Liest einen Eintrag (dialekt, hochdeutsch, thema, derb) aus der Datenbank."""
     zeile = verbindung.execute(
         "SELECT dialekt, hochdeutsch, thema, derb FROM eintraege WHERE dialekt = ?",
         (dialekt,),
@@ -89,6 +90,7 @@ def eintrag_laden(verbindung, dialekt):
 
 
 def frage_text(eintrag):
+    """Baut die Frage an das Modell: Ausdruck, geprüfte Bedeutung, derb ja/nein."""
     dialekt, hochdeutsch, _thema, derb = eintrag
     return (f"Ausdruck: {dialekt}\n"
             f"Bedeutung: {hochdeutsch}\n"
@@ -124,6 +126,7 @@ def erklaeren(modell, eintrag, url=OLLAMA):
 
 
 def main():
+    """Lässt das Modell die Testeinträge erklären und speichert die Antworten als CSV."""
     parser = argparse.ArgumentParser(description="LLM-Erklärungen testen")
     parser.add_argument("modell", help="z. B. gemma3:4b")
     parser.add_argument("--satz", type=int, choices=(1, 2), default=1)

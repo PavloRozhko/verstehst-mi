@@ -52,10 +52,12 @@ MAX_SEKUNDEN = 5.0
 
 
 def markiert(markierungen):
+    """Schreibt jedes Wort mit seinem Zeichen, z. B. "hob[✓] Hunger[=]"."""
     return " ".join(f"{wort}[{ZEICHEN[art]}]" for wort, art in markierungen)
 
 
 def main():
+    """Spike 1 für alle Testsätze ausführen, Ergebnis ausgeben und als CSV speichern."""
     parser = argparse.ArgumentParser(description="RAG-Spike: KI-Vorschlag testen")
     parser.add_argument("--modell", default=v.MODELL)
     parser.add_argument("--ohne-ollama", action="store_true",
@@ -69,9 +71,11 @@ def main():
 
     if args.ohne_ollama:
         def fragen(satz, paare):
+            """Ersatz für das Modell: Wörter nur austauschen (Vergleichswert)."""
             return v.ohne_llm(satz, paare), 0.0
     else:
         def fragen(satz, paare):
+            """Das Modell über Ollama fragen."""
             return v.ollama_fragen(satz, paare, modell=args.modell)
 
         print(f"Lade {args.modell} …")

@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 
 from app.uebersetzer import STANDARD_DB, STEIRISCH_DEUTSCH, Uebersetzer, normalisieren
-from app.vorschlag import woerter_suchen
+from app.wortsuche import woerter_suchen
 
 PROJEKT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJEKT / "scripts"))

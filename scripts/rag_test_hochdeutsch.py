@@ -46,8 +46,8 @@ PROJEKT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJEKT))
 
 from app import ki_hochdeutsch as ki                  # noqa: E402
+from app.ollama import MODELL                         # noqa: E402
 from app.uebersetzer import STANDARD_DB, Uebersetzer  # noqa: E402
-from app.vorschlag import MODELL                      # noqa: E402
 
 AUSGABE = PROJEKT / "models" / "rag_test"
 MAX_SEKUNDEN = 5.0
@@ -115,6 +115,7 @@ def ohne_woerter(uebersetzer, versteckt):
 
 
 def main():
+    """Spike 2 für einen Testsatz ausführen, Ergebnis ausgeben und als CSV speichern."""
     parser = argparse.ArgumentParser(description="Spike 2: Dialekt -> Hochdeutsch")
     parser.add_argument("--modell", default=MODELL)
     parser.add_argument("--satz", type=int, choices=tuple(SAETZE), default=1)
@@ -128,9 +129,11 @@ def main():
 
     if args.ohne_ollama:
         def fragen(satz, paare):
+            """Ersatz für das Modell: Wörter nur austauschen (Vergleichswert)."""
             return ki.ohne_llm(satz, paare), 0.0
     else:
         def fragen(satz, paare):
+            """Das Modell über Ollama fragen."""
             return ki.ollama_fragen(satz, paare, modell=args.modell)
 
         print(f"Lade {args.modell} …")

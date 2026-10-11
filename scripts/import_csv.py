@@ -107,6 +107,7 @@ def datei_importieren(verbindung, pfad, typ):
 
 
 def main():
+    """Baut die Datenbank neu aus den CSV-Dateien (nur geprüfte Einträge)."""
     DB_DATEI.unlink(missing_ok=True)  # Datenbank immer frisch aus den CSVs bauen
     verbindung = sqlite3.connect(DB_DATEI)
     verbindung.executescript(SCHEMA.read_text(encoding="utf-8"))

@@ -21,6 +21,7 @@ sys.path.insert(0, str(PROJEKT))  # damit "app" importiert werden kann
 
 
 def messen(modell_name, audio, args, prompt):
+    """Lädt ein Whisper-Modell, erkennt die Aufnahme und gibt Zeiten und Text aus."""
     from faster_whisper import WhisperModel
 
     start = time.perf_counter()
@@ -60,6 +61,7 @@ def uebersetzung(text):
 
 
 def main():
+    """Misst die Geschwindigkeit mehrerer Whisper-Modelle mit derselben Aufnahme."""
     parser = argparse.ArgumentParser(description="Whisper-Geschwindigkeit messen")
     parser.add_argument("audio", type=Path, help="WAV/MP3/M4A-Datei mit Sprache")
     parser.add_argument("--modelle", nargs="+", default=["tiny", "base", "small"])

@@ -40,6 +40,8 @@ ARTIKEL = ("der ", "die ", "das ", "ein ", "eine ")
 
 @dataclass
 class Treffer:
+    """Ein gefundener Eintrag mit Bewertung, wie gut er zur Suche passt."""
+
     dialekt: str
     hochdeutsch: str
     typ: str          # "wort" oder "phrase"
@@ -81,6 +83,7 @@ def varianten(text, typ):
 
 
 def aehnlichkeit(a, b):
+    """Ähnlichkeit zweier Texte zwischen 0 (nichts gleich) und 1 (gleich)."""
     return SequenceMatcher(None, a, b).ratio()
 
 
@@ -92,6 +95,7 @@ def vergleichbar(suche, kandidat):
 
 
 def beste_aehnlichkeit(suche, kandidaten):
+    """Höchste Ähnlichkeit der Suche zu einer der Varianten (0.0, wenn keine passt)."""
     werte = [aehnlichkeit(suche, k) for k in kandidaten if vergleichbar(suche, k)]
     return max(werte, default=0.0)
 
@@ -133,6 +137,8 @@ def teil_score(suche, varianten_liste):
 
 
 class Uebersetzer:
+    """Hält das ganze Wörterbuch im Speicher und sucht darin (siehe uebersetzen())."""
+
     def __init__(self, db_pfad=STANDARD_DB):
         """Lädt alle Einträge einmal in den Speicher (bei ein paar hundert Einträgen schnell)."""
         verbindung = sqlite3.connect(db_pfad)
@@ -217,6 +223,7 @@ class Uebersetzer:
 
 
 def main():
+    """Schnelltest im Terminal: python3 -m app.uebersetzer st-de|de-st "Text"."""
     if len(sys.argv) != 3:
         print('Aufruf: python3 -m app.uebersetzer st-de|de-st "Text"')
         raise SystemExit(1)

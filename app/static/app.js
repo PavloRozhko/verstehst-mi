@@ -1,17 +1,28 @@
 // Oberfläche für verstehst-mi: schickt die Eingabe an /api/uebersetzen
 // und zeigt das Ergebnis an. Kein Framework, nur einfaches JavaScript.
+//
+// Aufbau dieser Datei:
+//   Suchen       – Eingabe (Tippen, Enter, Richtung, derb) -> /api/uebersetzen
+//   Anzeige      – Karten für Übersetzung, "Meintest du …?" und Beispiele
+//   KI           – Knopf "Ganzen Satz mit KI übersetzen" -> /api/ki_uebersetzung
+//   Sprache      – Mikrofon aufnehmen -> /api/sprache (Whisper)
+//   Status       – Fußzeile: Einträge, KI bereit?
 
+// --- Elemente der Seite und Zustand -------------------------------------------
 const eingabe = document.getElementById("eingabe");
 const formular = document.getElementById("formular");
 const derb = document.getElementById("derb");
 const ergebnis = document.getElementById("ergebnis");
 const von = document.getElementById("von");
 const nach = document.getElementById("nach");
+const mikro = document.getElementById("mikro");
+const sprachhinweis = document.getElementById("sprachhinweis");
 
-let richtung = "st-de";
-let timer = null;
+let richtung = "st-de";  // "st-de" = Steirisch -> Hochdeutsch, "de-st" = umgekehrt
+let timer = null;        // wartet nach dem Tippen kurz, bevor gesucht wird
 
 // --- Richtung tauschen ---------------------------------------------------
+// Klick auf ⇄: Richtung, Beschriftungen und Beispiel im Feld wechseln, neu suchen.
 document.getElementById("tauschen").addEventListener("click", () => {
   richtung = richtung === "st-de" ? "de-st" : "st-de";
   const steirischZuerst = richtung === "st-de";
@@ -24,19 +35,24 @@ document.getElementById("tauschen").addEventListener("click", () => {
 });
 
 // --- Suchen: beim Tippen (mit kurzer Pause) und bei Enter ------------------
+// Beim Tippen: 300 ms warten, dann suchen (nicht bei jedem Buchstaben eine Anfrage).
 eingabe.addEventListener("input", () => {
   sprachhinweis.textContent = "";
   clearTimeout(timer);
   timer = setTimeout(suchen, 300);
 });
 
+// Enter: sofort suchen, ohne die Seite neu zu laden.
 formular.addEventListener("submit", (e) => {
   e.preventDefault();
   suchen();
 });
 
+// Schalter "derbe Ausdrücke": gleiche Eingabe neu suchen.
 derb.addEventListener("change", suchen);
 
+// Fragt /api/uebersetzen nach dem Text im Eingabefeld und zeigt das Ergebnis an.
+// Ist das Feld leer, wird das alte Ergebnis gelöscht.
 async function suchen() {
   const text = eingabe.value.trim();
   if (!text) {
@@ -60,6 +76,7 @@ async function suchen() {
 // Texte werden immer mit textContent gesetzt (nie innerHTML), damit
 // Eingaben nie als HTML ausgeführt werden.
 
+// Erzeugt ein HTML-Element mit CSS-Klasse und Text (Text immer sicher als textContent).
 function element(tag, klasse, text) {
   const el = document.createElement(tag);
   if (klasse) el.className = klasse;
@@ -67,14 +84,18 @@ function element(tag, klasse, text) {
   return el;
 }
 
+// Der Text in der Zielsprache eines Treffers (je nach Richtung).
 function ziel(t) {
   return richtung === "st-de" ? t.hochdeutsch : t.dialekt;
 }
 
+// Der Text in der Ausgangssprache eines Treffers (je nach Richtung).
 function quelle(t) {
   return richtung === "st-de" ? t.dialekt : t.hochdeutsch;
 }
 
+// Eine Karte für einen Treffer: Übersetzung groß, Original klein, darunter Marken.
+// haupt = hervorgehoben (exakter Treffer); anklickbar = Klick übernimmt den Treffer.
 function karte(t, { haupt = false, anklickbar = false } = {}) {
   const k = element(anklickbar ? "button" : "div", haupt ? "karte haupt" : "karte");
   if (anklickbar) k.type = "button";
@@ -96,11 +117,14 @@ function karte(t, { haupt = false, anklickbar = false } = {}) {
   return k;
 }
 
+// Überschrift + Karten für eine Gruppe von Treffern (leer, wenn es keine gibt).
 function abschnitt(titel, treffer, optionen) {
   if (treffer.length === 0) return [];
   return [element("h2", null, titel), ...treffer.map((t) => karte(t, optionen))];
 }
 
+// Zeigt das Suchergebnis an. Ohne exakten Treffer (ab 2 Wörtern, nur Steirisch ->
+// Hochdeutsch) kommt darunter der KI-Knopf; in die andere Richtung ein Hinweis.
 function anzeigen(daten, text) {
   const teile = [
     ...abschnitt("Übersetzung", daten.uebersetzungen, { haupt: true }),
@@ -133,21 +157,25 @@ function anzeigen(daten, text) {
 // Die KI setzt den Satz aus GEPRÜFTEN Wortbedeutungen zusammen. Was sie dabei
 // raten musste, wird markiert – das Ergebnis heißt immer "ungeprüft".
 
+// Vereinheitlicht ein Wort wie app/uebersetzer.normalisieren() im Server
+// ("geht's" -> "gehts"), damit die Markierungen zu den Wörtern der API passen.
 function normalisieren(wort) {
-  // wie app/uebersetzer.normalisieren() für ein einzelnes Wort
   return wort.toLowerCase().replace(/['´`’‘]/g, "").replace(/ß/g, "ss")
     .replace(/[^\p{L}\p{N}_]/gu, "");
 }
 
+// Der Bereich mit dem Knopf "Ganzen Satz mit KI übersetzen" für diesen Text.
 function kiBereich(text) {
   const bereich = element("section", "ki-bereich");
   const knopf = element("button", "ki-knopf", "🤖 Ganzen Satz mit KI übersetzen");
   knopf.type = "button";
-  knopf.addEventListener("click", () => kiFragen(text, bereich, knopf));
+  knopf.addEventListener("click", () => kiFragen(text, bereich, knopf));  // Klick: KI fragen
   bereich.append(knopf);
   return bereich;
 }
 
+// Fragt /api/ki_uebersetzung und ersetzt den Knopf durch das Ergebnis.
+// Bei einem Fehler bleibt der Knopf als "Nochmal versuchen" stehen.
 async function kiFragen(text, bereich, knopf) {
   knopf.disabled = true;
   knopf.textContent = "🤖 KI übersetzt …";
@@ -163,7 +191,8 @@ async function kiFragen(text, bereich, knopf) {
   }
 }
 
-// Der Satz mit farbig markierten Wörtern: geprüft / abgeleitet / unbekannt
+// Der Satz mit farbig markierten Wörtern: geprüft (grün) / abgeleitet (gelb) /
+// unbekannt (rot). Leerzeichen und Satzzeichen bleiben wie eingegeben.
 function satzMarkiert(text, daten) {
   const geprueft = new Set();
   const abgeleitet = new Set();
@@ -184,6 +213,8 @@ function satzMarkiert(text, daten) {
   return satz;
 }
 
+// Liste "Wörter im Satz": jedes gefundene Wort mit geprüfter Bedeutung und Marken
+// (geprüft / abgeleitet / derb), danach die Wörter, die nicht im Wörterbuch stehen.
 function wortListe(daten) {
   const liste = element("ul", "wortliste");
   for (const w of daten.woerter) {
@@ -206,6 +237,10 @@ function wortListe(daten) {
   return liste;
 }
 
+// Baut die Anzeige für die Antwort von /api/ki_uebersetzung, je nach quelle:
+//   "wörterbuch" – der Satz steht geprüft im Wörterbuch (grüne Karte)
+//   "ki"         – KI-Übersetzung, gelb, "ungeprüft", mit Warnung bei fehlender Bedeutung
+//   sonst        – KI nicht verfügbar: nur Wort für Wort, Hinweis + "Nochmal versuchen"
 function kiErgebnis(daten, text, bereich) {
   if (daten.quelle === "wörterbuch") {
     const k = element("div", "karte haupt");
@@ -237,7 +272,7 @@ function kiErgebnis(daten, text, bereich) {
     const hinweis = element("p", "warnung", daten.hinweis || "Keine KI-Übersetzung.");
     const nochmal = element("button", "ki-knopf klein", "🤖 Nochmal versuchen");
     nochmal.type = "button";
-    nochmal.addEventListener("click", () => kiFragen(text, bereich, nochmal));
+    nochmal.addEventListener("click", () => kiFragen(text, bereich, nochmal));  // erneut fragen
     hinweis.append(" ", nochmal);
     teile.push(hinweis);
   }
@@ -254,8 +289,6 @@ function kiErgebnis(daten, text, bereich) {
 // 1× tippen: Aufnahme startet. Nochmal tippen (oder nach 10 s): Aufnahme endet
 // und wird an /api/sprache geschickt. Dort erkennt Whisper den Text.
 
-const mikro = document.getElementById("mikro");
-const sprachhinweis = document.getElementById("sprachhinweis");
 const MAX_AUFNAHME_MS = 10000;
 
 let aufnahme = null;     // MediaRecorder, solange aufgenommen wird
@@ -264,6 +297,7 @@ let stoppTimer = null;
 // Der Browser erlaubt das Mikrofon nur über HTTPS oder auf localhost
 const mikrofonMoeglich = Boolean(navigator.mediaDevices?.getUserMedia && window.MediaRecorder);
 
+// Klick auf 🎤: Aufnahme starten – oder, wenn sie schon läuft, beenden.
 mikro.addEventListener("click", () => {
   if (aufnahme) {
     aufnahme.stop();
@@ -272,6 +306,8 @@ mikro.addEventListener("click", () => {
   }
 });
 
+// Startet die Aufnahme. Am Ende (Klick oder nach 10 s) wird sie mit senden() verschickt.
+// Ohne HTTPS oder ohne Erlaubnis gibt es nur einen Hinweis.
 async function aufnahmeStarten() {
   if (!mikrofonMoeglich) {
     sprachhinweis.textContent =
@@ -295,7 +331,9 @@ async function aufnahmeStarten() {
 
   const teile = [];
   aufnahme = new MediaRecorder(stream);
+  // Der Browser liefert die Aufnahme in Stücken – alle sammeln
   aufnahme.addEventListener("dataavailable", (e) => teile.push(e.data));
+  // Aufnahme zu Ende: Mikrofon freigeben und die Aufnahme verschicken
   aufnahme.addEventListener("stop", () => {
     clearTimeout(stoppTimer);
     stream.getTracks().forEach((spur) => spur.stop());  // Mikrofon wieder freigeben
@@ -312,6 +350,8 @@ async function aufnahmeStarten() {
   sprachhinweis.textContent = "Sprich jetzt … (nochmal 🎤 tippen zum Beenden)";
 }
 
+// Schickt die Aufnahme an /api/sprache. Der erkannte Text kommt ins Eingabefeld
+// (zum Korrigieren), das Ergebnis wird wie bei getipptem Text angezeigt.
 async function senden(blob) {
   mikro.disabled = true;
   mikro.setAttribute("aria-label", "Sprechen");
@@ -344,6 +384,7 @@ async function senden(blob) {
 }
 
 // --- Status: Anzahl der Einträge, Spracherkennung bereit? --------------------
+// Einmal beim Laden der Seite: Fußzeile füllen; ohne Whisper wird 🎤 gesperrt.
 fetch("/api/status")
   .then((r) => r.json())
   .then((s) => {

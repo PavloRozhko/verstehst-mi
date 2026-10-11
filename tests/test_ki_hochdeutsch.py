@@ -6,7 +6,7 @@ import pytest
 
 from app import ki_hochdeutsch as ki
 from app.uebersetzer import STANDARD_DB, STEIRISCH_DEUTSCH, Uebersetzer
-from app.vorschlag import Wortpaar, woerter_suchen
+from app.wortsuche import Wortpaar, woerter_suchen
 
 pytestmark = pytest.mark.skipif(
     not STANDARD_DB.exists(),

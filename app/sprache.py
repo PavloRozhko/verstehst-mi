@@ -58,12 +58,14 @@ class AudioFehler(Exception):
 
 
 def prompt_laden(pfad=PROMPT_DATEI):
+    """Liest den Whisper-Prompt (typische Dialektsätze) als eine Zeile; None ohne Datei."""
     if not pfad.exists():
         return None
     return " ".join(pfad.read_text(encoding="utf-8").split())
 
 
 def woerter(text):
+    """Zerlegt Text in kleingeschriebene Wörter (für die Suche nach Wiederholungen)."""
     return re.findall(r"[\wäöüß']+", text.lower())
 
 
@@ -91,7 +93,10 @@ def verwerfen(text, segmente):
 
 
 class Spracherkennung:
+    """Whisper für den Server: einmal laden, dann jede Aufnahme mit erkennen() umwandeln."""
+
     def __init__(self, modell_name=MODELL, threads=None):
+        """Merkt sich die Einstellungen; das Modell lädt erst laden()."""
         self.modell_name = modell_name
         self.threads = threads or os.cpu_count() or 4
         self.prompt = prompt_laden()
@@ -102,9 +107,11 @@ class Spracherkennung:
 
     @property
     def bereit(self):
+        """True, sobald das Modell geladen ist."""
         return self.modell is not None
 
     def laden(self):
+        """Lädt Whisper von der Festplatte (models/whisper). Dauert ein paar Sekunden."""
         from faster_whisper import WhisperModel  # erst hier importieren: Tests brauchen es nicht
 
         self.modell = WhisperModel(

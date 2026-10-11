@@ -14,7 +14,7 @@ from app.uebersetzer import (
     normalisieren,
 )
 from app.verbformen import infinitiv_suchen, staemme_der_form
-from app.vorschlag import woerter_suchen
+from app.wortsuche import woerter_suchen
 
 PROJEKT = Path(__file__).resolve().parent.parent
 

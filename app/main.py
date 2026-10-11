@@ -95,6 +95,11 @@ def uebersetzen(
     richtung: str = Query(STEIRISCH_DEUTSCH),
     derb: bool = Query(False),
 ):
+    """Sucht einen getippten Text im Wörterbuch (richtung: st-de oder de-st).
+
+    derb=True zeigt auch derbe Ausdrücke. Gibt Übersetzungen, Vorschläge ("Meintest du …?")
+    und Beispiele zurück (siehe fuer_anzeige).
+    """
     if richtung not in (STEIRISCH_DEUTSCH, DEUTSCH_STEIRISCH):
         raise HTTPException(status_code=400, detail="richtung muss st-de oder de-st sein")
 
@@ -170,6 +175,7 @@ def ki_uebersetzung(text: str = Query(..., max_length=300)):
 
 @app.get("/api/status")
 def status():
+    """Zustand für die Fußzeile: Anzahl der Einträge, Spracherkennung und KI bereit?"""
     return {"eintraege": len(uebersetzer.eintraege), "sprache": erkennung.bereit,
             "ki": bool(ki_modell and ki_modell.bereit)}
 
@@ -189,11 +195,13 @@ def seiten_adresse(request):
 
 @app.get("/api/adresse")
 def adresse(request: Request):
+    """Adresse der App im WLAN (für die QR-Seite)."""
     return {"url": seiten_adresse(request)}
 
 
 @app.get("/api/qr.svg")
 def qr(request: Request):
+    """QR-Code mit der Adresse der App als SVG-Bild."""
     return Response(qr_svg(seiten_adresse(request)), media_type="image/svg+xml",
                     headers={"Cache-Control": "no-store"})
 

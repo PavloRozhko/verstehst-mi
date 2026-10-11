@@ -5,13 +5,16 @@ Das Modell schreibt NUR Hochdeutsch – Dialekt kommt immer vom Benutzer.
 
 Ablauf:
   1. Steht der Satz im Wörterbuch?  -> geprüfter Eintrag, kein LLM.
-  2. Jedes Dialektwort im Wörterbuch suchen (app/vorschlag.woerter_suchen).
+  2. Jedes Dialektwort im Wörterbuch suchen (app/wortsuche.woerter_suchen).
      Derbe Ausdrücke zählen mit (seit 09.10.): Wer "deppat" hört, soll die Bedeutung
      erfahren. Sie sind in der Antwort als derb markiert.
   3. Das Modell bekommt Satz + geprüfte Bedeutungen und schreibt den Satz auf Hochdeutsch.
   4. Prüfen (ohne LLM, nur Hinweise zum Nachsehen):
      - welche Wörter NICHT im Wörterbuch stehen (dort musste das Modell raten)
      - welche geprüfte Bedeutung in der Antwort nicht vorkommt (vielleicht widersprochen)
+
+Für die App (unten, ab KiModell): Das Modell bleibt dauerhaft geladen, immer nur eine
+Frage gleichzeitig, und bei jedem Fehler gibt es statt der KI nur die Wortbedeutungen.
 """
 
 import logging
@@ -21,7 +24,8 @@ import time
 from dataclasses import dataclass, field
 
 from app.uebersetzer import SCHWELLE, STEIRISCH_DEUTSCH, normalisieren, varianten
-from app.vorschlag import MODELL, OLLAMA, Wortpaar, ollama_chat, woerter_suchen
+from app.ollama import MODELL, OLLAMA, ollama_chat
+from app.wortsuche import Wortpaar, woerter_suchen
 
 log = logging.getLogger("uvicorn.error")
 
@@ -39,6 +43,8 @@ Regeln:
 
 @dataclass
 class KiUebersetzung:
+    """Alles, was zu einem Dialektsatz herauskommt – für Tests, Skripte und die App."""
+
     satz: str
     woerterbuch_phrase: str | None = None   # gefunden -> kein LLM nötig
     paare: list[Wortpaar] = field(default_factory=list)
@@ -52,6 +58,8 @@ class KiUebersetzung:
 
 
 def phrase_suchen(uebersetzer, satz):
+    """Gibt die geprüfte hochdeutsche Übersetzung zurück, wenn der ganze Dialektsatz
+    (fast) als Phrase im Wörterbuch steht – sonst None. Derbe Phrasen zählen mit."""
     for t in uebersetzer.uebersetzen(satz, STEIRISCH_DEUTSCH, mit_derb=True, limit=1):
         if t.typ == "phrase" and t.score >= SCHWELLE:
             return t.hochdeutsch
@@ -59,6 +67,7 @@ def phrase_suchen(uebersetzer, satz):
 
 
 def frage_text(satz, paare):
+    """Baut die Frage an das Modell: Dialektsatz + Liste "Steirisch = Hochdeutsch"."""
     if paare:
         liste = "\n".join(f"- {p.dialekt} = {p.hochdeutsch}" for p in paare)
     else:
@@ -67,6 +76,10 @@ def frage_text(satz, paare):
 
 
 def ollama_fragen(satz, paare, modell=MODELL, url=OLLAMA):
+    """Steirisch -> Hochdeutsch beim Modell erfragen (für Skripte, ohne Zeitgrenze der App).
+
+    Gibt (Antwort, Sekunden) zurück.
+    """
     return ollama_chat(SYSTEM, frage_text(satz, paare), modell=modell, url=url)
 
 
@@ -83,12 +96,16 @@ def ohne_llm(satz, paare):
 
 
 def nicht_gefunden(satz, paare):
+    """Wörter des Satzes, für die nichts im Wörterbuch gefunden wurde (das Modell rät dort)."""
     gefunden = {w for p in paare for w in p.suchwort.split()}
     return [w for w in normalisieren(satz).split() if w not in gefunden]
 
 
 def bedeutungswoerter(hochdeutsch):
-    """'owa = herunter (auch: aber)' -> {'herunter', 'auch', 'aber'} (Klammern zählen mit)."""
+    """Zerlegt eine Bedeutung in einzelne Wörter (Klammern zählen mit).
+
+    'man; mir; wir (nachgestellt)' -> {'man', 'mir', 'wir', 'nachgestellt'}
+    """
     text = re.sub(r"[^\w\s]", " ", hochdeutsch.lower().replace("ß", "ss"))
     return {w for w in text.split() if len(w) >= 2}
 
@@ -107,6 +124,7 @@ def bedeutung_fehlt(antwort, paare):
     antwort_woerter = normalisieren(antwort).split()
 
     def verwendet(p):
+        """True, wenn irgendein Wort der geprüften Bedeutung in der Antwort vorkommt."""
         return any(kommt_vor(w, antwort_woerter) for w in bedeutungswoerter(p.hochdeutsch))
 
     ok = {p.suchwort for p in paare if verwendet(p)}
@@ -119,7 +137,13 @@ def bedeutung_fehlt(antwort, paare):
 
 
 def uebersetzen(uebersetzer, satz, fragen=ollama_fragen, phrase_zuerst=True):
-    """Kompletter Ablauf. phrase_zuerst=False nur für Tests mit "versteckten" Phrasen."""
+    """Kompletter Ablauf für einen Dialektsatz (siehe oben, Schritte 1–4).
+
+    fragen:        Funktion, die das Modell fragt – austauschbar für Tests ohne Ollama
+    phrase_zuerst: False nur für Tests mit "versteckten" Phrasen (scripts/rag_test_hochdeutsch.py)
+
+    Fehler von `fragen` werden weitergegeben; die App fängt sie in uebersetzen_fuer_app ab.
+    """
     ergebnis = KiUebersetzung(satz=satz)
     if phrase_zuerst:
         ergebnis.woerterbuch_phrase = phrase_suchen(uebersetzer, satz)
@@ -153,6 +177,7 @@ class KiModell:
     """
 
     def __init__(self, modell=MODELL, url=OLLAMA):
+        """Merkt sich Modell und Adresse; geladen wird erst mit aufwaermen()."""
         self.modell = modell
         self.url = url
         self.bereit = False
@@ -162,6 +187,7 @@ class KiModell:
         self._lade_sperre = threading.Lock()
 
     def _chat(self, frage, num_predict, timeout):
+        """Eine Frage an Ollama; das Modell bleibt danach im Speicher (keep_alive=-1)."""
         return ollama_chat(SYSTEM, frage, modell=self.modell, url=self.url,
                            num_predict=num_predict, keep_alive=-1, timeout=timeout)
 
@@ -187,6 +213,7 @@ class KiModell:
         return self.bereit
 
     def im_hintergrund_aufwaermen(self):
+        """Startet aufwaermen() in einem eigenen Thread, damit der Server nicht wartet."""
         if not self.laedt:
             threading.Thread(target=self.aufwaermen, daemon=True).start()
 
@@ -224,6 +251,7 @@ def uebersetzen_fuer_app(uebersetzer, satz, ki_modell):
       nur_woerter  – KI nicht bereit oder Fehler: nur die Wortbedeutungen
     """
     def nur_woerter(hinweis):
+        """Ergebnis ohne KI: nur die geprüften Wortbedeutungen und ein Hinweis."""
         ergebnis = KiUebersetzung(satz=satz, quelle=NUR_WOERTER, hinweis=hinweis)
         ergebnis.paare = woerter_suchen(uebersetzer, satz, STEIRISCH_DEUTSCH, mit_derb=True)
         ergebnis.nicht_gefunden = nicht_gefunden(satz, ergebnis.paare)

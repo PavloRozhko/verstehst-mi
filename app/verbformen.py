@@ -104,6 +104,7 @@ def infinitiv_suchen(uebersetzer, wort, mit_derb=False):
 
 
 def main():
+    """Schnelltest im Terminal: python3 -m app.verbformen suachst gmocht …"""
     uebersetzer = Uebersetzer()
     for wort in sys.argv[1:]:
         gefunden = infinitiv_suchen(uebersetzer, normalisieren(wort))
