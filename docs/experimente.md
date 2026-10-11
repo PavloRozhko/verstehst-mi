@@ -296,6 +296,11 @@ Einzelwerte: `docs/sprachtest_protokoll.csv`.
   vor Suche und KI korrigieren kann.
 - 14.10.: Filter für erfundenen Text (Wiederholungen, `no_speech_prob`), Wörter oben ins
   Whisper-Prompt. Danach ist dieser Test keine Messung mehr.
+- **Umgesetzt am 11.10.:** Filter siehe Experiment F. Prompt (`data/whisper_prompt.txt`) um
+  geprüfte Phrasen mit `wia`, `Geh`, `Hawara`, `beinand` ergänzt. `I` → „Ich“ lässt sich so
+  nicht beheben (`I` stand schon im Prompt); die Suche findet die Phrasen trotzdem.
+  Der Prompt hat jetzt 198 Tokens – faster-whisper nimmt höchstens 223, der Rest würde still
+  abgeschnitten. Wirkung nicht gemessen (keine neuen Testsätze).
 
 ## Experiment F: Filter gegen erfundenen Text (festgelegt am 11.10.)
 

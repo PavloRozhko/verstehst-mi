@@ -276,3 +276,10 @@ def test_prompt_plus_tokens_passt_ins_modell():
     # Schätzung ohne Tokenizer: höchstens 4 Tokens pro Wort im Prompt.
     prompt = Spracherkennung().prompt
     assert 4 * len(prompt.split()) + sprache.MAX_TOKENS + 10 < 448
+
+
+def test_prompt_wird_nicht_abgeschnitten():
+    # faster-whisper nimmt vom Prompt nur die LETZTEN 223 Tokens – was davor steht, fällt
+    # still weg. Gemessen am 11.10. mit dem Whisper-Tokenizer: 198 Tokens bei 476 Zeichen.
+    # Ohne Tokenizer im Test prüfen wir die Zeichen: 500 Zeichen ≈ 213 Tokens.
+    assert len(Spracherkennung().prompt) <= 500
