@@ -1,0 +1,21 @@
+﻿nr;block;gesagt;erkannt (aus Log);sekunden;verworfen (Grund aus Log);ergebnis (richtig/vorschlag/falsch/keiner);bemerkung
+1;G Geräusch;(husten);;;;;
+2;G Geräusch;(husten);;;;;
+3;G Geräusch;(räuspern);;;;;
+4;G Geräusch;(husten, länger);;;;;
+5;G Geräusch;(räuspern);;;;;
+6;G Geräusch;(2× klatschen);;;;;
+7;G Geräusch;(2× klatschen);;;;;
+8;G Geräusch;(auf den Tisch klopfen);;;;;
+9;G Geräusch;(nichts sagen, 3 s Stille);;;;;
+10;G Geräusch;(nichts sagen, 3 s Stille);;;;;
+11;R Sprache (wie Block A, im Prompt);Mahlzeit!;;;;;
+12;R Sprache (wie Block A, im Prompt);Wos is los?;;;;;
+13;R Sprache (wie Block A, im Prompt);Des passt scho.;;;;;
+14;R Sprache (wie Block A, im Prompt);I woaß ned.;;;;;
+15;R Sprache (wie Block A, im Prompt);Wos kost des?;;;;;
+16;R Sprache (wie Block A, im Prompt);I hob an Hunga.;;;;;
+17;R Sprache (wie Block A, im Prompt);Gemma wos essn?;;;;;
+18;R Sprache (wie Block A, im Prompt);Zoin, bitte!;;;;;
+19;R Sprache (wie Block A, im Prompt);A Bier geht scho no.;;;;;
+20;R Sprache (wie Block A, im Prompt);Gemma ham.;;;;;

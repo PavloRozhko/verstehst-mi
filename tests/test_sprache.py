@@ -170,3 +170,109 @@ def test_interner_fehler_verraet_keine_details(client):
 @api
 def test_status_meldet_spracherkennung(client):
     assert client(FalscheErkennung()).get("/api/status").json()["sprache"] is True
+
+
+# --- Filter gegen erfundenen Text (Sprachtest vom 11.10.) -------------------------
+
+import zlib
+from types import SimpleNamespace
+
+from app import sprache
+
+
+def abschnitt(text, tokens=None):
+    """Nachgebauter Whisper-Abschnitt. Kompression wie bei Whisper berechnet."""
+    roh = text.encode("utf-8")
+    return SimpleNamespace(
+        text=text,
+        tokens=list(range(tokens if tokens is not None else 2 * len(text.split()) + 2)),
+        compression_ratio=len(roh) / len(zlib.compress(roh)),
+        no_speech_prob=0.1, avg_logprob=-0.4,
+    )
+
+
+# Alles, was Whisper am 11.10. bei echter Sprache erkannt hat – auch falsch Gehörtes.
+# Der Filter darf davon NICHTS verwerfen (falsch gehört ist nicht erfunden).
+ECHTE_SPRACHE = [
+    "Mahlzeit!", "Woß ist los?", "Des passt scho.", "I woaß ned.", "Wos kost des?",
+    "Ich hob an Hunga.", "Gemma wos essn.", "Zoin, bitte!", "Ab hier, kich scho no.",
+    "Gemma ham.", "Zainettschop.", "Sein Netz, so geschämig.", "Ich fuwa mi am Radl.",
+    "Bros beihand.", "Der Scherf ist halt grantig.", "Ich hob mich vergangen.",
+    "Schau no.", "Ich schau no.", "Gehbitte.", "Mia moch na paus.", "Niemand schürm mit.",
+    "Wehr spätis.", "Griaß di, wie geht's da?", "Husten, Porusche.",
+    "Ich kieh an noaof ons.", "Prost bei Hand.", "Wär spätis.", "Kebite.",
+    "Die Poe hottest Radel vergessen.", "Heiz, Hop, Iuna.", "Hier, top, Hunga.",
+    "Der Haarekung, Teintnett.", "Das Bette ist heizlich.", "Des Maidel ist geschenk.",
+    "Herst, gumm ham.", "Das ist Harder für mir.", "Das ist Ravacher von mir.",
+    "Des ist sach, Adagafomia.", "Der Krampus kommt.",
+]
+
+
+@pytest.mark.parametrize("text", ECHTE_SPRACHE)
+def test_echte_sprache_wird_nicht_verworfen(text):
+    assert sprache.verwerfen(text, [abschnitt(text)]) is None
+
+
+def test_normaler_satz_mit_wiederholtem_wort_bleibt():
+    text = "Des is ned so, des is ned so schlimm."
+    assert sprache.verwerfen(text, [abschnitt(text)]) is None
+
+
+@pytest.mark.parametrize("text", [
+    "Ja, " * 30 + "ja",                       # Husten am 11.10.
+    "Der Schalz, " * 20 + "der Schal",        # Husten am 11.10.
+])
+def test_schleifen_werden_verworfen(text):
+    assert sprache.verwerfen(text, [abschnitt(text)]) is not None
+
+
+def test_token_grenze_wird_verworfen():
+    text = "irgendwas ganz anderes ohne Wiederholung"
+    assert sprache.verwerfen(text, [abschnitt(text, tokens=sprache.MAX_TOKENS)]) is not None
+
+
+def test_kurze_wiederholung_wird_verworfen():
+    assert sprache.verwerfen("Ja, ja, ja, ja.", [abschnitt("Ja, ja, ja, ja.")]) is not None
+
+
+@pytest.mark.parametrize("text", [
+    "Untertitel im Auftrag des ZDF, 2021",
+    "Vielen Dank fürs Zuschauen!",
+])
+def test_typische_erfundene_saetze(text):
+    assert sprache.verwerfen(text, [abschnitt(text)]) is not None
+
+
+class FalschesModell:
+    """Ersetzt WhisperModel: liefert feste Abschnitte und merkt sich die Einstellungen."""
+
+    def __init__(self, *texte):
+        self.texte, self.optionen = texte, None
+
+    def transcribe(self, audio, **optionen):
+        self.optionen = optionen
+        return iter([abschnitt(t) for t in self.texte]), None
+
+
+def erkennung_mit(modell):
+    e = Spracherkennung()
+    e.modell = modell
+    return e
+
+
+def test_erkennen_begrenzt_tokens():
+    modell = FalschesModell("Des passt scho.")
+    assert erkennung_mit(modell).erkennen(ton(2)) == "Des passt scho."
+    assert modell.optionen["max_new_tokens"] == sprache.MAX_TOKENS
+
+
+def test_erkennen_gibt_leer_bei_schleife():
+    modell = FalschesModell("Ja, " * 30 + "ja")
+    assert erkennung_mit(modell).erkennen(ton(2)) == ""
+
+
+def test_prompt_plus_tokens_passt_ins_modell():
+    # Whisper verarbeitet höchstens 448 Tokens (Prompt + Antwort). Grobe, sichere
+    # Schätzung ohne Tokenizer: höchstens 4 Tokens pro Wort im Prompt.
+    prompt = Spracherkennung().prompt
+    assert 4 * len(prompt.split()) + sprache.MAX_TOKENS + 10 < 448

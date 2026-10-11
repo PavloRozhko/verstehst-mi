@@ -233,6 +233,39 @@ Einzelwerte: `docs/sprachtest_protokoll.csv`.
 - 14.10.: Filter für erfundenen Text (Wiederholungen, `no_speech_prob`), Wörter oben ins
   Whisper-Prompt. Danach ist dieser Test keine Messung mehr.
 
+## Experiment F: Filter gegen erfundenen Text (festgelegt am 11.10.)
+
+**Problem (aus Experiment S):** Bei Husten erfindet Whisper Text („Ja, ja, ja, …“) und
+rechnet dabei 13 s – so lange warten alle anderen Handys.
+
+**Änderung (`app/sprache.py`, vorgezogen vom 14.10.):**
+
+- Whisper erzeugt höchstens 48 Tokens pro Aufnahme → eine Schleife bricht früh ab.
+- Text wird verworfen („Nix verstanden“), wenn: die Token-Grenze erreicht ist, der Text
+  zu gleichförmig ist (Kompression > 2,4, Whisper-Standard), ein Wort mindestens 4-mal
+  vorkommt und die Hälfte des Textes ausmacht, oder ein typischer erfundener Untertitel-Satz
+  kommt („Untertitel …“, „Vielen Dank fürs Zuschauen“).
+- `no_speech_prob` wird nur protokolliert, nicht gefiltert: Ohne Daten wäre jede Grenze
+  geraten und könnte leise Sprache wegfiltern.
+- Unit-Tests: Alle 39 Texte, die Whisper am 11.10. bei echter Sprache erkannt hat (auch die
+  falsch gehörten), bleiben erhalten; beide Schleifen werden verworfen.
+
+**Testsatz:** `docs/filtertest_protokoll.csv`, 20 neue Aufnahmen auf dem Jetson:
+10 Geräusche (Husten, Räuspern, Klatschen, Klopfen, Stille) und zur Kontrolle die 10
+Phrasen aus Block A, die im Prompt stehen.
+
+**Go-Kriterien (vor dem Lauf festgelegt):**
+
+- Geräusche: 0 von 10 zeigen Text an, jede Antwort höchstens 3 s
+- Kontrolle: der Filter verwirft 0 von 10, mindestens 9 von 10 *richtig* oder *vorschlag*
+- alle Tests grün
+
+**Bei no-go:** Filter verwirft echte Sprache → Regel lockern, die Version ohne Filter bleibt
+in Git. Geräusche erzeugen weiter Text → in der Vorführung bleibt Tippen der Hauptweg (gilt
+ohnehin, siehe Experiment S).
+
+Ergebnis: folgt.
+
 ## Einschränkungen
 
 - Nur 2 × 10 Sätze: Die Ergebnisse (5/10 und 7/10) sind eine Tendenz, keine Messung.
