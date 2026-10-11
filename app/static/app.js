@@ -324,8 +324,11 @@ async function senden(blob) {
       sprachhinweis.textContent = "Nix verstanden. Bitte nochmal deutlich sprechen.";
       return;
     }
-    sprachhinweis.textContent = `Erkannt: „${daten.erkannt}“ (${daten.sekunden} s)`;
-    eingabe.value = "";  // sonst passt das Eingabefeld nicht zum Ergebnis
+    // Erkannten Text ins Eingabefeld schreiben: Whisper verhört sich oft (Sprachtest
+    // vom 11.10.). So kann man den Text korrigieren – die Suche läuft dann von selbst neu.
+    eingabe.value = daten.erkannt;
+    sprachhinweis.textContent =
+      `Erkannt in ${daten.sekunden} s. Falsch verstanden? Text oben korrigieren.`;
     anzeigen(daten, daten.erkannt);
   } catch (fehler) {
     sprachhinweis.textContent = "Hoppala: " + fehler.message;
