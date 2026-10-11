@@ -160,6 +160,45 @@ Regel der KI-Übersetzung wirklich hilft, zeigt erst Satz 3.
 **Entscheidung: go.** Die Regel läuft nur, wenn ein Wort sonst nicht gefunden wird, und nur
 in der Richtung Steirisch → Hochdeutsch. Gefundene Infinitive heißen „abgeleitet“.
 
+## Experiment S: Spracheingabe (Protokoll festgelegt am 11.10.)
+
+**Frage:** Wie zuverlässig ist die Spracheingabe (Whisper `base`, CPU) für die Vorführung?
+Und was muss am 14.10. verbessert werden?
+
+**Testsatz:** `docs/sprachtest_protokoll.csv`, 45 Aufnahmen, festgelegt **vor** dem ersten
+Sprechen:
+
+| Block | Anzahl | Inhalt |
+|---|---|---|
+| A ruhig | 23 | Phrasen aus dem Wörterbuch, 10 davon auch im Whisper-Prompt |
+| B Hintergrund | 6 | wie A, mit Fernseher/Musik |
+| C leise | 3 | wie A, leise, ca. 1 m Abstand |
+| D ohne Sprache | 3 | Stille, nur Geräusch, Husten |
+| E KI-Knopf | 6 | Sätze **nicht** im Wörterbuch, nur aus geprüften Wörtern gebaut (Satz selbst ungeprüft); erwartete Bedeutung vorher eingetragen |
+| F Flur | 4 | zwei Sätze, die im Flur falsch erkannt wurden, je normal und leise |
+
+**Ablauf:** Jede Zeile einmal sprechen, in der Reihenfolge, ohne Wiederholung. Erkannter
+Text und Sekunden kommen aus dem Log (`journalctl -u verstehst-mi`), das Ergebnis von der
+Seite. Sprecher ist kein Muttersprachler – das Ergebnis gilt für diese Aussprache.
+
+**Ziele (vor dem Lauf festgelegt):**
+
+- A, im Prompt: mindestens 8 von 10 *richtig* oder *vorschlag*
+- A, nicht im Prompt: nur gemessen (Grundlage für die Entscheidungen unten)
+- D: 0 Übersetzungen (kein erfundener Text)
+- E: KI mindestens 4 von 6 *gut*, keine *falsch*
+- Zeit Spracherkennung: Median höchstens 3 s
+
+**Entscheidungen für den 14.10. (vorher festgelegt):**
+
+- D liefert Text → Filter für unsichere Ergebnisse bauen (`no_speech_prob`, Wiederholungen).
+- Ein geprüftes Wort wird in A/B/C/F mindestens zweimal falsch erkannt → ins Whisper-Prompt.
+  Danach gilt dieser Test nicht mehr als Messung; eine neue Messung bräuchte neue Sätze.
+- Leise (C, F) deutlich schlechter als normal → Hinweis „nah ans Mikrofon“ für die Vorführung.
+- Ziele für A oder D verfehlt → in der Vorführung Tippen als Hauptweg, Sprache als Zusatz.
+
+Ergebnis: folgt.
+
 ## Einschränkungen
 
 - Nur 2 × 10 Sätze: Die Ergebnisse (5/10 und 7/10) sind eine Tendenz, keine Messung.
