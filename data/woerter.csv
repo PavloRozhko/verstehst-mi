@@ -1,593 +1,593 @@
 id,wortart,dialekt,hochdeutsch,thema,status,korrektur,kommentar,geprüft_von
-1,Interjektion,Servus,hallo; tschüss,Begrüßung,richtig,,,
-2,Interjektion,Pfiat di,tschüss (zu einer Person),Begrüßung,richtig,,,
-3,Interjektion,Pfiat eich,tschüss (zu mehreren),Begrüßung,richtig,,,
-4,Interjektion,Baba,tschüss,Begrüßung,richtig,,,
-5,Interjektion,Griaß di,grüß dich; hallo,Begrüßung,richtig,,,
-6,Interjektion,Griaß eich,grüßt euch; hallo (zu mehreren),Begrüßung,richtig,,,
-7,Interjektion,Heast,hör mal; hey,Alltag,richtig,,,
-8,Interjektion,Geh,ach komm; na los,Alltag,richtig,,,
-9,Interjektion,Jessas,ach du meine Güte,Alltag,richtig,,,
-10,Interjektion,Passt,in Ordnung; passt,Alltag,richtig,,,
-11,Interjektion,Gö,nicht wahr; gell,Alltag,richtig,,,
-12,Interjektion,Oida,Alter (Anrede unter Freunden),Freunde,richtig,,,
-13,Partikel,jo,ja,Alltag,richtig,,,
-14,Partikel,na,nein,Alltag,richtig,,,
-15,Partikel,ned,nicht,Alltag,richtig,,,
-16,Partikel,eh,ohnehin; sowieso,Alltag,richtig,,,
-17,Partikel,scho,schon,Alltag,richtig,,,
-18,Partikel,hoit,halt; eben,Alltag,richtig,,,
-19,Partikel,oiso,also,Alltag,richtig,,,
-20,Pronomen,i,ich,Alltag,richtig,,,
-21,Pronomen,mia,wir; mir,Alltag,richtig,,,
-22,Pronomen,es,ihr,Alltag,richtig,,,
-23,Pronomen,eich,euch,Alltag,richtig,,,
-24,Pronomen,nix,nichts,Alltag,richtig,,,
-25,Pronomen,wos,was,Alltag,richtig,,,
-26,Adverb,wia,wie,Alltag,richtig,,,
-27,Adverb,hiaz,jetzt,Alltag,richtig,,,
-28,Adverb,heit,heute,Alltag,richtig,,,
-29,Adverb,moagn,morgen,Alltag,richtig,,,
-30,Adverb,gestan,gestern,Alltag,richtig,,,
-31,Adverb,glei,gleich; sofort,Alltag,richtig,,,
-32,Adverb,imma,immer,Alltag,richtig,,,
-33,Adverb,a bissl,ein bisschen,Alltag,richtig,,,
-34,Adverb,vü,viel,Alltag,richtig,,,
-35,Adverb,weng,wenig,Alltag,richtig,,,
-36,Adverb,do,da; hier,Alltag,richtig,,,
-37,Adverb,daham,zu Hause,Alltag,richtig,,,
-38,Adverb,auffi,hinauf,Unterwegs,richtig,,,
-39,Adverb,owi,hinunter,Unterwegs,richtig,,,
-40,Adverb,eini,hinein,Unterwegs,richtig,,,
-41,Adverb,aussi,hinaus,Unterwegs,richtig,,,
-42,Adverb,umadum,herum,Unterwegs,richtig,,,
-43,Adverb,z'fleiß,absichtlich; zum Trotz,Alltag,richtig,,,
-44,Nomen,Bua,der Junge,Familie,richtig,,,
-45,Nomen,Madl,das Mädchen,Familie,richtig,,,
-46,Nomen,Dirndl,das Mädchen; das Trachtenkleid,Familie,richtig,,,
-47,Nomen,Leit,die Leute,Alltag,richtig,,,
-48,Nomen,Spezl,der Freund; der Kumpel,Freunde,richtig,,,
-49,Nomen,Hawara,der Kumpel,Freunde,richtig,,,
-50,Nomen,Oma,die Großmutter,Familie,richtig,,,
-51,Nomen,Opa,der Großvater,Familie,richtig,,,
-52,Nomen,Erdäpfl,die Kartoffeln,Essen,richtig,,,
-53,Nomen,Paradeiser,die Tomate,Essen,richtig,,,
-54,Nomen,Kren,der Meerrettich,Essen,richtig,,,
-55,Nomen,Karfiol,der Blumenkohl,Essen,richtig,,,
-56,Nomen,Kukuruz,der Mais,Essen,richtig,,,
-57,Nomen,Fisoln,die grünen Bohnen,Essen,richtig,,,
-58,Nomen,Käferbohnen,die Feuerbohnen,Essen,richtig,,,
-59,Nomen,Marüln,die Aprikosen,Essen,richtig,,,
-60,Nomen,Ribisl,die Johannisbeeren,Essen,richtig,,,
-61,Nomen,Schwammerl,die Pilze,Essen,richtig,,,
-62,Nomen,Semmel,das Brötchen,Essen,richtig,,,
-63,Nomen,Kipferl,das Hörnchen,Essen,richtig,,,
-64,Nomen,Topfn,der Quark,Essen,richtig,,,
-65,Nomen,Obers,die Sahne,Essen,richtig,,,
-66,Nomen,Schlagobers,die Schlagsahne,Essen,richtig,,,
-67,Nomen,Faschierts,das Hackfleisch,Essen,richtig,,,
-68,Nomen,Stelzn,die Schweinshaxe,Essen,richtig,,,
-69,Nomen,Wurscht,die Wurst,Essen,richtig,,,
-70,Nomen,Jausn,die Zwischenmahlzeit; die Brotzeit,Essen,richtig,,,
-71,Nomen,Kernöl,das Kürbiskernöl,Essen,richtig,,,
-72,Nomen,Sterz,der Sterz (steirische Speise),Essen,korrigiert,Speise aus Mais- oder Buchweizenmehl,,
-73,Nomen,Eierspeis,das Rührei,Essen,richtig,,,
-74,Nomen,Wossa,das Wasser,Essen,richtig,,,
-75,Nomen,Bia,das Bier,Essen,richtig,,,
-76,Nomen,Gspritzta,die Weinschorle,Essen,richtig,,,
-77,Nomen,Most,der Most (Obstwein),Essen,richtig,,,
-78,Nomen,Buschenschank,der Buschenschank (Weinlokal des Winzers),Essen,richtig,,,
-79,Nomen,Sackerl,die Tüte,Einkaufen,richtig,,,
-80,Nomen,Kassa,die Kasse,Einkaufen,richtig,,,
-81,Nomen,Göd,das Geld,Einkaufen,richtig,,,
-82,Nomen,Bankomat,der Geldautomat,Einkaufen,richtig,,,
-83,Nomen,Packerl,das Paket; das Päckchen,Einkaufen,richtig,,,
-84,Nomen,Trafik,der Tabakladen; der Kiosk,Einkaufen,richtig,,,
-85,Nomen,Greißler,der kleine Lebensmittelladen,Einkaufen,richtig,,,
-86,Nomen,Fleischhauer,der Metzger,Einkaufen,richtig,,,
-87,Nomen,Pickerl,der Aufkleber; die Vignette,Unterwegs,richtig,,,
-88,Nomen,Hackn,die Arbeit; der Job,Arbeit,richtig,,,
-89,Nomen,Feierobnd,der Feierabend,Arbeit,richtig,,,
-90,Nomen,Gschicht,die Geschichte; die Angelegenheit,Arbeit,richtig,,,
-91,Nomen,Jänner,der Januar,Arbeit,richtig,,,
-92,Nomen,Feber,der Februar,Arbeit,richtig,,,
-93,Nomen,Pfinsta,der Donnerstag,Arbeit,richtig,,,
-94,Nomen,Ertag,der Dienstag,Arbeit,richtig,,,
-95,Nomen,Gwand,die Kleidung,Alltag,richtig,,,
-96,Nomen,Leiberl,das T-Shirt,Alltag,richtig,,,
-97,Nomen,Haubn,die Mütze,Alltag,richtig,,,
-98,Nomen,Patschn,die Hausschuhe,Alltag,richtig,,,
-99,Nomen,Schuach,die Schuhe,Alltag,richtig,,,
-100,Nomen,Kuchl,die Küche,Alltag,richtig,,,
-101,Nomen,Stubn,die Stube; das Wohnzimmer,Alltag,richtig,,,
-102,Nomen,Kastl,der Schrank; das Kästchen,Alltag,richtig,,,
-103,Nomen,Häusl,die Toilette,Alltag,richtig,,,
-104,Nomen,Bankl,die Sitzbank,Alltag,richtig,,,
-105,Nomen,Schädl,der Kopf,Alltag,richtig,,,
-106,Nomen,Fuaß,der Fuß; das Bein,Alltag,richtig,,,
-107,Nomen,Gaudi,der Spaß,Freunde,richtig,,,
-108,Nomen,Schmäh,der Witz; der Charme,Freunde,richtig,,,
-109,Nomen,Bledsinn,der Blödsinn,Freunde,richtig,,,
-110,Nomen,Wetta,das Wetter,Wetter,richtig,,,
-111,Nomen,Rengn,der Regen,Wetter,richtig,,,
-112,Nomen,Sunn,die Sonne,Wetter,richtig,,,
-113,Nomen,Bim,die Straßenbahn,Unterwegs,richtig,,,
-114,Nomen,Radl,das Fahrrad,Unterwegs,richtig,,,
-115,Nomen,Bam,der Baum,Natur,richtig,,,
-116,Nomen,Woid,der Wald,Natur,richtig,,,
-117,Nomen,Wiesn,die Wiese,Natur,richtig,,,
-118,Nomen,Kuah,die Kuh,Natur,richtig,,,
-119,Nomen,Hendl,das Huhn; das Brathähnchen,Essen,richtig,,,
-120,Nomen,Oachkatzl,das Eichhörnchen,Natur,richtig,,,
-121,Verb,redn,reden; sprechen,Alltag,richtig,,,
-122,Verb,schaun,schauen; sehen,Alltag,richtig,,,
-123,Verb,hean,hören,Alltag,richtig,,,
-124,Verb,kumman,kommen,Alltag,richtig,,,
-125,Verb,hom,haben,Alltag,richtig,,,
-126,Verb,mochn,machen,Alltag,richtig,,,
-127,Verb,schlofn,schlafen,Alltag,richtig,,,
-128,Verb,hackln,arbeiten,Arbeit,richtig,,,
-129,Verb,kafn,kaufen,Einkaufen,richtig,,,
-130,Verb,zoin,zahlen,Einkaufen,richtig,,,
-131,Verb,woin,wollen,Alltag,richtig,,,
-132,Verb,kenna,können; kennen,Alltag,richtig,,,
-133,Verb,miassn,müssen,Alltag,richtig,,,
-134,Verb,sogn,sagen,Alltag,richtig,,,
-135,Verb,frogn,fragen,Alltag,richtig,,,
-136,Verb,gfrein,freuen,Freunde,richtig,,,
-137,Verb,tratschn,tratschen; plaudern,Freunde,richtig,,,
-138,Verb,raunzn,jammern; nörgeln,Alltag,richtig,,,
-139,Verb,sudern,jammern; meckern,Alltag,richtig,,,
-140,Verb,hudln,hetzen; schlampig arbeiten,Arbeit,richtig,,,
-141,Verb,pfuschn,pfuschen; unsauber arbeiten,Arbeit,richtig,,,
-142,Verb,rean,weinen,Alltag,richtig,,,
-143,Adjektiv,guat,gut,Alltag,richtig,,,
-144,Adjektiv,schee,schön,Alltag,richtig,,,
-145,Adjektiv,schiach,hässlich,Alltag,richtig,,,
-146,Adjektiv,fesch,hübsch; attraktiv,Freunde,richtig,,,
-147,Adjektiv,leiwand,toll; super,Freunde,falsch,,Wienerisch,
-148,Adjektiv,lässig,cool; toll,Freunde,richtig,,,
-149,Adjektiv,gscheit,klug; ordentlich,Alltag,richtig,,,
-150,Adjektiv,deppat,dumm; blöd,derb,richtig,,,
-151,Adjektiv,grantig,schlecht gelaunt,Alltag,richtig,,,
-152,Adjektiv,heiklig,wählerisch; heikel,Essen,richtig,,,
-153,Adjektiv,miad,müde,Alltag,richtig,,,
-154,Adjektiv,narrisch,verrückt; sehr,Freunde,richtig,,,
-155,Adjektiv,hoaß,heiß,Wetter,richtig,,,
-156,Adjektiv,koid,kalt,Wetter,richtig,,,
-157,Adjektiv,woam,warm,Wetter,richtig,,,
-158,Adjektiv,kloa,klein,Alltag,richtig,,,
-159,Adjektiv,oid,alt,Alltag,richtig,,,
-160,Adjektiv,neich,neu,Alltag,richtig,,,
-161,Adjektiv,teia,teuer,Einkaufen,richtig,,,
-162,Adjektiv,stad,still; ruhig,Alltag,richtig,,,
-163,Adjektiv,zach,zäh; mühsam,Arbeit,richtig,,,
-164,Adjektiv,patschert,ungeschickt,Alltag,richtig,,,
-165,Adjektiv,firti,fertig,Arbeit,richtig,,,
-166,Adjektiv,gschmackig,lecker,Essen,richtig,,,
-167,Interjektion,Servas,hallo; tschüss (lockere Form von Servus),Begrüßung,richtig,,,
-168,Interjektion,Pfiat Gott,"auf Wiedersehen (höflich, ländlich)",Begrüßung,richtig,,,
-169,Interjektion,Griaß enk,"grüß euch (ländlich, v. a. Obersteiermark)",Begrüßung,richtig,,,
-170,Interjektion,Guatn,guten Appetit (kurz),Essen,richtig,,,
-171,Interjektion,Ui jegerl,oje; ach du liebe Zeit,Alltag,richtig,,,
-172,Interjektion,Na servas,na prima; oje (Ausruf der Überraschung),Alltag,richtig,,,
-173,Interjektion,Hoppala,hoppla,Alltag,richtig,,,
-174,Interjektion,Aso,ach so,Alltag,richtig,,,
-175,Interjektion,Mei,"ach; ach Gott (Rührung, Bedauern)",Alltag,richtig,,,
-176,Interjektion,Pfuh,"puh; boah (Staunen, Anstrengung)",Alltag,richtig,,,
-177,Interjektion,Gemma,gehen wir; los geht's,Alltag,richtig,,,
-178,Interjektion,Hea auf,hör auf,Alltag,richtig,,,
-179,Interjektion,Gusch,sei still (derb),derb,richtig,,,
-180,Partikel,leicht,vielleicht; womöglich,Alltag,richtig,,,
-181,Partikel,eppa,etwa; vielleicht,Alltag,richtig,,,
-182,Partikel,goa,gar,Alltag,richtig,,,
-183,Partikel,grod,gerade; eben,Alltag,richtig,,,
-184,Partikel,nimma,nicht mehr,Alltag,richtig,,,
-185,Partikel,a,ein/eine; auch,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: auch (auch: ein/eine))",
-186,Partikel,eha,eher,Alltag,richtig,,,
-187,Pronomen,enk,"euch (ländlich, v. a. Obersteiermark)",Alltag,richtig,,,
-188,Pronomen,enka,euer (ländlich),Alltag,richtig,,,
-189,Pronomen,eam,ihm; ihn,Alltag,richtig,,,
-190,Pronomen,eana,ihnen; Ihnen,Alltag,richtig,,,
-191,Pronomen,ia,"ihr (Dativ); sie (Akkusativ, weiblich)",Alltag,richtig,,,
-192,Pronomen,ebba,jemand,Alltag,richtig,,,
-193,Pronomen,ebbas,etwas,Alltag,richtig,,,
-194,Pronomen,kana,keiner; niemand,Alltag,richtig,,,
-195,Pronomen,wea,wer,Alltag,richtig,,,
-196,Pronomen,des,das (Demonstrativ),Alltag,richtig,,,
-197,Pronomen,ma,man; mir; wir (nachgestellt),Alltag,richtig,,,
-198,Numerale,oans,eins,Alltag,richtig,,,
-199,Numerale,zwoa,zwei,Alltag,richtig,,,
-200,Präposition,z',"zu; in (z'Graz, z'Fuaß)",Unterwegs,richtig,,,
-201,Präposition,vo,von,Alltag,richtig,,,
-202,Konjunktion,wann,wenn; als,Alltag,richtig,,,
-203,Konjunktion,oda,oder,Alltag,richtig,,,
-204,Adverb,oiwei,immer; die ganze Zeit,Alltag,richtig,,,
-205,Adverb,amoi,einmal; mal,Alltag,richtig,,,
-206,Adverb,zerscht,zuerst,Alltag,richtig,,,
-207,Adverb,nocha,nachher; danach,Alltag,richtig,,,
-208,Adverb,vuahin,vorhin,Alltag,richtig,,,
-209,Adverb,heia,heuer; in diesem Jahr,Alltag,richtig,,,
-210,Adverb,fert,letztes Jahr,Alltag,richtig,,,
-211,Adverb,vurgestan,vorgestern,Alltag,richtig,,,
-212,Adverb,iwamoagn,übermorgen,Alltag,richtig,,,
-213,Adverb,in da Fruah,am Morgen; morgens,Alltag,richtig,,,
-214,Adverb,auf d'Nocht,am Abend; abends,Alltag,richtig,,,
-215,Adverb,untertogs,tagsüber,Alltag,richtig,,,
-216,Adverb,iwaroi,überall,Alltag,richtig,,,
-217,Adverb,nindascht,nirgends,Alltag,richtig,,,
-218,Adverb,wohi,wohin,Unterwegs,richtig,,,
-219,Adverb,wohea,woher (weststeirisch auch: wouhea),Unterwegs,richtig,,,
-220,Adverb,umi,hinüber,Unterwegs,richtig,,,
-221,Adverb,zuwi,hin; heran (zu etwas hin),Unterwegs,richtig,,,
-222,Adverb,eina,herein,Unterwegs,richtig,,,
-223,Adverb,aussa,heraus,Unterwegs,richtig,,,
-224,Adverb,auffa,herauf,Unterwegs,richtig,,,
-225,Adverb,owa,herunter; aber,Unterwegs,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: herunter (auch: aber))",
-226,Adverb,fiari,nach vorne; hervor,Unterwegs,richtig,,,
-227,Adverb,hintri,nach hinten,Unterwegs,richtig,,,
-228,Adverb,zruck,zurück,Unterwegs,richtig,,,
-229,Adverb,drent,drüben,Unterwegs,richtig,,,
-230,Adverb,obm,oben,Unterwegs,richtig,,,
-231,Adverb,untn,unten,Unterwegs,richtig,,,
-232,Adverb,gschwind,schnell; rasch,Alltag,richtig,,,
-233,Adverb,pomali,langsam; gemächlich (aus dem Slawischen),Alltag,richtig,,,
-234,Nomen,Ahnl,die Großmutter (ländlich),Familie,richtig,,,
-235,Nomen,Ähnl,der Großvater (ländlich),Familie,richtig,,,
-236,Nomen,Godl,die Taufpatin; die Firmpatin,Familie,richtig,,,
-237,Nomen,Gschrapp,das kleine Kind (salopp),Familie,richtig,,,
-238,Nomen,Fratz,das (freche) Kind,Familie,richtig,,,
-239,Nomen,Diandl,das Mädchen; die Freundin,Familie,richtig,,,
-240,Nomen,Gspusi,die Liebschaft; der/die Geliebte,Freunde,richtig,,,
-241,Nomen,Lackl,"der große, grobe Kerl",Freunde,richtig,,,
-242,Nomen,Tschopperl,das Dummerchen; der unbeholfene Mensch,Freunde,richtig,,,
-243,Nomen,Zniachtl,"der schmächtige, kleine Mensch",Alltag,richtig,,,
-244,Nomen,Gfrast,der Nichtsnutz; das freche Kind (derb),derb,richtig,,,
-245,Nomen,Bankert,das freche Kind; der Fratz (derb),derb,richtig,,,
-246,Nomen,Blunzn,die Blutwurst,Essen,richtig,,,
-247,Nomen,Grammeln,die Grieben,Essen,richtig,,,
-248,Nomen,Verhackerts,der steirische Speckaufstrich,Essen,richtig,,,
-249,Nomen,Klachlsuppn,die Klachlsuppe (steirische Suppe vom Schweinshaxl),Essen,richtig,,,
-250,Nomen,Wurzelfleisch,das Wurzelfleisch (gekochtes Schweinefleisch mit Wurzelgemüse),Essen,richtig,,,
-251,Nomen,Heidn,der Buchweizen,Essen,richtig,,,
-252,Nomen,Heidnsterz,der Buchweizensterz,Essen,richtig,,,
-253,Nomen,Türkn,der Mais (steirisch/kärntnerisch),Essen,falsch,,,
-254,Nomen,Plutzer,der Kürbis,Essen,korrigiert,Kopf,,
-255,Nomen,Kraut,der Weißkohl,Essen,richtig,,,
-256,Nomen,Kelch,der Wirsing,Essen,falsch,,,
-257,Nomen,Vogerlsalat,der Feldsalat,Essen,richtig,,,
-258,Nomen,Häuptlsalat,der Kopfsalat,Essen,richtig,,,
-259,Nomen,Knofl,der Knoblauch,Essen,richtig,,,
-260,Nomen,Zwiefl,die Zwiebel,Essen,richtig,,,
-261,Nomen,Zwetschkn,die Pflaumen; die Zwetschgen,Essen,richtig,,,
-262,Nomen,Ringlottn,die Renekloden,Essen,richtig,,,
-263,Nomen,Weichsln,die Sauerkirschen,Essen,richtig,,,
-264,Nomen,Schwarzbeer,die Heidelbeeren,Essen,richtig,,,
-265,Nomen,Kletzn,die Dörrbirnen,Essen,richtig,,,
-266,Nomen,Kletznbrot,das Früchtebrot mit Dörrbirnen,Essen,richtig,,,
-267,Nomen,Maroni,die Esskastanien,Essen,richtig,,,
-268,Nomen,Germ,die Hefe,Essen,richtig,,,
-269,Nomen,Brösl,die Semmelbrösel; das Paniermehl,Essen,richtig,,,
-270,Nomen,Nockerl,die Nocken; die Spätzle,Essen,richtig,,,
-271,Nomen,Palatschinkn,der Pfannkuchen; die Crêpe,Essen,richtig,,,
-272,Nomen,Schmarrn,der zerrissene Pfannkuchen; (übertragen) der Unsinn,Essen,richtig,,,
-273,Nomen,Krapfn,der Krapfen; der Berliner,Essen,richtig,,,
-274,Nomen,Strauben,die Strauben (steirisches Schmalzgebäck),Essen,richtig,,,
-275,Nomen,Rindsuppn,die Rinderbrühe,Essen,richtig,,,
-276,Nomen,Schmölzi,"die Eierspeise (regional, Obersteiermark)",Essen,falsch,,,
-277,Nomen,Steirerkas,der Steirerkäse (würziger Sauermilchkäse aus dem Ennstal),Essen,richtig,,,
-278,Nomen,Brettljausn,die kalte Platte auf dem Holzbrett,Essen,richtig,,,
-279,Nomen,Bschoadbinkerl,das Päckchen mit Essen zum Mitnehmen (von Fest oder Feier),Essen,falsch,,,
-280,Nomen,Schilcher,der Schilcher (Roséwein aus der Weststeiermark),Essen,richtig,,,
-281,Nomen,Sturm,der Sturm (gärender Traubenmost),Essen,richtig,,,
-282,Nomen,Junker,der Junker (junger steirischer Wein der Saison),Essen,richtig,,,
-283,Nomen,Achterl,"das Achtel (Glas Wein, 0,125 l)",Essen,richtig,,,
-284,Nomen,Krügerl,"das große Glas Bier (0,5 l)",Essen,richtig,,,
-285,Nomen,Seidl,"das kleine Glas Bier (0,3 l)",Essen,richtig,,,
-286,Nomen,Stamperl,das Schnapsglas,Essen,richtig,,,
-287,Nomen,Doppler,die Zwei-Liter-Weinflasche,Essen,richtig,,,
-288,Nomen,Schnops,der Schnaps,Essen,richtig,,,
-289,Nomen,Kracherl,die Limonade,Essen,richtig,,,
-290,Nomen,Tixo,das Klebeband,Alltag,richtig,,,
-291,Nomen,Mistkübl,der Mülleimer,Alltag,richtig,,,
-292,Nomen,Kübl,der Eimer,Alltag,richtig,,,
-293,Nomen,Polsta,das Kissen,Alltag,richtig,,,
-294,Nomen,Tuchent,die Bettdecke; das Federbett,Alltag,richtig,,,
-295,Nomen,Harpfn,das Bett (scherzhaft; eigentl. die Heuharfe),Alltag,richtig,,,
-296,Nomen,Sessl,der Stuhl,Alltag,richtig,,,
-297,Nomen,Stiagn,die Treppe,Alltag,richtig,,,
-298,Nomen,Lavur,das Waschbecken,Alltag,falsch,,,
-299,Nomen,Kredenz,der Küchenschrank; die Anrichte,Alltag,falsch,,,
-300,Nomen,Rauchfang,der Schornstein,Alltag,richtig,,,
-301,Nomen,Keuschn,das kleine (Bauern-)Häuschen,Alltag,richtig,,,
-302,Nomen,Platzerl,das Plätzchen; der gemütliche Ort,Alltag,richtig,,,
-303,Nomen,Fetzn,der Lappen; der Rausch,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: der Lappen; (auch) der Rausch)",
-304,Nomen,Tschick,die Zigarette,Alltag,richtig,,,
-305,Nomen,Pfoad,das Hemd,Alltag,richtig,,,
-306,Nomen,Joppn,die Jacke (Trachtenjacke),Alltag,falsch,,,
-307,Nomen,Kittl,der Rock,Alltag,richtig,,,
-308,Nomen,Gilet,die Weste,Alltag,richtig,,,
-309,Nomen,Spotzn,der Muskelkater,Alltag,richtig,,,
-310,Nomen,Wadl,die Wade,Alltag,richtig,,,
-311,Nomen,Pratzn,die (große) Hand; die Pranke,Alltag,richtig,,,
-312,Nomen,Ranzn,der dicke Bauch,Alltag,richtig,,,
-313,Nomen,Goschn,der Mund; das Maul (derb),derb,richtig,,,
-314,Nomen,Kopfwea,die Kopfschmerzen,Alltag,richtig,,,
-315,Nomen,Watschn,die Ohrfeige,Alltag,richtig,,,
-316,Nomen,Fipperl,der leichte Klaps; die leichte Ohrfeige,Alltag,falsch,,,
-317,Nomen,Dachtl,die Kopfnuss; der Klaps,Alltag,richtig,,,
-318,Nomen,Maugaza,der Seufzer,Alltag,richtig,,,
-319,Nomen,Juchaza,der Jauchzer; der Freudenschrei,Freunde,richtig,,,
-320,Nomen,Hetz,der Spaß (steirisch auch: Hez),Freunde,richtig,,,
-321,Nomen,Dusl,das (unverdiente) Glück; der leichte Rausch,Freunde,richtig,,,
-322,Nomen,Bummerl,das verlorene Spiel (beim Kartenspiel),Freunde,richtig,,,
-323,Nomen,Schnapsn,das Schnapsen (Kartenspiel),Freunde,richtig,,,
-324,Nomen,Spompanadln,die Umstände; die Faxen,Alltag,richtig,,,
-325,Nomen,Gschisti-Gschasti,das Getue; das Theater,Alltag,richtig,,,
-326,Nomen,Wickl,der Ärger; die Schwierigkeiten,Alltag,richtig,,,
-327,Nomen,Gfrett,die Plage; die Mühsal,Arbeit,richtig,,,
-328,Nomen,Pfusch,die Schwarzarbeit; die schlampige Arbeit,Arbeit,richtig,,,
-329,Nomen,Lehrbua,der Lehrling,Arbeit,richtig,,,
-330,Nomen,Rauchfangkehrer,der Schornsteinfeger,Arbeit,richtig,,,
-331,Nomen,Krankenstand,die Krankschreibung,Arbeit,richtig,,,
-332,Nomen,Matura,das Abitur,Arbeit,richtig,,,
-333,Nomen,Somsta,der Samstag,Arbeit,richtig,,,
-334,Nomen,Sunnta,der Sonntag,Arbeit,richtig,,,
-335,Nomen,Freita,der Freitag,Arbeit,richtig,,,
-336,Nomen,Gschäft,das Geschäft; der Laden,Einkaufen,richtig,,,
-337,Nomen,Trinkgöd,das Trinkgeld,Einkaufen,richtig,,,
-338,Nomen,Marie,das Geld (salopp),Einkaufen,richtig,,,
-339,Nomen,Okazion,das Schnäppchen; die Gelegenheit,Einkaufen,falsch,,,
-340,Nomen,Schas,der Furz; der Unsinn (derb),derb,richtig,,,
-341,Nomen,Gehsteig,der Bürgersteig,Unterwegs,richtig,,,
-342,Nomen,Gelsn,die Stechmücke,Natur,richtig,,,
-343,Nomen,Wepsn,die Wespe,Natur,richtig,,,
-344,Nomen,Muckn,die Fliege,Natur,richtig,,,
-345,Nomen,Oadaxl,die Eidechse,Natur,richtig,,,
-346,Nomen,Krot,die Kröte,Natur,richtig,,,
-347,Nomen,Henn,die Henne; das Huhn,Natur,richtig,,,
-348,Nomen,Goaß,die Ziege,Natur,richtig,,,
-349,Nomen,Fackl,das Ferkel; das Schwein,Natur,richtig,,,
-350,Nomen,Viech,das Tier,Natur,richtig,,,
-351,Nomen,Rouß,das Pferd (Oststeiermark),Natur,richtig,,,
-352,Nomen,Kotz,die Katze,Natur,richtig,,,
-353,Nomen,Hos,der Hase,Natur,richtig,,,
-354,Nomen,Tschurtschn,der Tannenzapfen; der Fichtenzapfen,Natur,falsch,,,
-355,Nomen,Holler,der Holunder,Natur,richtig,,,
-356,Nomen,Hetschepetsch,die Hagebutte,Natur,richtig,,,
-357,Nomen,Kogl,der kegelförmige Berg; der runde Gipfel,Natur,richtig,,,
-358,Nomen,Leitn,der Berghang; der Abhang,Natur,richtig,,,
-359,Nomen,Olm,die Alm,Natur,richtig,,,
-360,Nomen,Hittn,die Hütte,Natur,richtig,,,
-361,Nomen,Bründl,die Quelle,Natur,richtig,,,
-362,Nomen,Gstettn,das Brachland; das verwilderte Grundstück,Natur,richtig,,,
-363,Nomen,Weingortn,der Weingarten; der Weinberg,Natur,richtig,,,
-364,Nomen,Klapotetz,das hölzerne Windrad im Weingarten (Vogelscheuche; aus dem Slowenischen),Natur,falsch,,,
-365,Nomen,Kellerstöckl,das kleine Presshaus mit Keller im Weingarten,Natur,richtig,,,
-366,Nomen,Gatsch,der Matsch; der Schlamm,Wetter,richtig,,,
-367,Nomen,Lackn,die Pfütze,Wetter,richtig,,,
-368,Nomen,Gwitta,das Gewitter,Wetter,richtig,,,
-369,Nomen,Schaua,der Regenschauer,Wetter,richtig,,,
-370,Nomen,Nebl,der Nebel,Wetter,richtig,,,
-371,Nomen,Hogl,der Hagel,Wetter,richtig,,,
-372,Nomen,Summa,der Sommer,Wetter,richtig,,,
-373,Nomen,Winta,der Winter,Wetter,richtig,,,
-374,Nomen,Kirtag,das Kirchweihfest; der Jahrmarkt,Brauchtum,richtig,,,
-375,Nomen,Fosching,der Fasching; der Karneval,Brauchtum,richtig,,,
-376,Nomen,Krampus,der Krampus (Begleiter des Nikolaus),Brauchtum,richtig,,,
-377,Nomen,Christkindl,das Christkind,Brauchtum,richtig,,,
-378,Nomen,Fleischweich,die Speisensegnung zu Ostern,Brauchtum,richtig,,,
-379,Nomen,Weihkorb,der Korb mit den Osterspeisen zur Segnung,Brauchtum,richtig,,,
-380,Nomen,Godnstriezl,der Allerheiligenstriezel (Geschenk der Paten),Brauchtum,richtig,,,
-381,Nomen,Maibam,der Maibaum,Brauchtum,richtig,,,
-382,Nomen,Osterfeia,das Osterfeuer,Brauchtum,richtig,,,
-383,Nomen,Gstanzl,das (Spott-)Lied mit vier Zeilen,Brauchtum,richtig,,,
-384,Nomen,Ziach,die steirische Harmonika,Brauchtum,falsch,,,
-385,Nomen,Lederhosn,die Lederhose,Brauchtum,richtig,,,
-386,Nomen,Stutzn,die Kniestrümpfe (zur Tracht),Brauchtum,richtig,,,
-387,Nomen,Steirergwand,der Steireranzug; die steirische Tracht,Brauchtum,richtig,,,
-388,Verb,losn,zuhören; horchen,Alltag,richtig,,,
-389,Verb,kriagn,bekommen; kriegen,Alltag,richtig,,,
-390,Verb,gneißn,merken; kapieren,Alltag,richtig,,,
-391,Verb,schmeckn,riechen; schmecken,Alltag,richtig,,,
-392,Verb,dischkriern,sich unterhalten; plaudern,Freunde,falsch,,,
-393,Verb,schupfn,werfen; schubsen,Alltag,richtig,,,
-394,Verb,plärrn,laut weinen; schreien,Alltag,richtig,,,
-395,Verb,speibn,sich übergeben,Alltag,richtig,,,
-396,Verb,fladern,stehlen; klauen,Alltag,richtig,,,
-397,Verb,sekkiern,ärgern; quälen; belästigen,Alltag,richtig,,,
-398,Verb,tratzn,necken; foppen,Freunde,richtig,,,
-399,Verb,fuxn,ärgern (es fuxt mi),Alltag,richtig,,,
-400,Verb,motschkern,nörgeln; meckern,Alltag,richtig,,,
-401,Verb,gfrettn,sich abmühen; sich plagen,Arbeit,richtig,,,
-402,Verb,dapockn,schaffen; bewältigen,Arbeit,richtig,,,
-403,Verb,zammramma,aufräumen,Alltag,richtig,,,
-404,Verb,ausrastn,sich ausruhen,Alltag,richtig,,,
-405,Verb,pfnausn,schnaufen; keuchen,Alltag,richtig,,,
-406,Verb,dawischn,erwischen,Alltag,richtig,,,
-407,Verb,daschreckn,erschrecken,Alltag,richtig,,,
-408,Verb,dabarma,leidtun; Mitleid erregen (du dabarmst ma),Alltag,richtig,,,
-409,Verb,aschlan,rückwärts gehen,Unterwegs,falsch,,,
-410,Verb,wischpln,pfeifen,Alltag,falsch,,,
-411,Verb,hupfn,springen; hüpfen,Alltag,richtig,,,
-412,Verb,renna,laufen; rennen,Alltag,richtig,,,
-413,Verb,foahn,fahren,Unterwegs,richtig,,,
-414,Verb,vagehn (si),sich verlaufen,Unterwegs,richtig,,,
-415,Verb,ziagn,ziehen,Alltag,richtig,,,
-416,Verb,tuan,tun; machen,Alltag,richtig,,,
-417,Verb,gebm,geben,Alltag,richtig,,,
-418,Verb,nehma,nehmen,Alltag,richtig,,,
-419,Verb,woartn,warten,Alltag,richtig,,,
-420,Verb,suachn,suchen,Alltag,richtig,,,
-421,Verb,vagessn,vergessen,Alltag,richtig,,,
-422,Verb,auskenna (si),sich auskennen,Alltag,richtig,,,
-423,Verb,glanga,reichen; genügen,Alltag,richtig,,,
-424,Verb,pickn,kleben; picken,Alltag,richtig,,,
-425,Verb,zwickn,kneifen; zwicken,Alltag,richtig,,,
-426,Verb,essn,essen,Essen,richtig,,,
-427,Verb,trinkn,trinken,Essen,richtig,,,
-428,Verb,kocha,kochen,Essen,richtig,,,
-429,Verb,jausnen,eine Zwischenmahlzeit essen; Brotzeit machen,Essen,richtig,,,
-430,Verb,tschechern,(viel Alkohol) trinken; saufen,Freunde,richtig,,,
-431,Verb,hoazn,heizen,Wetter,richtig,,,
-432,Verb,gfrian,frieren,Wetter,richtig,,,
-433,Adjektiv,harb,böse; verärgert; beleidigt,Alltag,richtig,,,
-434,Adjektiv,fuchtig,wütend,Alltag,falsch,,,
-435,Adjektiv,angfressn,verärgert; genervt,Alltag,richtig,,,
-436,Adjektiv,zwida,zuwider; unangenehm; mürrisch,Alltag,richtig,,,
-437,Adjektiv,fad,langweilig,Alltag,richtig,,,
-438,Adjektiv,letschad,schlaff; fade; kraftlos,Alltag,richtig,,,
-439,Adjektiv,gach,jäh; plötzlich; steil,Alltag,richtig,,,
-440,Adjektiv,schöch,schief,Alltag,falsch,,,
-441,Adjektiv,resch,knusprig; resolut,Essen,richtig,,,
-442,Adjektiv,hantig,bitter; herb; grob,Essen,richtig,,,
-443,Adjektiv,gschamig,schüchtern,Alltag,richtig,,,
-444,Adjektiv,gspassig,lustig; komisch,Freunde,richtig,,,
-445,Adjektiv,damisch,benommen; schwindlig; dumm,Alltag,richtig,,,
-446,Adjektiv,bamstig,"taub; pelzig (Gefühl, z. B. Zunge)",Alltag,falsch,,,
-447,Adjektiv,hin,kaputt; tot,Alltag,richtig,,,
-448,Adjektiv,stier,pleite; ohne Geld,Einkaufen,richtig,,,
-449,Adjektiv,zaundürr,spindeldürr,Alltag,richtig,,,
-450,Adjektiv,pumperlgsund,kerngesund,Alltag,richtig,,,
-451,Adjektiv,liab,lieb; nett; niedlich,Freunde,richtig,,,
-452,Adjektiv,bsoffn,betrunken,Freunde,richtig,,,
-453,Adjektiv,bled,blöd; dumm,Alltag,richtig,,,
-454,Adjektiv,gschert,grob; ungehobelt (abwertend),derb,richtig,,,
-455,Adjektiv,broat,breit; (salopp) betrunken,Alltag,richtig,,,
-456,Adjektiv,stoaroid,steinalt,Alltag,richtig,,,
-457,Adjektiv,woach,weich,Alltag,richtig,,,
-458,Adjektiv,foisch,falsch,Alltag,richtig,,,
-459,Adjektiv,vakeht,verkehrt; falsch herum,Alltag,richtig,,,
-460,Adjektiv,sauba,sauber; toll,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: sauber; (auch) toll)",
-461,Adjektiv,voi,voll; satt; (salopp) betrunken,Essen,richtig,,,
-462,Adjektiv,noss,nass,Wetter,richtig,,,
-463,Adjektiv,trucka,trocken,Wetter,richtig,,,
-464,Adjektiv,dumpa,dämmrig; dunkel (werdend),Wetter,richtig,,,
-465,Nomen,Poscha,der Schaden; der Spleen (an Poscha hobn = verrückt sein),Freunde,richtig,,,
-466,Nomen,Wappler,der Idiot; der Trottel (derb),derb,richtig,,,
-467,Nomen,Trottl,der Trottel,derb,richtig,,,
-468,Nomen,Heisl,der Idiot; der unsympathische Typ (derb; eigentl. die Toilette),derb,richtig,,,
-469,Nomen,Klump,"der Plunder; das kaputte, minderwertige Zeug",Alltag,richtig,,,
-470,Nomen,Graffl,das Gerümpel; der Kram,Alltag,richtig,,,
-471,Nomen,Gschiss,das Getue; der unnötige Aufwand,Alltag,richtig,,,
-472,Nomen,Bahö,"das Theater; der Lärm; die Aufregung (ugs., ostösterreichisch)",Alltag,richtig,,,
-473,Adjektiv,angrennt,verrückt; nicht ganz bei Trost (wörtl.: angerannt),Freunde,richtig,,,
-474,Verb,durchdrahn,durchdrehen; die Nerven verlieren,Alltag,richtig,,,
-475,Verb,is,ist,Alltag,richtig,,Beispiel: Wos is los? = Was ist los?,
-476,Verb,is'n,ist denn,Alltag,richtig,,Beispiel: Wos is'n des für a Gschiss? = Was ist das für ein unnötiges Getue?,
-477,Verb,hob,habe (ich),Alltag,richtig,,Beispiel: I hob ka Zeit. = Ich habe keine Zeit.,
-478,Verb,hob's,habe es,Alltag,richtig,,Beispiel: I hob's vagessn. = Ich habe es vergessen.,
-479,Verb,host,hast (du),Alltag,richtig,,Beispiel: Wia vü Kinda host? = Wie viele Kinder hast du?,
-480,Verb,host'n,hast du denn,Alltag,richtig,,Beispiel: Wos host'n? = Was hast du denn?,
-481,Verb,hot,hat,Alltag,richtig,,Beispiel: Der hot an Fetzn. = Der ist betrunken.,
-482,Verb,hamma,haben wir,Alltag,richtig,,Beispiel: Des hamma imma scho so gmocht. = Das haben wir immer schon so gemacht.,
-483,Verb,Haum's,haben Sie,Einkaufen,richtig,,Beispiel: Haum's an Erdäpfl? = Haben Sie auch Kartoffeln?,
-484,Verb,ghobt,gehabt,Alltag,richtig,,Beispiel: Host an Dusl ghobt! = Da hast du Glück gehabt!,
-485,Verb,samma,sind wir,Alltag,richtig,,Beispiel: Wo samma denn? = Wo sind wir denn? (Ausdruck der Empörung: Was soll das?),
-486,Verb,wor,war,Alltag,richtig,,Beispiel: Des wor a Gaudi! = Das war ein Spaß!,
-487,Verb,wa's,war es; war's,Alltag,richtig,,Beispiel: Des wa's. = Das war's.,
-488,Verb,woan,geworden,Alltag,richtig,,Beispiel: Der Kloane is scho groß woan. = Der Kleine ist schon groß geworden.,
-489,Verb,werd,wird,Alltag,richtig,,Beispiel: Es werd dumpa. = Es wird dunkel.,
-490,Verb,moch,mache; mach (Befehl); machen (in: moch ma = machen wir),Alltag,richtig,,Beispiel: Deis moch ma glei. = Das machen wir gleich.,
-491,Verb,mochst,machst (du),Alltag,richtig,,Beispiel: Wos mochst denn so? = Was machst du denn so?,
-492,Verb,mocht,macht,Alltag,richtig,,Beispiel: Des mocht nix. = Das macht nichts.,
-493,Verb,gmocht,gemacht,Alltag,richtig,,Beispiel: Des hamma imma scho so gmocht. = Das haben wir immer schon so gemacht.,
-494,Verb,tuast,tust (du); machst (du),Alltag,richtig,,Beispiel: Wos tuast heit auf d'Nocht? = Was machst du heute Abend?,
-495,Verb,tua,tu (Befehl); tue (ich),Alltag,richtig,,Beispiel: Jetzt tua ned so deppat. = Stell dich nicht so blöd an.,
-496,Verb,kummt,kommt,Alltag,richtig,,Beispiel: Moagn kummt d'Sunn. = Morgen kommt die Sonne.,
-497,Verb,kummts,kommt (ihr),Alltag,richtig,,"Beispiel: Pfiat Gott, kummts guat ham! = Auf Wiedersehen, kommt gut nach Hause!",
-498,Verb,kumm,komm (Befehl); komme (ich),Alltag,richtig,,"Beispiel: Kumm, jausn ma! = Komm, machen wir Brotzeit!",
-499,Verb,kummst,kommst (du),Alltag,richtig,,Beispiel: Kummst mit? = Kommst du mit?,
-500,Verb,muass,muss,Alltag,richtig,,Beispiel: I muass hackln. = Ich muss arbeiten.,
-501,Verb,muasst,musst (du),Alltag,richtig,,Beispiel: Do muasst owi und dann links. = Da musst du hinunter und dann links.,
-502,Verb,kau,kann (ich),Alltag,richtig,,Beispiel: Kau i mit Kortn zoin? = Kann ich mit Karte zahlen?,
-503,Verb,kaunst,kannst (du),Alltag,richtig,,Beispiel: Kaunst ma helfen? = Kannst du mir helfen?,
-504,Verb,wüst,willst (du),Alltag,richtig,,Beispiel: Wos wüst? = Was willst du?,
-505,Verb,woaß,weiß (ich),Alltag,richtig,,Beispiel: I woaß ned. = Ich weiß nicht.,
-506,Verb,segn,sehen,Alltag,richtig,,Beispiel: Mia segn uns. = Wir sehen uns.,
-507,Verb,gsehn,gesehen,Alltag,richtig,,Beispiel: Lang ned gsehn! = Lange nicht gesehen!,
-508,Verb,siecht,sieht,Alltag,richtig,,"Beispiel: Heit is a Nebl, ma siecht nix. = Heute ist Nebel, man sieht nichts.",
-509,Verb,schaust'n,schaust du denn,Alltag,richtig,,Beispiel: Wos schaust'n so deppat aus da Wäsch? = Warum schaust du so blöd aus der Wäsche?,
-510,Verb,sogst,sagst (du),Alltag,richtig,,Beispiel: Wos sogst? = Was sagst du? (Wie bitte? / Echt?),
-511,Verb,brauchn,brauchen,Einkaufen,richtig,,Beispiel: Brauchn S' a Sackerl? = Brauchen Sie eine Tüte?,
-512,Verb,kost,kostet,Einkaufen,richtig,,Beispiel: Wos kost des? = Was kostet das?,
-513,Verb,foahr,fahre (ich),Unterwegs,richtig,,Beispiel: I foahr mi'm Radl. = Ich fahre mit dem Fahrrad.,
-514,Verb,foahrst,fährst (du),Unterwegs,richtig,,Beispiel: Foahrst mi ham? = Fährst du mich nach Hause?,
-515,Verb,foahrt,fährt,Unterwegs,richtig,,Beispiel: Wann foahrt de nächste Bim? = Wann fährt die nächste Straßenbahn?,
-516,Verb,wort,warte (Befehl); warten,Alltag,richtig,,Beispiel: Wort a bissl! = Warte ein bisschen!; Achtung: nicht 'das Wort',
-517,Verb,loss,lass (Befehl); lassen,Alltag,richtig,,Beispiel: Loss mi in Ruah. = Lass mich in Ruhe.,
-518,Verb,los,"hör (Befehl, von losn = zuhören)",Alltag,richtig,,Beispiel: Wos is los? = Was ist los?; Achtung: auch hochdeutsch 'los' (Wos is los?),
-519,Verb,heat,hört,Alltag,richtig,,Beispiel: Deis Gschropp heat ned auf zum Plärrn. = Das Kind hört nicht auf zu weinen.; heat auf = hört auf,
-520,Verb,ruaf,ruf (Befehl); rufen,Alltag,richtig,,Beispiel: Ruaf mi an! = Ruf mich an!,
-521,Verb,tratz,"neck (Befehl, von tratzn = necken)",Freunde,richtig,,Beispiel: Tratz mi ned! = Necke mich nicht!,
-522,Verb,hupf,hüpf; spring (Befehl),Unterwegs,richtig,,Beispiel: Hupf eini! = Steig ein!; Hupf eini = Steig ein,
-523,Verb,gfrei,freue (ich mich),Alltag,richtig,,Beispiel: I gfrei mi scho drauf. = Ich freue mich schon darauf.,
-524,Verb,gfreit's,freut es; freut's,Alltag,richtig,,Beispiel: Mi gfreit's. = Das freut mich.; Mi gfreit's = Das freut mich,
-525,Verb,gfriat's,friert es,Wetter,richtig,,Beispiel: Mi gfriat's. = Mir ist kalt. / Ich friere.; Mi gfriat's = Mir ist kalt,
-526,Verb,schneibt,schneit,Wetter,richtig,,Beispiel: Es schneibt. = Es schneit.,
-527,Verb,schifft,regnet stark,Wetter,falsch,,"Beispiel: Es schifft. = Es regnet stark.; umgangssprachlich, eher derb?",
-528,Verb,dabarmst,tust (mir) leid (von dabarmen),Freunde,richtig,,Beispiel: Du dabarmst ma. = Du tust mir leid.,
-529,Verb,fuxt,ärgert,Alltag,richtig,,Beispiel: Des fuxt mi. = Das ärgert mich.; Form von fuxn,
-530,Verb,erledign,erledigen,Arbeit,richtig,,Beispiel: I muass no wos erledign. = Ich muss noch etwas erledigen.,
-531,Verb,passn,passen; funktionieren,Alltag,richtig,,Beispiel: Wird scho passn. = Wird schon funktionieren.,
-532,Verb,vagangen,verlaufen (sich); vergangen,Unterwegs,richtig,,Beispiel: I hob mi vagangen. = Ich habe mich verlaufen.; I hob mi vagangen = Ich habe mich verlaufen,
-534,Pronomen,mi,mich,Alltag,richtig,,Beispiel: Mi gfreit's. = Das freut mich.,
-535,Pronomen,di,dich,Alltag,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?",
-536,Pronomen,da,dir; der (Artikel),Alltag,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?; wia geht's da = wie geht es dir; da Bahnhof = der Bahnhof",
-537,Pronomen,si,sich,Alltag,richtig,,Beispiel: Des geht si ned aus. = Das geht sich nicht aus. (Das reicht nicht / klappt zeitlich nicht),
-538,Pronomen,S',Sie (Höflichkeitsform),Alltag,richtig,,Beispiel: Brauchn S' a Sackerl? = Brauchen Sie eine Tüte?,
-539,Pronomen,deis,das; dies,Alltag,richtig,,Beispiel: Deis is ma wurscht. = Das ist mir egal.; wie des,
-540,Pronomen,olles,alles,Alltag,richtig,,Beispiel: Drauß is olles a Gatsch. = Draußen ist alles matschig.,
-541,Artikel,an,einen; ein,Alltag,richtig,,Beispiel: Haum's an Erdäpfl? = Haben Sie auch Kartoffeln?; Achtung: auch hochdeutsch 'an',
-542,Artikel,de,die; den,Alltag,richtig,,Beispiel: I hob Spotzn in de Wadln. = Ich habe Muskelkater in den Waden.; in de Wadln = in den Waden,
-543,Artikel,ka,kein; keine,Alltag,richtig,,Beispiel: I hob ka Zeit. = Ich habe keine Zeit.,
-544,Artikel,kan,keinen,Alltag,richtig,,Beispiel: Red kan Bledsinn. = Red keinen Blödsinn.,
-545,Artikel,kane,keine,Alltag,richtig,,Beispiel: Moch kane Gschichtn! = Mach keine Geschichten! (Mach keinen Unsinn / keine Umstände),
-546,Präposition,mi'm,mit dem,Unterwegs,richtig,,Beispiel: I foahr mi'm Radl. = Ich fahre mit dem Fahrrad.,
-547,Präposition,auf'n,auf den,Unterwegs,richtig,,Beispiel: Wia kumm i auf'n Schöckl? = Wie komme ich auf den Schöckl? (Grazer Hausberg),
-548,Partikel,no,noch,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,
-549,Adverb,waun,wann,Alltag,richtig,,Beispiel: Waun is Feierobnd? = Wann ist Feierabend?,
-550,Adverb,ham,heim; nach Hause,Alltag,richtig,,"Beispiel: Pfiat Gott, kummts guat ham! = Auf Wiedersehen, kommt gut nach Hause!",
-551,Adverb,beinand,zusammen; beieinander,Freunde,richtig,,Beispiel: Servas beinand! = Hallo zusammen!,
-552,Adverb,zom,zusammen,Familie,richtig,,Beispiel: Am Sunnta kummt de gonze Familie zom. = Am Sonntag kommt die ganze Familie zusammen.,
-553,Adverb,drauß,draußen,Wetter,richtig,,Beispiel: Drauß is olles a Gatsch. = Draußen ist alles matschig.,
-554,Adverb,nieda,nieder; hinunter,Alltag,richtig,,Beispiel: Do legst di nieda! = Da legst du dich nieder! (Ausruf des Staunens),
-555,Adverb,zua,zu; geschlossen,Alltag,richtig,,"Beispiel: Heast, los amoi zua! = Hör mal, hör mal zu!; los amoi zua = hör mal zu",
-556,Adverb,gnua,genug,Alltag,richtig,,"Beispiel: Hearst, hiaz is gnua! = Hör mal, jetzt reicht es!",
-557,Adverb,bissl,bisschen,Alltag,richtig,,Beispiel: Wort a bissl! = Warte ein bisschen!; a bissl = ein bisschen,
-558,Adverb,voll,total; sehr (umgangssprachlich),Alltag,falsch,,Beispiel: I bin voll angfressn. = Ich bin total genervt.,
-559,Interjektion,griaß,"grüß (in: Griaß di, Griaß Gott)",Begrüßung,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?",
-560,Interjektion,pfiat,"behüt (in: Pfiat di, Pfiat Gott = tschüss)",Begrüßung,richtig,,"Beispiel: Pfiat di, bis moagn! = Tschüss, bis morgen!",
-561,Adjektiv,schen,schön,Alltag,richtig,,"Beispiel: Schen, dass d' do bist. = Schön, dass du da bist.",
-562,Adjektiv,schene,schöne,Alltag,richtig,,Beispiel: Schene Griaß daham! = Schöne Grüße zu Hause!,
-563,Adjektiv,schenen,schönen,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,
-564,Adjektiv,guate,gute,Alltag,richtig,,Beispiel: Guate Nocht! = Gute Nacht!,
-565,Adjektiv,guats,gutes,Alltag,richtig,,Beispiel: Guats Neichs! = Gutes neues Jahr!,
-566,Adjektiv,gonze,ganze,Alltag,richtig,,Beispiel: Am Sunnta kummt de gonze Familie zom. = Am Sonntag kommt die ganze Familie zusammen.,
-567,Adjektiv,kloar,klar,Alltag,richtig,,Beispiel: Is eh kloar. = Das ist doch klar.,
-568,Adjektiv,sicha,sicher,Alltag,richtig,,Beispiel: Owa sicha! = Aber sicher!,
-569,Adjektiv,zache,zähe; mühsame,Alltag,richtig,,Beispiel: Des is a zache Gschicht. = Das ist eine mühsame Angelegenheit.; a zache Gschicht = eine mühsame Angelegenheit,
-570,Adjektiv,glott,glatt,Wetter,richtig,,"Beispiel: Pass auf, es is glott! = Pass auf, es ist glatt!",
-571,Adjektiv,echts,echtes,Essen,richtig,,Beispiel: Hom S' a echts steirisches Kernöl? = Haben Sie echtes steirisches Kürbiskernöl?,
-572,Adjektiv,hundsmiad,hundemüde,Alltag,richtig,,Beispiel: I bin hundsmiad. = Ich bin hundemüde.,
-573,Adjektiv,oglahnt,angelehnt,Alltag,richtig,,Beispiel: Loss mi oglahnt. = Lass mich in Ruhe. (wörtl.: Lass mich angelehnt); Loss mi oglahnt = Lass mich in Ruhe,
-574,Nomen,Tog,der Tag,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,
-575,Nomen,Nocht,die Nacht,Alltag,richtig,,Beispiel: Guate Nocht! = Gute Nacht!; auf d'Nocht = am Abend,
-576,Nomen,Sauwetta,das Mistwetter; das schlechte Wetter,Wetter,richtig,,Beispiel: Heit is a Sauwetta. = Heute ist ein Mistwetter.,
-577,Nomen,Hunga,der Hunger,Essen,richtig,,Beispiel: I hob an Hunga. = Ich habe Hunger.,
-578,Nomen,Kinda,die Kinder,Familie,richtig,,Beispiel: Wia vü Kinda host? = Wie viele Kinder hast du?,
-579,Nomen,Kloane,der/die Kleine (Kind),Familie,richtig,,Beispiel: Der Kloane is scho groß woan. = Der Kleine ist schon groß geworden.,
-580,Nomen,Gschropp,das (kleine) Kind; der Fratz,Familie,falsch,,Beispiel: Deis Gschropp heat ned auf zum Plärrn. = Das Kind hört nicht auf zu weinen.; eher abwertend?,
-581,Nomen,Kortn,die Karte,Einkaufen,richtig,,Beispiel: Kau i mit Kortn zoin? = Kann ich mit Karte zahlen?,
-582,Nomen,Viertl,das Viertel,Einkaufen,richtig,,Beispiel: Gebm S' ma a Viertl Kilo Topfn. = Geben Sie mir ein Viertelkilo Quark.; a Viertl Kilo = ein Viertelkilo,
-583,Nomen,Stickl,das Stück; das Stückchen,Essen,richtig,,Beispiel: Nimm da no a Stickl! = Nimm dir noch ein Stück!,
-584,Nomen,Haufn,der Haufen,Alltag,richtig,,Beispiel: I hob an Haufn Oarbeit. = Ich habe einen Haufen Arbeit.,
-585,Nomen,Oarbeit,die Arbeit,Arbeit,richtig,,Beispiel: I hob an Haufn Oarbeit. = Ich habe einen Haufen Arbeit.,
-586,Nomen,Gfoin,der Gefallen,Alltag,richtig,,Beispiel: Kannst ma an Gfoin tuan? = Kannst du mir einen Gefallen tun?,
-587,Nomen,Wadln,die Waden,Alltag,richtig,,Beispiel: I hob Spotzn in de Wadln. = Ich habe Muskelkater in den Waden.,
-588,Nomen,Ruah,die Ruhe,Alltag,richtig,,Beispiel: Loss mi in Ruah. = Lass mich in Ruhe.,
-589,Nomen,Weihnochtn,Weihnachten,Brauchtum,richtig,,Beispiel: Frohe Weihnochtn! = Frohe Weihnachten!,
-590,Nomen,Huat,der Hut,Alltag,richtig,,Beispiel: Dem brennt jo komplett da Huat. = Der ist völlig außer sich / durch den Wind.; Dem brennt da Huat = Der ist außer sich,
-591,Nomen,Wäsch,die Wäsche,Alltag,richtig,,Beispiel: Wos schaust'n so deppat aus da Wäsch? = Warum schaust du so blöd aus der Wäsche?,
-592,Nomen,Vormittog,der Vormittag,Alltag,richtig,,,
-593,Nomen,Nachmittog,der Nachmittag,Alltag,richtig,,,
+1,Interjektion,Servus,hallo; tschüss,Begrüßung,richtig,,,Kollege
+2,Interjektion,Pfiat di,tschüss (zu einer Person),Begrüßung,richtig,,,Kollege
+3,Interjektion,Pfiat eich,tschüss (zu mehreren),Begrüßung,richtig,,,Kollege
+4,Interjektion,Baba,tschüss,Begrüßung,richtig,,,Kollege
+5,Interjektion,Griaß di,grüß dich; hallo,Begrüßung,richtig,,,Kollege
+6,Interjektion,Griaß eich,grüßt euch; hallo (zu mehreren),Begrüßung,richtig,,,Kollege
+7,Interjektion,Heast,hör mal; hey,Alltag,richtig,,,Kollege
+8,Interjektion,Geh,ach komm; na los,Alltag,richtig,,,Kollege
+9,Interjektion,Jessas,ach du meine Güte,Alltag,richtig,,,Kollege
+10,Interjektion,Passt,in Ordnung; passt,Alltag,richtig,,,Kollege
+11,Interjektion,Gö,nicht wahr; gell,Alltag,richtig,,,Kollege
+12,Interjektion,Oida,Alter (Anrede unter Freunden),Freunde,richtig,,,Kollege
+13,Partikel,jo,ja,Alltag,richtig,,,Kollege
+14,Partikel,na,nein,Alltag,richtig,,,Kollege
+15,Partikel,ned,nicht,Alltag,richtig,,,Kollege
+16,Partikel,eh,ohnehin; sowieso,Alltag,richtig,,,Kollege
+17,Partikel,scho,schon,Alltag,richtig,,,Kollege
+18,Partikel,hoit,halt; eben,Alltag,richtig,,,Kollege
+19,Partikel,oiso,also,Alltag,richtig,,,Kollege
+20,Pronomen,i,ich,Alltag,richtig,,,Kollege
+21,Pronomen,mia,wir; mir,Alltag,richtig,,,Kollege
+22,Pronomen,es,ihr; es,Alltag,richtig,,"Bedeutung 'es' am 12.10. ergänzt, abgeleitet aus geprüften Phrasen (Es schifft., Es schneibt., Es werd dumpa. u. a.)",Kollege
+23,Pronomen,eich,euch,Alltag,richtig,,,Kollege
+24,Pronomen,nix,nichts,Alltag,richtig,,,Kollege
+25,Pronomen,wos,was,Alltag,richtig,,,Kollege
+26,Adverb,wia,wie,Alltag,richtig,,,Kollege
+27,Adverb,hiaz,jetzt,Alltag,richtig,,,Kollege
+28,Adverb,heit,heute,Alltag,richtig,,,Kollege
+29,Adverb,moagn,morgen,Alltag,richtig,,,Kollege
+30,Adverb,gestan,gestern,Alltag,richtig,,,Kollege
+31,Adverb,glei,gleich; sofort,Alltag,richtig,,,Kollege
+32,Adverb,imma,immer,Alltag,richtig,,,Kollege
+33,Adverb,a bissl,ein bisschen,Alltag,richtig,,,Kollege
+34,Adverb,vü,viel,Alltag,richtig,,,Kollege
+35,Adverb,weng,wenig,Alltag,richtig,,,Kollege
+36,Adverb,do,da; hier,Alltag,richtig,,,Kollege
+37,Adverb,daham,zu Hause,Alltag,richtig,,,Kollege
+38,Adverb,auffi,hinauf,Unterwegs,richtig,,,Kollege
+39,Adverb,owi,hinunter,Unterwegs,richtig,,,Kollege
+40,Adverb,eini,hinein,Unterwegs,richtig,,,Kollege
+41,Adverb,aussi,hinaus,Unterwegs,richtig,,,Kollege
+42,Adverb,umadum,herum,Unterwegs,richtig,,,Kollege
+43,Adverb,z'fleiß,absichtlich; zum Trotz,Alltag,richtig,,,Kollege
+44,Nomen,Bua,der Junge,Familie,richtig,,,Kollege
+45,Nomen,Madl,das Mädchen,Familie,richtig,,,Kollege
+46,Nomen,Dirndl,das Mädchen; das Trachtenkleid,Familie,richtig,,,Kollege
+47,Nomen,Leit,die Leute,Alltag,richtig,,,Kollege
+48,Nomen,Spezl,der Freund; der Kumpel,Freunde,richtig,,,Kollege
+49,Nomen,Hawara,der Kumpel,Freunde,richtig,,,Kollege
+50,Nomen,Oma,die Großmutter,Familie,richtig,,,Kollege
+51,Nomen,Opa,der Großvater,Familie,richtig,,,Kollege
+52,Nomen,Erdäpfl,die Kartoffeln,Essen,richtig,,,Kollege
+53,Nomen,Paradeiser,die Tomate,Essen,richtig,,,Kollege
+54,Nomen,Kren,der Meerrettich,Essen,richtig,,,Kollege
+55,Nomen,Karfiol,der Blumenkohl,Essen,richtig,,,Kollege
+56,Nomen,Kukuruz,der Mais,Essen,richtig,,,Kollege
+57,Nomen,Fisoln,die grünen Bohnen,Essen,richtig,,,Kollege
+58,Nomen,Käferbohnen,die Feuerbohnen,Essen,richtig,,,Kollege
+59,Nomen,Marüln,die Aprikosen,Essen,richtig,,,Kollege
+60,Nomen,Ribisl,die Johannisbeeren,Essen,richtig,,,Kollege
+61,Nomen,Schwammerl,die Pilze,Essen,richtig,,,Kollege
+62,Nomen,Semmel,das Brötchen,Essen,richtig,,,Kollege
+63,Nomen,Kipferl,das Hörnchen,Essen,richtig,,,Kollege
+64,Nomen,Topfn,der Quark,Essen,richtig,,,Kollege
+65,Nomen,Obers,die Sahne,Essen,richtig,,,Kollege
+66,Nomen,Schlagobers,die Schlagsahne,Essen,richtig,,,Kollege
+67,Nomen,Faschierts,das Hackfleisch,Essen,richtig,,,Kollege
+68,Nomen,Stelzn,die Schweinshaxe,Essen,richtig,,,Kollege
+69,Nomen,Wurscht,die Wurst,Essen,richtig,,,Kollege
+70,Nomen,Jausn,die Zwischenmahlzeit; die Brotzeit,Essen,richtig,,,Kollege
+71,Nomen,Kernöl,das Kürbiskernöl,Essen,richtig,,,Kollege
+72,Nomen,Sterz,der Sterz (steirische Speise),Essen,korrigiert,Speise aus Mais- oder Buchweizenmehl,,Kollege
+73,Nomen,Eierspeis,das Rührei,Essen,richtig,,,Kollege
+74,Nomen,Wossa,das Wasser,Essen,richtig,,,Kollege
+75,Nomen,Bia,das Bier,Essen,richtig,,,Kollege
+76,Nomen,Gspritzta,die Weinschorle,Essen,richtig,,,Kollege
+77,Nomen,Most,der Most (Obstwein),Essen,richtig,,,Kollege
+78,Nomen,Buschenschank,der Buschenschank (Weinlokal des Winzers),Essen,richtig,,,Kollege
+79,Nomen,Sackerl,die Tüte,Einkaufen,richtig,,,Kollege
+80,Nomen,Kassa,die Kasse,Einkaufen,richtig,,,Kollege
+81,Nomen,Göd,das Geld,Einkaufen,richtig,,,Kollege
+82,Nomen,Bankomat,der Geldautomat,Einkaufen,richtig,,,Kollege
+83,Nomen,Packerl,das Paket; das Päckchen,Einkaufen,richtig,,,Kollege
+84,Nomen,Trafik,der Tabakladen; der Kiosk,Einkaufen,richtig,,,Kollege
+85,Nomen,Greißler,der kleine Lebensmittelladen,Einkaufen,richtig,,,Kollege
+86,Nomen,Fleischhauer,der Metzger,Einkaufen,richtig,,,Kollege
+87,Nomen,Pickerl,der Aufkleber; die Vignette,Unterwegs,richtig,,,Kollege
+88,Nomen,Hackn,die Arbeit; der Job,Arbeit,richtig,,,Kollege
+89,Nomen,Feierobnd,der Feierabend,Arbeit,richtig,,,Kollege
+90,Nomen,Gschicht,die Geschichte; die Angelegenheit,Arbeit,richtig,,,Kollege
+91,Nomen,Jänner,der Januar,Arbeit,richtig,,,Kollege
+92,Nomen,Feber,der Februar,Arbeit,richtig,,,Kollege
+93,Nomen,Pfinsta,der Donnerstag,Arbeit,richtig,,,Kollege
+94,Nomen,Ertag,der Dienstag,Arbeit,richtig,,,Kollege
+95,Nomen,Gwand,die Kleidung,Alltag,richtig,,,Kollege
+96,Nomen,Leiberl,das T-Shirt,Alltag,richtig,,,Kollege
+97,Nomen,Haubn,die Mütze,Alltag,richtig,,,Kollege
+98,Nomen,Patschn,die Hausschuhe,Alltag,richtig,,,Kollege
+99,Nomen,Schuach,die Schuhe,Alltag,richtig,,,Kollege
+100,Nomen,Kuchl,die Küche,Alltag,richtig,,,Kollege
+101,Nomen,Stubn,die Stube; das Wohnzimmer,Alltag,richtig,,,Kollege
+102,Nomen,Kastl,der Schrank; das Kästchen,Alltag,richtig,,,Kollege
+103,Nomen,Häusl,die Toilette,Alltag,richtig,,,Kollege
+104,Nomen,Bankl,die Sitzbank,Alltag,richtig,,,Kollege
+105,Nomen,Schädl,der Kopf,Alltag,richtig,,,Kollege
+106,Nomen,Fuaß,der Fuß; das Bein,Alltag,richtig,,,Kollege
+107,Nomen,Gaudi,der Spaß,Freunde,richtig,,,Kollege
+108,Nomen,Schmäh,der Witz; der Charme,Freunde,richtig,,,Kollege
+109,Nomen,Bledsinn,der Blödsinn,Freunde,richtig,,,Kollege
+110,Nomen,Wetta,das Wetter,Wetter,richtig,,,Kollege
+111,Nomen,Rengn,der Regen,Wetter,richtig,,,Kollege
+112,Nomen,Sunn,die Sonne,Wetter,richtig,,,Kollege
+113,Nomen,Bim,die Straßenbahn,Unterwegs,richtig,,,Kollege
+114,Nomen,Radl,das Fahrrad,Unterwegs,richtig,,,Kollege
+115,Nomen,Bam,der Baum,Natur,richtig,,,Kollege
+116,Nomen,Woid,der Wald,Natur,richtig,,,Kollege
+117,Nomen,Wiesn,die Wiese,Natur,richtig,,,Kollege
+118,Nomen,Kuah,die Kuh,Natur,richtig,,,Kollege
+119,Nomen,Hendl,das Huhn; das Brathähnchen,Essen,richtig,,,Kollege
+120,Nomen,Oachkatzl,das Eichhörnchen,Natur,richtig,,,Kollege
+121,Verb,redn,reden; sprechen,Alltag,richtig,,,Kollege
+122,Verb,schaun,schauen; sehen,Alltag,richtig,,,Kollege
+123,Verb,hean,hören,Alltag,richtig,,,Kollege
+124,Verb,kumman,kommen,Alltag,richtig,,,Kollege
+125,Verb,hom,haben,Alltag,richtig,,,Kollege
+126,Verb,mochn,machen,Alltag,richtig,,,Kollege
+127,Verb,schlofn,schlafen,Alltag,richtig,,,Kollege
+128,Verb,hackln,arbeiten,Arbeit,richtig,,,Kollege
+129,Verb,kafn,kaufen,Einkaufen,richtig,,,Kollege
+130,Verb,zoin,zahlen,Einkaufen,richtig,,,Kollege
+131,Verb,woin,wollen,Alltag,richtig,,,Kollege
+132,Verb,kenna,können; kennen,Alltag,richtig,,,Kollege
+133,Verb,miassn,müssen,Alltag,richtig,,,Kollege
+134,Verb,sogn,sagen,Alltag,richtig,,,Kollege
+135,Verb,frogn,fragen,Alltag,richtig,,,Kollege
+136,Verb,gfrein,freuen,Freunde,richtig,,,Kollege
+137,Verb,tratschn,tratschen; plaudern,Freunde,richtig,,,Kollege
+138,Verb,raunzn,jammern; nörgeln,Alltag,richtig,,,Kollege
+139,Verb,sudern,jammern; meckern,Alltag,richtig,,,Kollege
+140,Verb,hudln,hetzen; schlampig arbeiten,Arbeit,richtig,,,Kollege
+141,Verb,pfuschn,pfuschen; unsauber arbeiten,Arbeit,richtig,,,Kollege
+142,Verb,rean,weinen,Alltag,richtig,,,Kollege
+143,Adjektiv,guat,gut,Alltag,richtig,,,Kollege
+144,Adjektiv,schee,schön,Alltag,richtig,,,Kollege
+145,Adjektiv,schiach,hässlich,Alltag,richtig,,,Kollege
+146,Adjektiv,fesch,hübsch; attraktiv,Freunde,richtig,,,Kollege
+147,Adjektiv,leiwand,toll; super,Freunde,falsch,,Wienerisch,Kollege
+148,Adjektiv,lässig,cool; toll,Freunde,richtig,,,Kollege
+149,Adjektiv,gscheit,klug; ordentlich,Alltag,richtig,,,Kollege
+150,Adjektiv,deppat,dumm; blöd,derb,richtig,,,Kollege
+151,Adjektiv,grantig,schlecht gelaunt,Alltag,richtig,,,Kollege
+152,Adjektiv,heiklig,wählerisch; heikel,Essen,richtig,,,Kollege
+153,Adjektiv,miad,müde,Alltag,richtig,,,Kollege
+154,Adjektiv,narrisch,verrückt; sehr,Freunde,richtig,,,Kollege
+155,Adjektiv,hoaß,heiß,Wetter,richtig,,,Kollege
+156,Adjektiv,koid,kalt,Wetter,richtig,,,Kollege
+157,Adjektiv,woam,warm,Wetter,richtig,,,Kollege
+158,Adjektiv,kloa,klein,Alltag,richtig,,,Kollege
+159,Adjektiv,oid,alt,Alltag,richtig,,,Kollege
+160,Adjektiv,neich,neu,Alltag,richtig,,,Kollege
+161,Adjektiv,teia,teuer,Einkaufen,richtig,,,Kollege
+162,Adjektiv,stad,still; ruhig,Alltag,richtig,,,Kollege
+163,Adjektiv,zach,zäh; mühsam,Arbeit,richtig,,,Kollege
+164,Adjektiv,patschert,ungeschickt,Alltag,richtig,,,Kollege
+165,Adjektiv,firti,fertig,Arbeit,richtig,,,Kollege
+166,Adjektiv,gschmackig,lecker,Essen,richtig,,,Kollege
+167,Interjektion,Servas,hallo; tschüss (lockere Form von Servus),Begrüßung,richtig,,,Kollege
+168,Interjektion,Pfiat Gott,"auf Wiedersehen (höflich, ländlich)",Begrüßung,richtig,,,Kollege
+169,Interjektion,Griaß enk,"grüß euch (ländlich, v. a. Obersteiermark)",Begrüßung,richtig,,,Kollege
+170,Interjektion,Guatn,guten Appetit (kurz),Essen,richtig,,,Kollege
+171,Interjektion,Ui jegerl,oje; ach du liebe Zeit,Alltag,richtig,,,Kollege
+172,Interjektion,Na servas,na prima; oje (Ausruf der Überraschung),Alltag,richtig,,,Kollege
+173,Interjektion,Hoppala,hoppla,Alltag,richtig,,,Kollege
+174,Interjektion,Aso,ach so,Alltag,richtig,,,Kollege
+175,Interjektion,Mei,"ach; ach Gott (Rührung, Bedauern)",Alltag,richtig,,,Kollege
+176,Interjektion,Pfuh,"puh; boah (Staunen, Anstrengung)",Alltag,richtig,,,Kollege
+177,Interjektion,Gemma,gehen wir; los geht's,Alltag,richtig,,,Kollege
+178,Interjektion,Hea auf,hör auf,Alltag,richtig,,,Kollege
+179,Interjektion,Gusch,sei still (derb),derb,richtig,,,Kollege
+180,Partikel,leicht,vielleicht; womöglich,Alltag,richtig,,,Kollege
+181,Partikel,eppa,etwa; vielleicht,Alltag,richtig,,,Kollege
+182,Partikel,goa,gar,Alltag,richtig,,,Kollege
+183,Partikel,grod,gerade; eben,Alltag,richtig,,,Kollege
+184,Partikel,nimma,nicht mehr,Alltag,richtig,,,Kollege
+185,Partikel,a,ein/eine; auch,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: auch (auch: ein/eine))",Kollege
+186,Partikel,eha,eher,Alltag,richtig,,,Kollege
+187,Pronomen,enk,"euch (ländlich, v. a. Obersteiermark)",Alltag,richtig,,,Kollege
+188,Pronomen,enka,euer (ländlich),Alltag,richtig,,,Kollege
+189,Pronomen,eam,ihm; ihn,Alltag,richtig,,,Kollege
+190,Pronomen,eana,ihnen; Ihnen,Alltag,richtig,,,Kollege
+191,Pronomen,ia,"ihr (Dativ); sie (Akkusativ, weiblich)",Alltag,richtig,,,Kollege
+192,Pronomen,ebba,jemand,Alltag,richtig,,,Kollege
+193,Pronomen,ebbas,etwas,Alltag,richtig,,,Kollege
+194,Pronomen,kana,keiner; niemand,Alltag,richtig,,,Kollege
+195,Pronomen,wea,wer,Alltag,richtig,,,Kollege
+196,Pronomen,des,das (Demonstrativ),Alltag,richtig,,,Kollege
+197,Pronomen,ma,man; mir; wir (nachgestellt),Alltag,richtig,,,Kollege
+198,Numerale,oans,eins,Alltag,richtig,,,Kollege
+199,Numerale,zwoa,zwei,Alltag,richtig,,,Kollege
+200,Präposition,z',"zu; in (z'Graz, z'Fuaß)",Unterwegs,richtig,,,Kollege
+201,Präposition,vo,von,Alltag,richtig,,,Kollege
+202,Konjunktion,wann,wenn; als,Alltag,richtig,,,Kollege
+203,Konjunktion,oda,oder,Alltag,richtig,,,Kollege
+204,Adverb,oiwei,immer; die ganze Zeit,Alltag,richtig,,,Kollege
+205,Adverb,amoi,einmal; mal,Alltag,richtig,,,Kollege
+206,Adverb,zerscht,zuerst,Alltag,richtig,,,Kollege
+207,Adverb,nocha,nachher; danach,Alltag,richtig,,,Kollege
+208,Adverb,vuahin,vorhin,Alltag,richtig,,,Kollege
+209,Adverb,heia,heuer; in diesem Jahr,Alltag,richtig,,,Kollege
+210,Adverb,fert,letztes Jahr,Alltag,richtig,,,Kollege
+211,Adverb,vurgestan,vorgestern,Alltag,richtig,,,Kollege
+212,Adverb,iwamoagn,übermorgen,Alltag,richtig,,,Kollege
+213,Adverb,in da Fruah,am Morgen; morgens,Alltag,richtig,,,Kollege
+214,Adverb,auf d'Nocht,am Abend; abends,Alltag,richtig,,,Kollege
+215,Adverb,untertogs,tagsüber,Alltag,richtig,,,Kollege
+216,Adverb,iwaroi,überall,Alltag,richtig,,,Kollege
+217,Adverb,nindascht,nirgends,Alltag,richtig,,,Kollege
+218,Adverb,wohi,wohin,Unterwegs,richtig,,,Kollege
+219,Adverb,wohea,woher (weststeirisch auch: wouhea),Unterwegs,richtig,,,Kollege
+220,Adverb,umi,hinüber,Unterwegs,richtig,,,Kollege
+221,Adverb,zuwi,hin; heran (zu etwas hin),Unterwegs,richtig,,,Kollege
+222,Adverb,eina,herein,Unterwegs,richtig,,,Kollege
+223,Adverb,aussa,heraus,Unterwegs,richtig,,,Kollege
+224,Adverb,auffa,herauf,Unterwegs,richtig,,,Kollege
+225,Adverb,owa,herunter; aber,Unterwegs,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: herunter (auch: aber))",Kollege
+226,Adverb,fiari,nach vorne; hervor,Unterwegs,richtig,,,Kollege
+227,Adverb,hintri,nach hinten,Unterwegs,richtig,,,Kollege
+228,Adverb,zruck,zurück,Unterwegs,richtig,,,Kollege
+229,Adverb,drent,drüben,Unterwegs,richtig,,,Kollege
+230,Adverb,obm,oben,Unterwegs,richtig,,,Kollege
+231,Adverb,untn,unten,Unterwegs,richtig,,,Kollege
+232,Adverb,gschwind,schnell; rasch,Alltag,richtig,,,Kollege
+233,Adverb,pomali,langsam; gemächlich (aus dem Slawischen),Alltag,richtig,,,Kollege
+234,Nomen,Ahnl,die Großmutter (ländlich),Familie,richtig,,,Kollege
+235,Nomen,Ähnl,der Großvater (ländlich),Familie,richtig,,,Kollege
+236,Nomen,Godl,die Taufpatin; die Firmpatin,Familie,richtig,,,Kollege
+237,Nomen,Gschrapp,das kleine Kind (salopp),Familie,richtig,,,Kollege
+238,Nomen,Fratz,das (freche) Kind,Familie,richtig,,,Kollege
+239,Nomen,Diandl,das Mädchen; die Freundin,Familie,richtig,,,Kollege
+240,Nomen,Gspusi,die Liebschaft; der/die Geliebte,Freunde,richtig,,,Kollege
+241,Nomen,Lackl,"der große, grobe Kerl",Freunde,richtig,,,Kollege
+242,Nomen,Tschopperl,das Dummerchen; der unbeholfene Mensch,Freunde,richtig,,,Kollege
+243,Nomen,Zniachtl,"der schmächtige, kleine Mensch",Alltag,richtig,,,Kollege
+244,Nomen,Gfrast,der Nichtsnutz; das freche Kind (derb),derb,richtig,,,Kollege
+245,Nomen,Bankert,das freche Kind; der Fratz (derb),derb,richtig,,,Kollege
+246,Nomen,Blunzn,die Blutwurst,Essen,richtig,,,Kollege
+247,Nomen,Grammeln,die Grieben,Essen,richtig,,,Kollege
+248,Nomen,Verhackerts,der steirische Speckaufstrich,Essen,richtig,,,Kollege
+249,Nomen,Klachlsuppn,die Klachlsuppe (steirische Suppe vom Schweinshaxl),Essen,richtig,,,Kollege
+250,Nomen,Wurzelfleisch,das Wurzelfleisch (gekochtes Schweinefleisch mit Wurzelgemüse),Essen,richtig,,,Kollege
+251,Nomen,Heidn,der Buchweizen,Essen,richtig,,,Kollege
+252,Nomen,Heidnsterz,der Buchweizensterz,Essen,richtig,,,Kollege
+253,Nomen,Türkn,der Mais (steirisch/kärntnerisch),Essen,falsch,,,Kollege
+254,Nomen,Plutzer,der Kürbis,Essen,korrigiert,Kopf,,Kollege
+255,Nomen,Kraut,der Weißkohl,Essen,richtig,,,Kollege
+256,Nomen,Kelch,der Wirsing,Essen,falsch,,,Kollege
+257,Nomen,Vogerlsalat,der Feldsalat,Essen,richtig,,,Kollege
+258,Nomen,Häuptlsalat,der Kopfsalat,Essen,richtig,,,Kollege
+259,Nomen,Knofl,der Knoblauch,Essen,richtig,,,Kollege
+260,Nomen,Zwiefl,die Zwiebel,Essen,richtig,,,Kollege
+261,Nomen,Zwetschkn,die Pflaumen; die Zwetschgen,Essen,richtig,,,Kollege
+262,Nomen,Ringlottn,die Renekloden,Essen,richtig,,,Kollege
+263,Nomen,Weichsln,die Sauerkirschen,Essen,richtig,,,Kollege
+264,Nomen,Schwarzbeer,die Heidelbeeren,Essen,richtig,,,Kollege
+265,Nomen,Kletzn,die Dörrbirnen,Essen,richtig,,,Kollege
+266,Nomen,Kletznbrot,das Früchtebrot mit Dörrbirnen,Essen,richtig,,,Kollege
+267,Nomen,Maroni,die Esskastanien,Essen,richtig,,,Kollege
+268,Nomen,Germ,die Hefe,Essen,richtig,,,Kollege
+269,Nomen,Brösl,die Semmelbrösel; das Paniermehl,Essen,richtig,,,Kollege
+270,Nomen,Nockerl,die Nocken; die Spätzle,Essen,richtig,,,Kollege
+271,Nomen,Palatschinkn,der Pfannkuchen; die Crêpe,Essen,richtig,,,Kollege
+272,Nomen,Schmarrn,der zerrissene Pfannkuchen; (übertragen) der Unsinn,Essen,richtig,,,Kollege
+273,Nomen,Krapfn,der Krapfen; der Berliner,Essen,richtig,,,Kollege
+274,Nomen,Strauben,die Strauben (steirisches Schmalzgebäck),Essen,richtig,,,Kollege
+275,Nomen,Rindsuppn,die Rinderbrühe,Essen,richtig,,,Kollege
+276,Nomen,Schmölzi,"die Eierspeise (regional, Obersteiermark)",Essen,falsch,,,Kollege
+277,Nomen,Steirerkas,der Steirerkäse (würziger Sauermilchkäse aus dem Ennstal),Essen,richtig,,,Kollege
+278,Nomen,Brettljausn,die kalte Platte auf dem Holzbrett,Essen,richtig,,,Kollege
+279,Nomen,Bschoadbinkerl,das Päckchen mit Essen zum Mitnehmen (von Fest oder Feier),Essen,falsch,,,Kollege
+280,Nomen,Schilcher,der Schilcher (Roséwein aus der Weststeiermark),Essen,richtig,,,Kollege
+281,Nomen,Sturm,der Sturm (gärender Traubenmost),Essen,richtig,,,Kollege
+282,Nomen,Junker,der Junker (junger steirischer Wein der Saison),Essen,richtig,,,Kollege
+283,Nomen,Achterl,"das Achtel (Glas Wein, 0,125 l)",Essen,richtig,,,Kollege
+284,Nomen,Krügerl,"das große Glas Bier (0,5 l)",Essen,richtig,,,Kollege
+285,Nomen,Seidl,"das kleine Glas Bier (0,3 l)",Essen,richtig,,,Kollege
+286,Nomen,Stamperl,das Schnapsglas,Essen,richtig,,,Kollege
+287,Nomen,Doppler,die Zwei-Liter-Weinflasche,Essen,richtig,,,Kollege
+288,Nomen,Schnops,der Schnaps,Essen,richtig,,,Kollege
+289,Nomen,Kracherl,die Limonade,Essen,richtig,,,Kollege
+290,Nomen,Tixo,das Klebeband,Alltag,richtig,,,Kollege
+291,Nomen,Mistkübl,der Mülleimer,Alltag,richtig,,,Kollege
+292,Nomen,Kübl,der Eimer,Alltag,richtig,,,Kollege
+293,Nomen,Polsta,das Kissen,Alltag,richtig,,,Kollege
+294,Nomen,Tuchent,die Bettdecke; das Federbett,Alltag,richtig,,,Kollege
+295,Nomen,Harpfn,das Bett (scherzhaft; eigentl. die Heuharfe),Alltag,richtig,,,Kollege
+296,Nomen,Sessl,der Stuhl,Alltag,richtig,,,Kollege
+297,Nomen,Stiagn,die Treppe,Alltag,richtig,,,Kollege
+298,Nomen,Lavur,das Waschbecken,Alltag,falsch,,,Kollege
+299,Nomen,Kredenz,der Küchenschrank; die Anrichte,Alltag,falsch,,,Kollege
+300,Nomen,Rauchfang,der Schornstein,Alltag,richtig,,,Kollege
+301,Nomen,Keuschn,das kleine (Bauern-)Häuschen,Alltag,richtig,,,Kollege
+302,Nomen,Platzerl,das Plätzchen; der gemütliche Ort,Alltag,richtig,,,Kollege
+303,Nomen,Fetzn,der Lappen; der Rausch,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: der Lappen; (auch) der Rausch)",Kollege
+304,Nomen,Tschick,die Zigarette,Alltag,richtig,,,Kollege
+305,Nomen,Pfoad,das Hemd,Alltag,richtig,,,Kollege
+306,Nomen,Joppn,die Jacke (Trachtenjacke),Alltag,falsch,,,Kollege
+307,Nomen,Kittl,der Rock,Alltag,richtig,,,Kollege
+308,Nomen,Gilet,die Weste,Alltag,richtig,,,Kollege
+309,Nomen,Spotzn,der Muskelkater,Alltag,richtig,,,Kollege
+310,Nomen,Wadl,die Wade,Alltag,richtig,,,Kollege
+311,Nomen,Pratzn,die (große) Hand; die Pranke,Alltag,richtig,,,Kollege
+312,Nomen,Ranzn,der dicke Bauch,Alltag,richtig,,,Kollege
+313,Nomen,Goschn,der Mund; das Maul (derb),derb,richtig,,,Kollege
+314,Nomen,Kopfwea,die Kopfschmerzen,Alltag,richtig,,,Kollege
+315,Nomen,Watschn,die Ohrfeige,Alltag,richtig,,,Kollege
+316,Nomen,Fipperl,der leichte Klaps; die leichte Ohrfeige,Alltag,falsch,,,Kollege
+317,Nomen,Dachtl,die Kopfnuss; der Klaps,Alltag,richtig,,,Kollege
+318,Nomen,Maugaza,der Seufzer,Alltag,richtig,,,Kollege
+319,Nomen,Juchaza,der Jauchzer; der Freudenschrei,Freunde,richtig,,,Kollege
+320,Nomen,Hetz,der Spaß (steirisch auch: Hez),Freunde,richtig,,,Kollege
+321,Nomen,Dusl,das (unverdiente) Glück; der leichte Rausch,Freunde,richtig,,,Kollege
+322,Nomen,Bummerl,das verlorene Spiel (beim Kartenspiel),Freunde,richtig,,,Kollege
+323,Nomen,Schnapsn,das Schnapsen (Kartenspiel),Freunde,richtig,,,Kollege
+324,Nomen,Spompanadln,die Umstände; die Faxen,Alltag,richtig,,,Kollege
+325,Nomen,Gschisti-Gschasti,das Getue; das Theater,Alltag,richtig,,,Kollege
+326,Nomen,Wickl,der Ärger; die Schwierigkeiten,Alltag,richtig,,,Kollege
+327,Nomen,Gfrett,die Plage; die Mühsal,Arbeit,richtig,,,Kollege
+328,Nomen,Pfusch,die Schwarzarbeit; die schlampige Arbeit,Arbeit,richtig,,,Kollege
+329,Nomen,Lehrbua,der Lehrling,Arbeit,richtig,,,Kollege
+330,Nomen,Rauchfangkehrer,der Schornsteinfeger,Arbeit,richtig,,,Kollege
+331,Nomen,Krankenstand,die Krankschreibung,Arbeit,richtig,,,Kollege
+332,Nomen,Matura,das Abitur,Arbeit,richtig,,,Kollege
+333,Nomen,Somsta,der Samstag,Arbeit,richtig,,,Kollege
+334,Nomen,Sunnta,der Sonntag,Arbeit,richtig,,,Kollege
+335,Nomen,Freita,der Freitag,Arbeit,richtig,,,Kollege
+336,Nomen,Gschäft,das Geschäft; der Laden,Einkaufen,richtig,,,Kollege
+337,Nomen,Trinkgöd,das Trinkgeld,Einkaufen,richtig,,,Kollege
+338,Nomen,Marie,das Geld (salopp),Einkaufen,richtig,,,Kollege
+339,Nomen,Okazion,das Schnäppchen; die Gelegenheit,Einkaufen,falsch,,,Kollege
+340,Nomen,Schas,der Furz; der Unsinn (derb),derb,richtig,,,Kollege
+341,Nomen,Gehsteig,der Bürgersteig,Unterwegs,richtig,,,Kollege
+342,Nomen,Gelsn,die Stechmücke,Natur,richtig,,,Kollege
+343,Nomen,Wepsn,die Wespe,Natur,richtig,,,Kollege
+344,Nomen,Muckn,die Fliege,Natur,richtig,,,Kollege
+345,Nomen,Oadaxl,die Eidechse,Natur,richtig,,,Kollege
+346,Nomen,Krot,die Kröte,Natur,richtig,,,Kollege
+347,Nomen,Henn,die Henne; das Huhn,Natur,richtig,,,Kollege
+348,Nomen,Goaß,die Ziege,Natur,richtig,,,Kollege
+349,Nomen,Fackl,das Ferkel; das Schwein,Natur,richtig,,,Kollege
+350,Nomen,Viech,das Tier,Natur,richtig,,,Kollege
+351,Nomen,Rouß,das Pferd (Oststeiermark),Natur,richtig,,,Kollege
+352,Nomen,Kotz,die Katze,Natur,richtig,,,Kollege
+353,Nomen,Hos,der Hase,Natur,richtig,,,Kollege
+354,Nomen,Tschurtschn,der Tannenzapfen; der Fichtenzapfen,Natur,falsch,,,Kollege
+355,Nomen,Holler,der Holunder,Natur,richtig,,,Kollege
+356,Nomen,Hetschepetsch,die Hagebutte,Natur,richtig,,,Kollege
+357,Nomen,Kogl,der kegelförmige Berg; der runde Gipfel,Natur,richtig,,,Kollege
+358,Nomen,Leitn,der Berghang; der Abhang,Natur,richtig,,,Kollege
+359,Nomen,Olm,die Alm,Natur,richtig,,,Kollege
+360,Nomen,Hittn,die Hütte,Natur,richtig,,,Kollege
+361,Nomen,Bründl,die Quelle,Natur,richtig,,,Kollege
+362,Nomen,Gstettn,das Brachland; das verwilderte Grundstück,Natur,richtig,,,Kollege
+363,Nomen,Weingortn,der Weingarten; der Weinberg,Natur,richtig,,,Kollege
+364,Nomen,Klapotetz,das hölzerne Windrad im Weingarten (Vogelscheuche; aus dem Slowenischen),Natur,falsch,,,Kollege
+365,Nomen,Kellerstöckl,das kleine Presshaus mit Keller im Weingarten,Natur,richtig,,,Kollege
+366,Nomen,Gatsch,der Matsch; der Schlamm,Wetter,richtig,,,Kollege
+367,Nomen,Lackn,die Pfütze,Wetter,richtig,,,Kollege
+368,Nomen,Gwitta,das Gewitter,Wetter,richtig,,,Kollege
+369,Nomen,Schaua,der Regenschauer,Wetter,richtig,,,Kollege
+370,Nomen,Nebl,der Nebel,Wetter,richtig,,,Kollege
+371,Nomen,Hogl,der Hagel,Wetter,richtig,,,Kollege
+372,Nomen,Summa,der Sommer,Wetter,richtig,,,Kollege
+373,Nomen,Winta,der Winter,Wetter,richtig,,,Kollege
+374,Nomen,Kirtag,das Kirchweihfest; der Jahrmarkt,Brauchtum,richtig,,,Kollege
+375,Nomen,Fosching,der Fasching; der Karneval,Brauchtum,richtig,,,Kollege
+376,Nomen,Krampus,der Krampus (Begleiter des Nikolaus),Brauchtum,richtig,,,Kollege
+377,Nomen,Christkindl,das Christkind,Brauchtum,richtig,,,Kollege
+378,Nomen,Fleischweich,die Speisensegnung zu Ostern,Brauchtum,richtig,,,Kollege
+379,Nomen,Weihkorb,der Korb mit den Osterspeisen zur Segnung,Brauchtum,richtig,,,Kollege
+380,Nomen,Godnstriezl,der Allerheiligenstriezel (Geschenk der Paten),Brauchtum,richtig,,,Kollege
+381,Nomen,Maibam,der Maibaum,Brauchtum,richtig,,,Kollege
+382,Nomen,Osterfeia,das Osterfeuer,Brauchtum,richtig,,,Kollege
+383,Nomen,Gstanzl,das (Spott-)Lied mit vier Zeilen,Brauchtum,richtig,,,Kollege
+384,Nomen,Ziach,die steirische Harmonika,Brauchtum,falsch,,,Kollege
+385,Nomen,Lederhosn,die Lederhose,Brauchtum,richtig,,,Kollege
+386,Nomen,Stutzn,die Kniestrümpfe (zur Tracht),Brauchtum,richtig,,,Kollege
+387,Nomen,Steirergwand,der Steireranzug; die steirische Tracht,Brauchtum,richtig,,,Kollege
+388,Verb,losn,zuhören; horchen,Alltag,richtig,,,Kollege
+389,Verb,kriagn,bekommen; kriegen,Alltag,richtig,,,Kollege
+390,Verb,gneißn,merken; kapieren,Alltag,richtig,,,Kollege
+391,Verb,schmeckn,riechen; schmecken,Alltag,richtig,,,Kollege
+392,Verb,dischkriern,sich unterhalten; plaudern,Freunde,falsch,,,Kollege
+393,Verb,schupfn,werfen; schubsen,Alltag,richtig,,,Kollege
+394,Verb,plärrn,laut weinen; schreien,Alltag,richtig,,,Kollege
+395,Verb,speibn,sich übergeben,Alltag,richtig,,,Kollege
+396,Verb,fladern,stehlen; klauen,Alltag,richtig,,,Kollege
+397,Verb,sekkiern,ärgern; quälen; belästigen,Alltag,richtig,,,Kollege
+398,Verb,tratzn,necken; foppen,Freunde,richtig,,,Kollege
+399,Verb,fuxn,ärgern (es fuxt mi),Alltag,richtig,,,Kollege
+400,Verb,motschkern,nörgeln; meckern,Alltag,richtig,,,Kollege
+401,Verb,gfrettn,sich abmühen; sich plagen,Arbeit,richtig,,,Kollege
+402,Verb,dapockn,schaffen; bewältigen,Arbeit,richtig,,,Kollege
+403,Verb,zammramma,aufräumen,Alltag,richtig,,,Kollege
+404,Verb,ausrastn,sich ausruhen,Alltag,richtig,,,Kollege
+405,Verb,pfnausn,schnaufen; keuchen,Alltag,richtig,,,Kollege
+406,Verb,dawischn,erwischen,Alltag,richtig,,,Kollege
+407,Verb,daschreckn,erschrecken,Alltag,richtig,,,Kollege
+408,Verb,dabarma,leidtun; Mitleid erregen (du dabarmst ma),Alltag,richtig,,,Kollege
+409,Verb,aschlan,rückwärts gehen,Unterwegs,falsch,,,Kollege
+410,Verb,wischpln,pfeifen,Alltag,falsch,,,Kollege
+411,Verb,hupfn,springen; hüpfen,Alltag,richtig,,,Kollege
+412,Verb,renna,laufen; rennen,Alltag,richtig,,,Kollege
+413,Verb,foahn,fahren,Unterwegs,richtig,,,Kollege
+414,Verb,vagehn (si),sich verlaufen,Unterwegs,richtig,,,Kollege
+415,Verb,ziagn,ziehen,Alltag,richtig,,,Kollege
+416,Verb,tuan,tun; machen,Alltag,richtig,,,Kollege
+417,Verb,gebm,geben,Alltag,richtig,,,Kollege
+418,Verb,nehma,nehmen,Alltag,richtig,,,Kollege
+419,Verb,woartn,warten,Alltag,richtig,,,Kollege
+420,Verb,suachn,suchen,Alltag,richtig,,,Kollege
+421,Verb,vagessn,vergessen,Alltag,richtig,,,Kollege
+422,Verb,auskenna (si),sich auskennen,Alltag,richtig,,,Kollege
+423,Verb,glanga,reichen; genügen,Alltag,richtig,,,Kollege
+424,Verb,pickn,kleben; picken,Alltag,richtig,,,Kollege
+425,Verb,zwickn,kneifen; zwicken,Alltag,richtig,,,Kollege
+426,Verb,essn,essen,Essen,richtig,,,Kollege
+427,Verb,trinkn,trinken,Essen,richtig,,,Kollege
+428,Verb,kocha,kochen,Essen,richtig,,,Kollege
+429,Verb,jausnen,eine Zwischenmahlzeit essen; Brotzeit machen,Essen,richtig,,,Kollege
+430,Verb,tschechern,(viel Alkohol) trinken; saufen,Freunde,richtig,,,Kollege
+431,Verb,hoazn,heizen,Wetter,richtig,,,Kollege
+432,Verb,gfrian,frieren,Wetter,richtig,,,Kollege
+433,Adjektiv,harb,böse; verärgert; beleidigt,Alltag,richtig,,,Kollege
+434,Adjektiv,fuchtig,wütend,Alltag,falsch,,,Kollege
+435,Adjektiv,angfressn,verärgert; genervt,Alltag,richtig,,,Kollege
+436,Adjektiv,zwida,zuwider; unangenehm; mürrisch,Alltag,richtig,,,Kollege
+437,Adjektiv,fad,langweilig,Alltag,richtig,,,Kollege
+438,Adjektiv,letschad,schlaff; fade; kraftlos,Alltag,richtig,,,Kollege
+439,Adjektiv,gach,jäh; plötzlich; steil,Alltag,richtig,,,Kollege
+440,Adjektiv,schöch,schief,Alltag,falsch,,,Kollege
+441,Adjektiv,resch,knusprig; resolut,Essen,richtig,,,Kollege
+442,Adjektiv,hantig,bitter; herb; grob,Essen,richtig,,,Kollege
+443,Adjektiv,gschamig,schüchtern,Alltag,richtig,,,Kollege
+444,Adjektiv,gspassig,lustig; komisch,Freunde,richtig,,,Kollege
+445,Adjektiv,damisch,benommen; schwindlig; dumm,Alltag,richtig,,,Kollege
+446,Adjektiv,bamstig,"taub; pelzig (Gefühl, z. B. Zunge)",Alltag,falsch,,,Kollege
+447,Adjektiv,hin,kaputt; tot,Alltag,richtig,,,Kollege
+448,Adjektiv,stier,pleite; ohne Geld,Einkaufen,richtig,,,Kollege
+449,Adjektiv,zaundürr,spindeldürr,Alltag,richtig,,,Kollege
+450,Adjektiv,pumperlgsund,kerngesund,Alltag,richtig,,,Kollege
+451,Adjektiv,liab,lieb; nett; niedlich,Freunde,richtig,,,Kollege
+452,Adjektiv,bsoffn,betrunken,Freunde,richtig,,,Kollege
+453,Adjektiv,bled,blöd; dumm,Alltag,richtig,,,Kollege
+454,Adjektiv,gschert,grob; ungehobelt (abwertend),derb,richtig,,,Kollege
+455,Adjektiv,broat,breit; (salopp) betrunken,Alltag,richtig,,,Kollege
+456,Adjektiv,stoaroid,steinalt,Alltag,richtig,,,Kollege
+457,Adjektiv,woach,weich,Alltag,richtig,,,Kollege
+458,Adjektiv,foisch,falsch,Alltag,richtig,,,Kollege
+459,Adjektiv,vakeht,verkehrt; falsch herum,Alltag,richtig,,,Kollege
+460,Adjektiv,sauba,sauber; toll,Alltag,richtig,,"Schreibweise am 11.10. vereinheitlicht, Bedeutung unverändert (vorher: sauber; (auch) toll)",Kollege
+461,Adjektiv,voi,voll; satt; (salopp) betrunken,Essen,richtig,,,Kollege
+462,Adjektiv,noss,nass,Wetter,richtig,,,Kollege
+463,Adjektiv,trucka,trocken,Wetter,richtig,,,Kollege
+464,Adjektiv,dumpa,dämmrig; dunkel (werdend),Wetter,richtig,,,Kollege
+465,Nomen,Poscha,der Schaden; der Spleen (an Poscha hobn = verrückt sein),Freunde,richtig,,,Kollege
+466,Nomen,Wappler,der Idiot; der Trottel (derb),derb,richtig,,,Kollege
+467,Nomen,Trottl,der Trottel,derb,richtig,,,Kollege
+468,Nomen,Heisl,der Idiot; der unsympathische Typ (derb; eigentl. die Toilette),derb,richtig,,,Kollege
+469,Nomen,Klump,"der Plunder; das kaputte, minderwertige Zeug",Alltag,richtig,,,Kollege
+470,Nomen,Graffl,das Gerümpel; der Kram,Alltag,richtig,,,Kollege
+471,Nomen,Gschiss,das Getue; der unnötige Aufwand,Alltag,richtig,,,Kollege
+472,Nomen,Bahö,"das Theater; der Lärm; die Aufregung (ugs., ostösterreichisch)",Alltag,richtig,,,Kollege
+473,Adjektiv,angrennt,verrückt; nicht ganz bei Trost (wörtl.: angerannt),Freunde,richtig,,,Kollege
+474,Verb,durchdrahn,durchdrehen; die Nerven verlieren,Alltag,richtig,,,Kollege
+475,Verb,is,ist,Alltag,richtig,,Beispiel: Wos is los? = Was ist los?,Kollege
+476,Verb,is'n,ist denn,Alltag,richtig,,Beispiel: Wos is'n des für a Gschiss? = Was ist das für ein unnötiges Getue?,Kollege
+477,Verb,hob,habe (ich),Alltag,richtig,,Beispiel: I hob ka Zeit. = Ich habe keine Zeit.,Kollege
+478,Verb,hob's,habe es,Alltag,richtig,,Beispiel: I hob's vagessn. = Ich habe es vergessen.,Kollege
+479,Verb,host,hast (du),Alltag,richtig,,Beispiel: Wia vü Kinda host? = Wie viele Kinder hast du?,Kollege
+480,Verb,host'n,hast du denn,Alltag,richtig,,Beispiel: Wos host'n? = Was hast du denn?,Kollege
+481,Verb,hot,hat,Alltag,richtig,,Beispiel: Der hot an Fetzn. = Der ist betrunken.,Kollege
+482,Verb,hamma,haben wir,Alltag,richtig,,Beispiel: Des hamma imma scho so gmocht. = Das haben wir immer schon so gemacht.,Kollege
+483,Verb,Haum's,haben Sie,Einkaufen,richtig,,Beispiel: Haum's an Erdäpfl? = Haben Sie auch Kartoffeln?,Kollege
+484,Verb,ghobt,gehabt,Alltag,richtig,,Beispiel: Host an Dusl ghobt! = Da hast du Glück gehabt!,Kollege
+485,Verb,samma,sind wir,Alltag,richtig,,Beispiel: Wo samma denn? = Wo sind wir denn? (Ausdruck der Empörung: Was soll das?),Kollege
+486,Verb,wor,war,Alltag,richtig,,Beispiel: Des wor a Gaudi! = Das war ein Spaß!,Kollege
+487,Verb,wa's,war es; war's,Alltag,richtig,,Beispiel: Des wa's. = Das war's.,Kollege
+488,Verb,woan,geworden,Alltag,richtig,,Beispiel: Der Kloane is scho groß woan. = Der Kleine ist schon groß geworden.,Kollege
+489,Verb,werd,wird,Alltag,richtig,,Beispiel: Es werd dumpa. = Es wird dunkel.,Kollege
+490,Verb,moch,mache; mach (Befehl); machen (in: moch ma = machen wir),Alltag,richtig,,Beispiel: Deis moch ma glei. = Das machen wir gleich.,Kollege
+491,Verb,mochst,machst (du),Alltag,richtig,,Beispiel: Wos mochst denn so? = Was machst du denn so?,Kollege
+492,Verb,mocht,macht,Alltag,richtig,,Beispiel: Des mocht nix. = Das macht nichts.,Kollege
+493,Verb,gmocht,gemacht,Alltag,richtig,,Beispiel: Des hamma imma scho so gmocht. = Das haben wir immer schon so gemacht.,Kollege
+494,Verb,tuast,tust (du); machst (du),Alltag,richtig,,Beispiel: Wos tuast heit auf d'Nocht? = Was machst du heute Abend?,Kollege
+495,Verb,tua,tu (Befehl); tue (ich),Alltag,richtig,,Beispiel: Jetzt tua ned so deppat. = Stell dich nicht so blöd an.,Kollege
+496,Verb,kummt,kommt,Alltag,richtig,,Beispiel: Moagn kummt d'Sunn. = Morgen kommt die Sonne.,Kollege
+497,Verb,kummts,kommt (ihr),Alltag,richtig,,"Beispiel: Pfiat Gott, kummts guat ham! = Auf Wiedersehen, kommt gut nach Hause!",Kollege
+498,Verb,kumm,komm (Befehl); komme (ich),Alltag,richtig,,"Beispiel: Kumm, jausn ma! = Komm, machen wir Brotzeit!",Kollege
+499,Verb,kummst,kommst (du),Alltag,richtig,,Beispiel: Kummst mit? = Kommst du mit?,Kollege
+500,Verb,muass,muss,Alltag,richtig,,Beispiel: I muass hackln. = Ich muss arbeiten.,Kollege
+501,Verb,muasst,musst (du),Alltag,richtig,,Beispiel: Do muasst owi und dann links. = Da musst du hinunter und dann links.,Kollege
+502,Verb,kau,kann (ich),Alltag,richtig,,Beispiel: Kau i mit Kortn zoin? = Kann ich mit Karte zahlen?,Kollege
+503,Verb,kaunst,kannst (du),Alltag,richtig,,Beispiel: Kaunst ma helfen? = Kannst du mir helfen?,Kollege
+504,Verb,wüst,willst (du),Alltag,richtig,,Beispiel: Wos wüst? = Was willst du?,Kollege
+505,Verb,woaß,weiß (ich),Alltag,richtig,,Beispiel: I woaß ned. = Ich weiß nicht.,Kollege
+506,Verb,segn,sehen,Alltag,richtig,,Beispiel: Mia segn uns. = Wir sehen uns.,Kollege
+507,Verb,gsehn,gesehen,Alltag,richtig,,Beispiel: Lang ned gsehn! = Lange nicht gesehen!,Kollege
+508,Verb,siecht,sieht,Alltag,richtig,,"Beispiel: Heit is a Nebl, ma siecht nix. = Heute ist Nebel, man sieht nichts.",Kollege
+509,Verb,schaust'n,schaust du denn,Alltag,richtig,,Beispiel: Wos schaust'n so deppat aus da Wäsch? = Warum schaust du so blöd aus der Wäsche?,Kollege
+510,Verb,sogst,sagst (du),Alltag,richtig,,Beispiel: Wos sogst? = Was sagst du? (Wie bitte? / Echt?),Kollege
+511,Verb,brauchn,brauchen,Einkaufen,richtig,,Beispiel: Brauchn S' a Sackerl? = Brauchen Sie eine Tüte?,Kollege
+512,Verb,kost,kostet,Einkaufen,richtig,,Beispiel: Wos kost des? = Was kostet das?,Kollege
+513,Verb,foahr,fahre (ich),Unterwegs,richtig,,Beispiel: I foahr mi'm Radl. = Ich fahre mit dem Fahrrad.,Kollege
+514,Verb,foahrst,fährst (du),Unterwegs,richtig,,Beispiel: Foahrst mi ham? = Fährst du mich nach Hause?,Kollege
+515,Verb,foahrt,fährt,Unterwegs,richtig,,Beispiel: Wann foahrt de nächste Bim? = Wann fährt die nächste Straßenbahn?,Kollege
+516,Verb,wort,warte (Befehl); warten,Alltag,richtig,,Beispiel: Wort a bissl! = Warte ein bisschen!; Achtung: nicht 'das Wort',Kollege
+517,Verb,loss,lass (Befehl); lassen,Alltag,richtig,,Beispiel: Loss mi in Ruah. = Lass mich in Ruhe.,Kollege
+518,Verb,los,"hör (Befehl, von losn = zuhören)",Alltag,richtig,,Beispiel: Wos is los? = Was ist los?; Achtung: auch hochdeutsch 'los' (Wos is los?),Kollege
+519,Verb,heat,hört,Alltag,richtig,,Beispiel: Deis Gschropp heat ned auf zum Plärrn. = Das Kind hört nicht auf zu weinen.; heat auf = hört auf,Kollege
+520,Verb,ruaf,ruf (Befehl); rufen,Alltag,richtig,,Beispiel: Ruaf mi an! = Ruf mich an!,Kollege
+521,Verb,tratz,"neck (Befehl, von tratzn = necken)",Freunde,richtig,,Beispiel: Tratz mi ned! = Necke mich nicht!,Kollege
+522,Verb,hupf,hüpf; spring (Befehl),Unterwegs,richtig,,Beispiel: Hupf eini! = Steig ein!; Hupf eini = Steig ein,Kollege
+523,Verb,gfrei,freue (ich mich),Alltag,richtig,,Beispiel: I gfrei mi scho drauf. = Ich freue mich schon darauf.,Kollege
+524,Verb,gfreit's,freut es; freut's,Alltag,richtig,,Beispiel: Mi gfreit's. = Das freut mich.; Mi gfreit's = Das freut mich,Kollege
+525,Verb,gfriat's,friert es,Wetter,richtig,,Beispiel: Mi gfriat's. = Mir ist kalt. / Ich friere.; Mi gfriat's = Mir ist kalt,Kollege
+526,Verb,schneibt,schneit,Wetter,richtig,,Beispiel: Es schneibt. = Es schneit.,Kollege
+527,Verb,schifft,regnet stark,Wetter,falsch,,"Beispiel: Es schifft. = Es regnet stark.; umgangssprachlich, eher derb?",Kollege
+528,Verb,dabarmst,tust (mir) leid (von dabarmen),Freunde,richtig,,Beispiel: Du dabarmst ma. = Du tust mir leid.,Kollege
+529,Verb,fuxt,ärgert,Alltag,richtig,,Beispiel: Des fuxt mi. = Das ärgert mich.; Form von fuxn,Kollege
+530,Verb,erledign,erledigen,Arbeit,richtig,,Beispiel: I muass no wos erledign. = Ich muss noch etwas erledigen.,Kollege
+531,Verb,passn,passen; funktionieren,Alltag,richtig,,Beispiel: Wird scho passn. = Wird schon funktionieren.,Kollege
+532,Verb,vagangen,verlaufen (sich); vergangen,Unterwegs,richtig,,Beispiel: I hob mi vagangen. = Ich habe mich verlaufen.; I hob mi vagangen = Ich habe mich verlaufen,Kollege
+534,Pronomen,mi,mich,Alltag,richtig,,Beispiel: Mi gfreit's. = Das freut mich.,Kollege
+535,Pronomen,di,dich,Alltag,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?",Kollege
+536,Pronomen,da,dir; der (Artikel),Alltag,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?; wia geht's da = wie geht es dir; da Bahnhof = der Bahnhof",Kollege
+537,Pronomen,si,sich,Alltag,richtig,,Beispiel: Des geht si ned aus. = Das geht sich nicht aus. (Das reicht nicht / klappt zeitlich nicht),Kollege
+538,Pronomen,S',Sie (Höflichkeitsform),Alltag,richtig,,Beispiel: Brauchn S' a Sackerl? = Brauchen Sie eine Tüte?,Kollege
+539,Pronomen,deis,das; dies,Alltag,richtig,,Beispiel: Deis is ma wurscht. = Das ist mir egal.; wie des,Kollege
+540,Pronomen,olles,alles,Alltag,richtig,,Beispiel: Drauß is olles a Gatsch. = Draußen ist alles matschig.,Kollege
+541,Artikel,an,einen; ein,Alltag,richtig,,Beispiel: Haum's an Erdäpfl? = Haben Sie auch Kartoffeln?; Achtung: auch hochdeutsch 'an',Kollege
+542,Artikel,de,die; den,Alltag,richtig,,Beispiel: I hob Spotzn in de Wadln. = Ich habe Muskelkater in den Waden.; in de Wadln = in den Waden,Kollege
+543,Artikel,ka,kein; keine,Alltag,richtig,,Beispiel: I hob ka Zeit. = Ich habe keine Zeit.,Kollege
+544,Artikel,kan,keinen,Alltag,richtig,,Beispiel: Red kan Bledsinn. = Red keinen Blödsinn.,Kollege
+545,Artikel,kane,keine,Alltag,richtig,,Beispiel: Moch kane Gschichtn! = Mach keine Geschichten! (Mach keinen Unsinn / keine Umstände),Kollege
+546,Präposition,mi'm,mit dem,Unterwegs,richtig,,Beispiel: I foahr mi'm Radl. = Ich fahre mit dem Fahrrad.,Kollege
+547,Präposition,auf'n,auf den,Unterwegs,richtig,,Beispiel: Wia kumm i auf'n Schöckl? = Wie komme ich auf den Schöckl? (Grazer Hausberg),Kollege
+548,Partikel,no,noch,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,Kollege
+549,Adverb,waun,wann,Alltag,richtig,,Beispiel: Waun is Feierobnd? = Wann ist Feierabend?,Kollege
+550,Adverb,ham,heim; nach Hause,Alltag,richtig,,"Beispiel: Pfiat Gott, kummts guat ham! = Auf Wiedersehen, kommt gut nach Hause!",Kollege
+551,Adverb,beinand,zusammen; beieinander,Freunde,richtig,,Beispiel: Servas beinand! = Hallo zusammen!,Kollege
+552,Adverb,zom,zusammen,Familie,richtig,,Beispiel: Am Sunnta kummt de gonze Familie zom. = Am Sonntag kommt die ganze Familie zusammen.,Kollege
+553,Adverb,drauß,draußen,Wetter,richtig,,Beispiel: Drauß is olles a Gatsch. = Draußen ist alles matschig.,Kollege
+554,Adverb,nieda,nieder; hinunter,Alltag,richtig,,Beispiel: Do legst di nieda! = Da legst du dich nieder! (Ausruf des Staunens),Kollege
+555,Adverb,zua,zu; geschlossen,Alltag,richtig,,"Beispiel: Heast, los amoi zua! = Hör mal, hör mal zu!; los amoi zua = hör mal zu",Kollege
+556,Adverb,gnua,genug,Alltag,richtig,,"Beispiel: Hearst, hiaz is gnua! = Hör mal, jetzt reicht es!",Kollege
+557,Adverb,bissl,bisschen,Alltag,richtig,,Beispiel: Wort a bissl! = Warte ein bisschen!; a bissl = ein bisschen,Kollege
+558,Adverb,voll,total; sehr (umgangssprachlich),Alltag,falsch,,Beispiel: I bin voll angfressn. = Ich bin total genervt.,Kollege
+559,Interjektion,griaß,"grüß (in: Griaß di, Griaß Gott)",Begrüßung,richtig,,"Beispiel: Griaß di, wia geht's da? = Grüß dich, wie geht es dir?",Kollege
+560,Interjektion,pfiat,"behüt (in: Pfiat di, Pfiat Gott = tschüss)",Begrüßung,richtig,,"Beispiel: Pfiat di, bis moagn! = Tschüss, bis morgen!",Kollege
+561,Adjektiv,schen,schön,Alltag,richtig,,"Beispiel: Schen, dass d' do bist. = Schön, dass du da bist.",Kollege
+562,Adjektiv,schene,schöne,Alltag,richtig,,Beispiel: Schene Griaß daham! = Schöne Grüße zu Hause!,Kollege
+563,Adjektiv,schenen,schönen,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,Kollege
+564,Adjektiv,guate,gute,Alltag,richtig,,Beispiel: Guate Nocht! = Gute Nacht!,Kollege
+565,Adjektiv,guats,gutes,Alltag,richtig,,Beispiel: Guats Neichs! = Gutes neues Jahr!,Kollege
+566,Adjektiv,gonze,ganze,Alltag,richtig,,Beispiel: Am Sunnta kummt de gonze Familie zom. = Am Sonntag kommt die ganze Familie zusammen.,Kollege
+567,Adjektiv,kloar,klar,Alltag,richtig,,Beispiel: Is eh kloar. = Das ist doch klar.,Kollege
+568,Adjektiv,sicha,sicher,Alltag,richtig,,Beispiel: Owa sicha! = Aber sicher!,Kollege
+569,Adjektiv,zache,zähe; mühsame,Alltag,richtig,,Beispiel: Des is a zache Gschicht. = Das ist eine mühsame Angelegenheit.; a zache Gschicht = eine mühsame Angelegenheit,Kollege
+570,Adjektiv,glott,glatt,Wetter,richtig,,"Beispiel: Pass auf, es is glott! = Pass auf, es ist glatt!",Kollege
+571,Adjektiv,echts,echtes,Essen,richtig,,Beispiel: Hom S' a echts steirisches Kernöl? = Haben Sie echtes steirisches Kürbiskernöl?,Kollege
+572,Adjektiv,hundsmiad,hundemüde,Alltag,richtig,,Beispiel: I bin hundsmiad. = Ich bin hundemüde.,Kollege
+573,Adjektiv,oglahnt,angelehnt,Alltag,richtig,,Beispiel: Loss mi oglahnt. = Lass mich in Ruhe. (wörtl.: Lass mich angelehnt); Loss mi oglahnt = Lass mich in Ruhe,Kollege
+574,Nomen,Tog,der Tag,Alltag,richtig,,Beispiel: An schenen Tog no! = Einen schönen Tag noch!,Kollege
+575,Nomen,Nocht,die Nacht,Alltag,richtig,,Beispiel: Guate Nocht! = Gute Nacht!; auf d'Nocht = am Abend,Kollege
+576,Nomen,Sauwetta,das Mistwetter; das schlechte Wetter,Wetter,richtig,,Beispiel: Heit is a Sauwetta. = Heute ist ein Mistwetter.,Kollege
+577,Nomen,Hunga,der Hunger,Essen,richtig,,Beispiel: I hob an Hunga. = Ich habe Hunger.,Kollege
+578,Nomen,Kinda,die Kinder,Familie,richtig,,Beispiel: Wia vü Kinda host? = Wie viele Kinder hast du?,Kollege
+579,Nomen,Kloane,der/die Kleine (Kind),Familie,richtig,,Beispiel: Der Kloane is scho groß woan. = Der Kleine ist schon groß geworden.,Kollege
+580,Nomen,Gschropp,das (kleine) Kind; der Fratz,Familie,falsch,,Beispiel: Deis Gschropp heat ned auf zum Plärrn. = Das Kind hört nicht auf zu weinen.; eher abwertend?,Kollege
+581,Nomen,Kortn,die Karte,Einkaufen,richtig,,Beispiel: Kau i mit Kortn zoin? = Kann ich mit Karte zahlen?,Kollege
+582,Nomen,Viertl,das Viertel,Einkaufen,richtig,,Beispiel: Gebm S' ma a Viertl Kilo Topfn. = Geben Sie mir ein Viertelkilo Quark.; a Viertl Kilo = ein Viertelkilo,Kollege
+583,Nomen,Stickl,das Stück; das Stückchen,Essen,richtig,,Beispiel: Nimm da no a Stickl! = Nimm dir noch ein Stück!,Kollege
+584,Nomen,Haufn,der Haufen,Alltag,richtig,,Beispiel: I hob an Haufn Oarbeit. = Ich habe einen Haufen Arbeit.,Kollege
+585,Nomen,Oarbeit,die Arbeit,Arbeit,richtig,,Beispiel: I hob an Haufn Oarbeit. = Ich habe einen Haufen Arbeit.,Kollege
+586,Nomen,Gfoin,der Gefallen,Alltag,richtig,,Beispiel: Kannst ma an Gfoin tuan? = Kannst du mir einen Gefallen tun?,Kollege
+587,Nomen,Wadln,die Waden,Alltag,richtig,,Beispiel: I hob Spotzn in de Wadln. = Ich habe Muskelkater in den Waden.,Kollege
+588,Nomen,Ruah,die Ruhe,Alltag,richtig,,Beispiel: Loss mi in Ruah. = Lass mich in Ruhe.,Kollege
+589,Nomen,Weihnochtn,Weihnachten,Brauchtum,richtig,,Beispiel: Frohe Weihnochtn! = Frohe Weihnachten!,Kollege
+590,Nomen,Huat,der Hut,Alltag,richtig,,Beispiel: Dem brennt jo komplett da Huat. = Der ist völlig außer sich / durch den Wind.; Dem brennt da Huat = Der ist außer sich,Kollege
+591,Nomen,Wäsch,die Wäsche,Alltag,richtig,,Beispiel: Wos schaust'n so deppat aus da Wäsch? = Warum schaust du so blöd aus der Wäsche?,Kollege
+592,Nomen,Vormittog,der Vormittag,Alltag,richtig,,,Kollege
+593,Nomen,Nachmittog,der Nachmittag,Alltag,richtig,,,Kollege
