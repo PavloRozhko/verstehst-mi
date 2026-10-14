@@ -1,7 +1,7 @@
 """Prüft die festgelegten Testsätze in scripts/rag_test_hochdeutsch.py (ohne Sprachmodell).
 
-Sinn: Satz 3 ist am 09.10. festgelegt. Diese Tests merken, wenn er versehentlich
-geändert wird oder nicht mehr zu den Daten passt.
+Sinn: Satz 3 ist am 09.10. festgelegt, Satz 4 am 13.10. Diese Tests merken, wenn einer
+versehentlich geändert wird oder nicht mehr zu den Daten passt.
 """
 
 import csv
@@ -70,3 +70,33 @@ def test_versteckte_woerter_werden_nicht_gefunden():
     assert ("glott", "glatt") not in {(p.dialekt, p.hochdeutsch) for p in nachher}
     # das Original bleibt unverändert
     assert len(uebersetzer.eintraege) == len(ohne.eintraege) + 1
+
+
+def test_satz_4_hat_10_saetze():
+    assert len(rt.SATZ_4) == 10
+    assert len({normalisieren(s) for s, _ in rt.SATZ_4}) == 10
+
+
+def test_satz_4_ohne_saetze_aus_satz_1_bis_3():
+    alt = {normalisieren(s) for s, _ in rt.SATZ_1 + rt.SATZ_2 + rt.SATZ_3}
+    assert not alt & {normalisieren(s) for s, _ in rt.SATZ_4}
+
+
+def test_satz_4_ohne_phrase_fuer_mei():
+    # aus „Des is mei Bua.“ wird mei = mein/meine abgeleitet
+    assert normalisieren("Des is mei Bua.") not in {normalisieren(s) for s, _ in rt.SATZ_4}
+
+
+def test_satz_4_stammt_aus_geprueften_phrasen():
+    phrasen = geprueft("phrasen.csv")
+    for satz, erwartet in rt.SATZ_4:
+        assert phrasen[normalisieren(satz)] == (satz, erwartet)
+
+
+def test_versteckte_woerter_satz_4_gibt_es_wirklich():
+    woerter = geprueft("woerter.csv")
+    saetze = {s for s, _ in rt.SATZ_4}
+    for satz, paare in rt.VERSTECKT_4.items():
+        assert satz in saetze
+        for dialekt, hochdeutsch in paare:
+            assert woerter[normalisieren(dialekt)] == (dialekt, hochdeutsch)

@@ -27,10 +27,18 @@ woerter.csv: "Beispiel: <Phrase>"). Damit Satz 3 nicht leichter ist als Satz 2, 
 für jede Phrase auch die Wörter versteckt, die aus ihr gewonnen wurden (VERSTECKT_3).
 Gleiche Go-Kriterien wie oben.
 
+Satz 4 (festgelegt am 13.10., Lauf am 14.10. NACH der Ergänzung mei = mein/meine): misst,
+ob die Datenkorrekturen seit Satz 3 (a, owa, Fetzn, sauba, es, mei) der KI helfen.
+Gleiche Regeln wie Satz 3, Seed 20261013, ohne die Phrasen aus Satz 1, 2 und 3 und ohne
+Phrase 97 („Des is mei Bua.“), aus der mei = mein/meine abgeleitet wird. 77 Kandidaten.
+Wörter, die am 08.10. aus diesen Phrasen gewonnen wurden, werden versteckt (VERSTECKT_4).
+Nur EIN Lauf, auch --ohne-ollama erst am 14.10. Gleiche Go-Kriterien wie oben.
+
 Aufruf (im Projektordner, mit aktiviertem .venv; Dienst verstehst-mi darf laufen):
     python scripts/rag_test_hochdeutsch.py              # Satz 1
     python scripts/rag_test_hochdeutsch.py --satz 2     # Satz 2
     python scripts/rag_test_hochdeutsch.py --satz 3     # Satz 3 (erst am 13.10.!)
+    python scripts/rag_test_hochdeutsch.py --satz 4     # Satz 4 (erst am 14.10., nach mei!)
     python scripts/rag_test_hochdeutsch.py --ohne-ollama
 
 Ergebnis: models/rag_test/hochdeutsch_<modell>.csv – Spalte "bewertung" ausfüllen.
@@ -100,7 +108,37 @@ VERSTECKT_3 = {
     "Pass auf, es is glott!": {("glott", "glatt")},
 }
 
-SAETZE = {1: SATZ_1, 2: SATZ_2, 3: SATZ_3}
+# phrasen.csv-ID in Klammern; 77 Kandidaten nach den Regeln oben
+SATZ_4 = [
+    ("Des geht si ned aus.",
+     "Das geht sich nicht aus. (Das reicht nicht / klappt zeitlich nicht)"),  # 19
+    ("I bin im Krankenstand.", "Ich bin krankgeschrieben."),                # 28
+    ("I hob an Hunga.", "Ich habe Hunger."),                                # 36
+    ("Do legst di nieda!",
+     "Da legst du dich nieder! (Ausruf des Staunens)"),                      # 69
+    ("I gfrei mi scho drauf.", "Ich freue mich schon darauf."),             # 92
+    ("Gebm S' ma a Viertl Kilo Topfn.",
+     "Geben Sie mir ein Viertelkilo Quark."),                                # 116
+    ("Mia hom a Hetz ghobt.", "Wir hatten viel Spaß."),                     # 147
+    ("Wia kumm i auf'n Schöckl?",
+     "Wie komme ich auf den Schöckl? (Grazer Hausberg)"),                    # 159
+    ("I hob mi vagangen.", "Ich habe mich verlaufen."),                     # 162
+    ("Du host jo an festn Poscha.", "Du bist ja völlig verrückt."),         # 195
+]
+
+# Wörter (Dialekt, Hochdeutsch), die am 08.10. aus diesen Phrasen gewonnen wurden
+VERSTECKT_4 = {
+    "Des geht si ned aus.": {("si", "sich")},
+    "I hob an Hunga.": {("Hunga", "der Hunger")},
+    "Do legst di nieda!": {("nieda", "nieder; hinunter")},
+    "I gfrei mi scho drauf.": {("gfrei", "freue (ich mich)")},
+    "Gebm S' ma a Viertl Kilo Topfn.": {("Viertl", "das Viertel")},
+    "Wia kumm i auf'n Schöckl?": {("auf'n", "auf den")},
+    "I hob mi vagangen.": {("vagangen", "verlaufen (sich); vergangen")},
+}
+
+SAETZE = {1: SATZ_1, 2: SATZ_2, 3: SATZ_3, 4: SATZ_4}
+VERSTECKT = {3: VERSTECKT_3, 4: VERSTECKT_4}
 
 
 def ohne_woerter(uebersetzer, versteckt):
@@ -154,7 +192,7 @@ def main():
                             "gefundene_woerter", "nicht_im_woerterbuch", "bedeutung_fehlt",
                             "sekunden", "bewertung (gut/teils/falsch)", "kommentar"])
         for satz, erwartet in saetze:
-            versteckt = VERSTECKT_3.get(satz, set()) if args.satz == 3 else set()
+            versteckt = VERSTECKT.get(args.satz, {}).get(satz, set())
             e = ki.uebersetzen(ohne_woerter(uebersetzer, versteckt), satz,
                                fragen=fragen, phrase_zuerst=False)
             paare = ", ".join(f"{p.dialekt}={p.hochdeutsch}" for p in e.paare)

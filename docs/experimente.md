@@ -180,6 +180,34 @@ Hinweis stand, einheitlich mit Semikolon geschrieben – Bedeutungen unveränder
 `sauba` = sauber; toll. Einen neuen, unbenutzten Testsatz gibt es nicht mehr; Satz 3 noch
 einmal laufen zu lassen wäre Anpassen an den Test. Die Wirkung bleibt daher offen.
 
+### Satz 4 (festgelegt am 13.10., Lauf am 14.10.)
+
+**Frage:** Helfen die Datenkorrekturen seit Satz 3 der KI? Das sind `a`, `owa`, `Fetzn`,
+`sauba` (11.10.), `es` = ihr; es (12.10.) und `mei` = mein/meine (14.10., vor dem Lauf).
+`mei` fehlte bisher: In „Mei Schwesta …“ bekam die KI nur „ach; ach Gott“ mit.
+
+**Testsatz:** Es gibt noch genug unbenutzte Phrasen. Gleiche Regeln wie bei Satz 3, neu
+gezogen mit Seed 20261013 aus 77 Kandidaten: ohne die Phrasen aus Satz 1–3 und ohne
+Phrase 97 („Des is mei Bua.“), aus der `mei` = mein/meine abgeleitet wird. Wie bei Satz 3
+werden die Wörter versteckt, die am 08.10. aus diesen Phrasen gewonnen wurden (7 Wörter,
+`VERSTECKT_4` in `scripts/rag_test_hochdeutsch.py`). `tests/test_testsaetze.py` merkt,
+wenn der Satz geändert wird.
+
+**Go-Kriterien:** gleich wie bei Satz 1–3 (≤ 5 s · ≥ 7/10 *gut* · 0 Widersprüche).
+Bewertung wie bei Satz 3: Claude hält seine Bewertung vorher mit sha256 fest, dann bewertet
+Pavlo. Kein DeepL-Vergleich.
+
+**Ablauf am 14.10.:** 1. Diesen Testsatz committen. 2. `mei` ergänzen, committen,
+`sudo systemctl restart verstehst-mi`. 3. **Ein** Lauf:
+`python scripts/rag_test_hochdeutsch.py --satz 4`. Auch `--ohne-ollama` erst danach.
+Zwischen Festlegen und Lauf wird an Wortsuche, Prompt und Daten nichts anderes geändert.
+
+**Einschränkungen (vor dem Lauf bekannt):** Die Phrasen von Satz 4 standen im Wörterbuch,
+als Experiment A (09.10.) und Schritt 5b (13.10.) liefen; dort waren einzelne Wörter daraus
+zu sehen. Daten oder Code wurden danach nicht an diese Phrasen angepasst. Satz 4 ist ein
+anderer Satz als Satz 3: Ein Unterschied in der Zahl *gut* zeigt nur eine Tendenz, keinen
+sicheren Effekt der Korrekturen (10 Sätze).
+
 ## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
 
 **Problem:** Im Wörterbuch steht meist nur der Infinitiv (`suachn` = suchen). Im Satz kommt
