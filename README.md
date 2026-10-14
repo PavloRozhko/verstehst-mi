@@ -37,7 +37,7 @@ Alle Tests wurden **vor** dem Lauf festgelegt und danach nicht angepasst. Ausfü
 | Experiment | Ergebnis | Entscheidung |
 |---|---|---|
 | KI: Hochdeutsch → Steirisch | erfundene Dialektwörter | **no-go** |
-| KI: Steirisch → Hochdeutsch (3 × 10 neue Sätze) | 5/10, 7/10, 3/10 gut → **15 von 30 (50 %)**, 0,7–0,9 s pro Satz | bleibt als **Experiment**, „ungeprüft“ |
+| KI: Steirisch → Hochdeutsch (4 × 10 neue Sätze) | 5/10, 7/10, 3/10, 4/10 gut → **19 von 40 (48 %)**, 0,7–1,0 s pro Satz | bleibt als **Experiment**, „ungeprüft“ |
 | Vergleich mit DeepL (Satz 3, 10 Sätze) | verstehst-mi 3 gut, DeepL 4 gut | DeepL lässt Unbekanntes stehen; unsere KI schreibt flüssige, aber falsche Sätze |
 | Konjugierte Verben (Regel ohne KI) | 18 von 18 regulären Formen, 0 falsche | **go** |
 | Spracheingabe: Phrasen aus dem Whisper-Prompt | 10 von 10 | ok |
@@ -203,8 +203,8 @@ tests/               automatische Tests
 ## Einschränkungen
 
 - **Kleiner Wortschatz:** 570 Wörter und 210 Phrasen. Was fehlt, muss die KI raten.
-- **Die KI-Zahlen sind eine Tendenz, keine genaue Messung:** nur 3 × 10 Sätze, die Ergebnisse
-  schwanken stark (5/10, 7/10, 3/10).
+- **Die KI-Zahlen sind eine Tendenz, keine genaue Messung:** nur 4 × 10 Sätze, die Ergebnisse
+  schwanken stark (5/10, 7/10, 3/10, 4/10).
 - **Die KI klingt sicher, auch wenn sie falsch liegt.** Deshalb heißt sie „ungeprüft“ und zeigt
   die geprüften Wortbedeutungen daneben.
 - **Spracheingabe:** getestet mit einem Sprecher, der kein Muttersprachler ist. Bei Sätzen
