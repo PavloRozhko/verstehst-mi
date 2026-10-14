@@ -208,6 +208,42 @@ zu sehen. Daten oder Code wurden danach nicht an diese Phrasen angepasst. Satz 4
 anderer Satz als Satz 3: Ein Unterschied in der Zahl *gut* zeigt nur eine Tendenz, keinen
 sicheren Effekt der Korrekturen (10 Sätze).
 
+**Ergebnis (14.10.):** Ein Lauf auf dem Jetson. Zwei Personen haben unabhängig bewertet
+(Pavlo; Claude – dessen Bewertung wurde vorher mit sha256 festgehalten). Übereinstimmung:
+7 von 10, bei *gut* 9 von 10.
+
+| Nr | Dialekt | KI-Übersetzung | Pavlo | Claude |
+|---|---|---|---|---|
+| 1 | Des geht si ned aus. | Das geht nicht aus. | falsch | falsch |
+| 2 | I bin im Krankenstand. | Ich bin im Krankschreibung. | teils | teils |
+| 3 | I hob an Hunga. | Ich habe einen Hunger. | gut | gut |
+| 4 | Do legst di nieda! | Du legst dich nieder! | falsch | teils |
+| 5 | I gfrei mi scho drauf. | Ich freue mich schon darauf. | gut | gut |
+| 6 | Gebm S' ma a Viertl Kilo Topfn. | Geben Sie mir ein Viertel Kilo Quark. | gut | gut |
+| 7 | Mia hom a Hetz ghobt. | Wir hatten Spaß. | teils | gut |
+| 8 | Wia kumm i auf'n Schöckl? | Wie komme ich auf einen Berg? | teils | teils |
+| 9 | I hob mi vagangen. | Ich habe mich verlaufen. | gut | gut |
+| 10 | Du host jo an festn Poscha. | Du hast einen großen Schaden. | falsch | teils |
+
+| Kriterium | Ergebnis | |
+|---|---|---|
+| Zeit | 0,7 s (Median), höchstens 1,0 s | ✅ |
+| Bedeutung | Pavlo 4 gut / 3 teils / 3 falsch · Claude 5 / 4 / 1 → **4–5/10** | ❌ |
+| Widersprüche | Pavlo: 3 (Nr. 1, 4, 10) · Claude: 1 fraglich (Nr. 4) | ❌ |
+
+**Was man sehen kann:** Alle Fehler betreffen **feste Ausdrücke** (`si ausgehen`,
+`Do legst di nieda`, `an Poscha hobn`) oder einen **Eigennamen** (`Schöckl`), wie schon bei
+Satz 2 und 3. `a`/`an` wurde diesmal nie als „auch“ übersetzt (Satz 3: dreimal) – nur eine
+Tendenz, weil es ein anderer Satz ist. `mei`, `es`, `owa`, `Fetzn`, `sauba` kommen in Satz 4
+nicht vor; ihre Wirkung bleibt offen. 4 der 7 Sätze mit verstecktem Wort waren *gut*
+(Nr. 3, 5, 6, 9). Der ⚠-Hinweis: 3 Meldungen, Nr. 4 berechtigt, Nr. 7 Fehlalarm, Nr. 10
+laut Pavlo berechtigt.
+
+Über alle vier Sätze (Pavlo): 5 + 7 + 3 + 4 = **19 von 40 gut (48 %)**.
+
+**Entscheidung: unverändert.** Die KI bleibt ein Experiment („ungeprüft“), die Zahlen werden
+in der Vorführung offen gezeigt. Dateien: `docs/satz4/` im Projektordner.
+
 ## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
 
 **Problem:** Im Wörterbuch steht meist nur der Infinitiv (`suachn` = suchen). Im Satz kommt
