@@ -19,6 +19,10 @@ WorkingDirectory=@PROJEKT@
 Environment=HF_HUB_OFFLINE=1
 Environment=PYTHONUNBUFFERED=1
 
+# Eigene Einstellungen, z. B. KI mit Claude statt gemma3 (siehe docs/jetson-setup.md).
+# "-" = die Datei darf fehlen. .env steht in .gitignore (der API-Schlüssel ist geheim).
+EnvironmentFile=-@PROJEKT@/.env
+
 # Volle Taktfrequenz (jetson_clocks gilt nur bis zum nächsten Neustart).
 # "+" = mit Root-Rechten, "-" = Fehler hier stoppen den Start nicht.
 ExecStartPre=-+/usr/bin/jetson_clocks

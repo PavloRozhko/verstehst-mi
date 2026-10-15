@@ -5,3 +5,4 @@ httpx
 faster-whisper
 segno   # QR-Code für die Seite /qr
 av<19  # av 19 ist nicht kompatibel mit faster-whisper 1.2
+anthropic   # KI-Übersetzung mit Claude (nur mit VERSTEHST_MI_KI=claude)

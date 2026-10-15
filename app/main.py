@@ -10,6 +10,9 @@ Ohne Spracherkennung starten (schneller, z. B. zum Testen der Oberfläche):
 
 Ohne KI-Übersetzung starten (nur Wortbedeutungen, Ollama wird nicht gefragt):
     VERSTEHST_MI_OHNE_KI=1 uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+KI-Übersetzung mit Claude (Anthropic API, braucht Internet) statt gemma3:
+    VERSTEHST_MI_KI=claude ANTHROPIC_API_KEY=sk-ant-... uvicorn app.main:app ...
 """
 
 import logging
@@ -24,7 +27,7 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from app import ki_hochdeutsch
+from app import claude_ki, ki_hochdeutsch
 from app.netz import lan_ip, qr_svg
 
 from app.sprache import AudioFehler, Spracherkennung
@@ -39,8 +42,14 @@ log = logging.getLogger("uvicorn.error")
 # Das Wörterbuch wird einmal beim Start geladen
 uebersetzer = Uebersetzer()
 erkennung = Spracherkennung()
-# None = KI ausgeschaltet; sonst wird gemma3 beim Start im Hintergrund geladen (~70 s)
-ki_modell = None if os.environ.get("VERSTEHST_MI_OHNE_KI") == "1" else ki_hochdeutsch.KiModell()
+# None = KI ausgeschaltet; sonst wird gemma3 beim Start im Hintergrund geladen (~70 s).
+# VERSTEHST_MI_KI=claude: Claude über die Anthropic API statt gemma3 (braucht Internet).
+if os.environ.get("VERSTEHST_MI_OHNE_KI") == "1":
+    ki_modell = None
+elif os.environ.get("VERSTEHST_MI_KI") == "claude":
+    ki_modell = claude_ki.ClaudeModell()
+else:
+    ki_modell = ki_hochdeutsch.KiModell()
 
 
 @asynccontextmanager

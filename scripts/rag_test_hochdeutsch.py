@@ -40,6 +40,8 @@ Aufruf (im Projektordner, mit aktiviertem .venv; Dienst verstehst-mi darf laufen
     python scripts/rag_test_hochdeutsch.py --satz 3     # Satz 3 (erst am 13.10.!)
     python scripts/rag_test_hochdeutsch.py --satz 4     # Satz 4 (erst am 14.10., nach mei!)
     python scripts/rag_test_hochdeutsch.py --ohne-ollama
+    python scripts/rag_test_hochdeutsch.py --satz 4 --claude   # Claude statt gemma3
+                                                               # (ANTHROPIC_API_KEY nötig)
 
 Ergebnis: models/rag_test/hochdeutsch_<modell>.csv – Spalte "bewertung" ausfüllen.
 """
@@ -53,6 +55,7 @@ from pathlib import Path
 PROJEKT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJEKT))
 
+from app import claude_ki                             # noqa: E402
 from app import ki_hochdeutsch as ki                  # noqa: E402
 from app.ollama import MODELL                         # noqa: E402
 from app.uebersetzer import STANDARD_DB, Uebersetzer  # noqa: E402
@@ -158,7 +161,11 @@ def main():
     parser.add_argument("--modell", default=MODELL)
     parser.add_argument("--satz", type=int, choices=tuple(SAETZE), default=1)
     parser.add_argument("--ohne-ollama", action="store_true")
+    parser.add_argument("--claude", action="store_true",
+                        help="Claude über die Anthropic API statt Ollama")
     args = parser.parse_args()
+    if args.claude:
+        args.modell = claude_ki.CLAUDE_MODELL
     saetze = SAETZE[args.satz]
 
     if not STANDARD_DB.exists():
@@ -169,6 +176,18 @@ def main():
         def fragen(satz, paare):
             """Ersatz für das Modell: Wörter nur austauschen (Vergleichswert)."""
             return ki.ohne_llm(satz, paare), 0.0
+    elif args.claude:
+        def fragen(satz, paare):
+            """Claude über die Anthropic API fragen."""
+            return claude_ki.claude_fragen(satz, paare, modell=args.modell)
+
+        print(f"Frage {args.modell} (Anthropic API) …")
+        try:
+            _, ladezeit = fragen("Servus!", [])
+        except Exception as fehler:
+            raise SystemExit(f"Claude nicht erreichbar ({fehler}). "
+                             "Internet und ANTHROPIC_API_KEY prüfen.")
+        print(f"Erste Antwort: {ladezeit:.1f} s\n")
     else:
         def fragen(satz, paare):
             """Das Modell über Ollama fragen."""
