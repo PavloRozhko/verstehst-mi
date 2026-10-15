@@ -195,7 +195,7 @@ app/
   static/            Weboberfläche (HTML, CSS, JavaScript)
 data/                Wörterbuch als CSV, Whisper-Prompt
 deploy/              systemd-Dienst für den Autostart
-docs/                Experimente, Testprotokolle, Jetson-Setup
+docs/                Experimente, Testprotokolle, Jetson-Setup, Modell-Review
 scripts/             Import, Experimente, Zertifikat, Autostart
 tests/               automatische Tests
 ```

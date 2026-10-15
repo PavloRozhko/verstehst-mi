@@ -1,0 +1,62 @@
+Phrasen: 210, Zielwörter: 50
+richtig: 2, nicht bestätigt: 0, ohne Vorschlag: 48
+Präzision: 100%
+Entscheidung: no-go
+Regeln in richtigen Vorschlägen: {3: 2}
+Regeln in nicht bestätigten Vorschlägen: {}
+
+--- RICHTIG (2)
+wieda          -> wieder                   | Wos suderst denn scho wieda? = Warum jammerst du schon wieder?
+wieda          -> wieder                   | Wos is'n mit dem Trottl scho wieda? = Was ist mit dem Trottel schon wieder los? (derb)
+
+--- NICHT BESTÄTIGT (0)
+
+--- OHNE VORSCHLAG (48)
+d              -> -                        | Schen, dass d' do bist. = Schön, dass du da bist.
+lang           -> -                        | Lang ned gsehn! = Lange nicht gesehen!
+mahlzeit       -> -                        | Mahlzeit! = Guten Appetit! (Gruß zur Mittagszeit)
+hearst         -> -                        | Hearst, hiaz is gnua! = Hör mal, jetzt reicht es!
+paus           -> -                        | Mia mochn a Paus. = Wir machen eine Pause.
+schifft        -> -                        | Es schifft. = Es regnet stark.
+her            -> -                        | Wo host'n des her? = Woher hast du das?
+drauf          -> -                        | I gfrei mi scho drauf. = Ich freue mich schon darauf.
+her            -> -                        | Do schau her! = Sieh mal einer an!
+gschropp       -> -                        | Deis Gschropp heat ned auf zum Plärrn. = Das Kind hört nicht auf zu weinen.
+kilo           -> -                        | Gebm S' ma a Viertl Kilo Topfn. = Geben Sie mir ein Viertelkilo Quark.
+gonz           -> -                        | I bin gonz voi. = Ich bin ganz satt.
+hätt           -> -                        | I hätt gern a Eierspeis mit Schwammerl. = Ich hätte gern Rührei mit Pilzen.
+schirm         -> -                        | Nimm an Schirm mit! = Nimm einen Regenschirm mit!
+zgehn          -> -                        | Is des weit z'gehn? = Ist das zu Fuß weit?
+oasch          -> -                        | Des geht ma am Oasch. = Das geht mir auf die Nerven. (derb)
+schleich       -> -                        | Schleich di! = Hau ab! (derb)
+aufzeichnen    -> -                        | Des kannst da aufzeichnen. = Das kannst du vergessen.
+hauts          -> -                        | Do hauts ma den Vogl aussi. = Das ist ja völlig irre.
+vogl           -> -                        | Do hauts ma den Vogl aussi. = Das ist ja völlig irre.
+wegschmeissn   -> -                        | Des Klump kannst glei wegschmeißn. = Den Plunder kannst du gleich wegwerfen.
+führ           -> -                        | Jetzt führ di ned auf wia a aufgstochns Hendl. = Benimm dich nicht so hysterisch. (wörtl.: wie ein abgestochenes Huhn)
+aufgstochns    -> -                        | Jetzt führ di ned auf wia a aufgstochns Hendl. = Benimm dich nicht so hysterisch. (wörtl.: wie ein abgestochenes Huhn)
+brennt         -> -                        | Dem brennt jo komplett da Huat. = Der ist völlig außer sich / durch den Wind.
+komplett       -> -                        | Dem brennt jo komplett da Huat. = Der ist völlig außer sich / durch den Wind.
+festn          -> -                        | Du host jo an festn Poscha. = Du bist ja völlig verrückt.
+sauf           -> -                        | Heast, sauf weniger. = Hör mal, trink weniger.
+scheissn       -> -                        | Geh scheißn! = Das gibt's doch nicht! / Hau ab! (derb)
+oasch          -> -                        | Geh ma ned am Oasch. = Geh mir nicht auf die Nerven. (derb)
+leck           -> -                        | Geh leck, bist komplett angrennt? = Mann, bist du völlig verrückt? (derb)
+komplett       -> -                        | Geh leck, bist komplett angrennt? = Mann, bist du völlig verrückt? (derb)
+schleich       -> -                        | Heast Hawara, schleich di, bevor i da ane auflege. = Hör mal, Kumpel, hau ab, bevor ich dir eine runterhaue. (derb)
+ane            -> -                        | Heast Hawara, schleich di, bevor i da ane auflege. = Hör mal, Kumpel, hau ab, bevor ich dir eine runterhaue. (derb)
+auflege        -> -                        | Heast Hawara, schleich di, bevor i da ane auflege. = Hör mal, Kumpel, hau ab, bevor ich dir eine runterhaue. (derb)
+drah           -> -                        | I drah glei durch mit eich Wapplern. = Ich drehe gleich durch mit euch Idioten. (derb)
+komplett       -> -                        | Na servas, jetzt samma komplett im Oasch. = Na toll, jetzt sind wir völlig erledigt. (derb)
+oasch          -> -                        | Na servas, jetzt samma komplett im Oasch. = Na toll, jetzt sind wir völlig erledigt. (derb)
+feichtn        -> -                        | Des interessiert mi an feichtn Dreck. = Das interessiert mich überhaupt nicht. (derb)
+dreck          -> -                        | Des interessiert mi an feichtn Dreck. = Das interessiert mich überhaupt nicht. (derb)
+schleich       -> -                        | Schleich di über d'Heisa. = Verschwinde, und zwar möglichst weit. (derb)
+über           -> -                        | Schleich di über d'Heisa. = Verschwinde, und zwar möglichst weit. (derb)
+dheisa         -> -                        | Schleich di über d'Heisa. = Verschwinde, und zwar möglichst weit. (derb)
+scheissn       -> -                        | Geh scheißn mit deinem Graffl. = Hau ab mit deinem Kram. (derb)
+glaub          -> -                        | I glaub, dem hams ins Hirn gschissn. = Ich glaube, der ist nicht ganz dicht. (vulgär)
+hams           -> -                        | I glaub, dem hams ins Hirn gschissn. = Ich glaube, der ist nicht ganz dicht. (vulgär)
+ins            -> -                        | I glaub, dem hams ins Hirn gschissn. = Ich glaube, der ist nicht ganz dicht. (vulgär)
+hirn           -> -                        | I glaub, dem hams ins Hirn gschissn. = Ich glaube, der ist nicht ganz dicht. (vulgär)
+kreuzweis      -> -                        | Du kannst mi kreuzweis. = Du kannst mich mal (kreuzweise). (vulgär)
