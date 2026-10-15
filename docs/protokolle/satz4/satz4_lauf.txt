@@ -1,0 +1,82 @@
+Satz 4, Lauf am 14.10.2026 auf dem Jetson (Ausgabe von Pavlo in den Projekt-Chat kopiert, 05:45 UTC)
+python scripts/rag_test_hochdeutsch.py --satz 4
+
+Lade gemma3:4b …
+Erste Antwort (inkl. Laden): 0.4 s
+
+[ 0.6 s] Des geht si ned aus.
+    erwartet:      Das geht sich nicht aus. (Das reicht nicht / klappt zeitlich nicht)
+    KI:            Das geht nicht aus.
+    ohne LLM:      das geht si nicht aus
+    Wörterbuch:    des=das (Demonstrativ), ned=nicht
+    nicht drin:    geht si aus
+
+[ 0.8 s] I bin im Krankenstand.
+    erwartet:      Ich bin krankgeschrieben.
+    KI:            Ich bin im Krankschreibung.
+    ohne LLM:      ich bin im krankschreibung
+    Wörterbuch:    i=ich, Krankenstand=die Krankschreibung
+    nicht drin:    bin im
+
+[ 0.6 s] I hob an Hunga.
+    erwartet:      Ich habe Hunger.
+    KI:            Ich habe einen Hunger.
+    ohne LLM:      ich habe einen hunga
+    Wörterbuch:    i=ich, hob=habe (ich), an=einen; ein
+    nicht drin:    hunga
+
+[ 0.7 s] Do legst di nieda!
+    erwartet:      Da legst du dich nieder! (Ausruf des Staunens)
+    KI:            Du legst dich nieder!
+    ohne LLM:      da legst dich nieda
+    Wörterbuch:    do=da; hier, di=dich
+    nicht drin:    legst nieda
+    ⚠ Bedeutung nicht verwendet: do
+
+[ 0.7 s] I gfrei mi scho drauf.
+    erwartet:      Ich freue mich schon darauf.
+    KI:            Ich freue mich schon darauf.
+    ohne LLM:      ich freuen mich schon drauf
+    Wörterbuch:    i=ich, gfrein=freuen, mi=mich, scho=schon
+    nicht drin:    drauf
+
+[ 1.0 s] Gebm S' ma a Viertl Kilo Topfn.
+    erwartet:      Geben Sie mir ein Viertelkilo Quark.
+    KI:            Geben Sie mir ein Viertel Kilo Quark.
+    ohne LLM:      geben sie man eine viertl kilo quark
+    Wörterbuch:    gebm=geben, S'=Sie (Höflichkeitsform), ma=man; mir; wir (nachgestellt), a=ein/eine; auch, Topfn=der Quark
+    nicht drin:    viertl kilo
+
+[ 0.6 s] Mia hom a Hetz ghobt.
+    erwartet:      Wir hatten viel Spaß.
+    KI:            Wir hatten Spaß.
+    ohne LLM:      wir haben eine spass gehabt
+    Wörterbuch:    mia=wir; mir, hom=haben, a=ein/eine; auch, Hetz=der Spaß (steirisch auch: Hez), ghobt=gehabt
+    nicht drin:    -
+    ⚠ Bedeutung nicht verwendet: hom, a, ghobt
+
+[ 0.7 s] Wia kumm i auf'n Schöckl?
+    erwartet:      Wie komme ich auf den Schöckl? (Grazer Hausberg)
+    KI:            Wie komme ich auf einen Berg?
+    ohne LLM:      wie komm ich aufn schöckl
+    Wörterbuch:    wia=wie, kumm=komm (Befehl); komme (ich), i=ich
+    nicht drin:    aufn schöckl
+
+[ 0.7 s] I hob mi vagangen.
+    erwartet:      Ich habe mich verlaufen.
+    KI:            Ich habe mich verlaufen.
+    ohne LLM:      ich habe mich vagangen
+    Wörterbuch:    i=ich, hob=habe (ich), mi=mich
+    nicht drin:    vagangen
+
+[ 0.7 s] Du host jo an festn Poscha.
+    erwartet:      Du bist ja völlig verrückt.
+    KI:            Du hast einen großen Schaden.
+    ohne LLM:      du hast ja einen festn schaden
+    Wörterbuch:    host=hast (du), jo=ja, an=einen; ein, Poscha=der Schaden; der Spleen (an Poscha hobn = verrückt sein)
+    nicht drin:    du festn
+    ⚠ Bedeutung nicht verwendet: jo
+
+Sätze mit ⚠ (von Hand prüfen, ob widersprochen): 3/10
+Zeit: Median 0.7 s, langsamste 1.0 s, über 5 s: 0
+Bedeutung bitte in der CSV bewerten: gut / teils / falsch (Ziel: ≥ 7 gut)

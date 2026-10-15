@@ -10,6 +10,15 @@ hören („Waun is Feierobnd?“, „I hob an Hunga.“).
 **Grundidee:** Verlässlich ist nur, was Muttersprachler geprüft haben. Alles andere zeigt die
 App ehrlich als *abgeleitet* oder *ungeprüft* an.
 
+## So sieht es aus
+
+| Wörterbuch (geprüft) | KI-Übersetzung, richtig | KI-Übersetzung, falsch |
+|---|---|---|
+| ![Waun is Feierobnd? → Wann ist Feierabend?](docs/bilder/woerterbuch.jpg) | ![Mein Spezl hot a neichs Radl → Mein Freund hat ein neues Fahrrad.](docs/bilder/ki_gut.jpg) | ![Hiaz brennt da Haut → Jetzt brennt dir die Haut.](docs/bilder/ki_falsch.jpg) |
+| Die Phrase steht im Wörterbuch: ✅ geprüft. | Ganzer Satz nicht im Wörterbuch: Die KI übersetzt, gekennzeichnet als *ungeprüft*. | Redewendung („da brennt der Huat“) wörtlich übersetzt. Das unbekannte Wort ist rot markiert. |
+
+Bildschirmfotos vom Handy (iPhone), aufgenommen am 14.10.2026 für die Präsentation.
+
 ## Was die App kann
 
 | Funktion | Wie verlässlich? |
@@ -39,6 +48,7 @@ Alle Tests wurden **vor** dem Lauf festgelegt und danach nicht angepasst. Ausfü
 | KI: Hochdeutsch → Steirisch | erfundene Dialektwörter | **no-go** |
 | KI: Steirisch → Hochdeutsch (4 × 10 neue Sätze) | 5/10, 7/10, 3/10, 4/10 gut → **19 von 40 (48 %)**, 0,7–1,0 s pro Satz | bleibt als **Experiment**, „ungeprüft“ |
 | Vergleich mit DeepL (Satz 3, 10 Sätze) | verstehst-mi 3 gut, DeepL 4 gut | DeepL lässt Unbekanntes stehen; unsere KI schreibt flüssige, aber falsche Sätze |
+| Ausspracheregeln rückwärts (Schritt 5b) | 2 von 50 und 1 von 25 unbekannten Wörtern richtig, 0 falsch | **no-go**, nicht in der App |
 | Konjugierte Verben (Regel ohne KI) | 18 von 18 regulären Formen, 0 falsche | **go** |
 | Spracheingabe: Phrasen aus dem Whisper-Prompt | 10 von 10 | ok |
 | Spracheingabe: andere Phrasen | 8 von 13 | Tippen ist der Hauptweg |
@@ -195,7 +205,7 @@ app/
   static/            Weboberfläche (HTML, CSS, JavaScript)
 data/                Wörterbuch als CSV, Whisper-Prompt
 deploy/              systemd-Dienst für den Autostart
-docs/                Experimente, Testprotokolle, Jetson-Setup
+docs/                Experimente, Protokolle, Jetson-Setup, Architektur, Entwicklung, Modell-Review
 scripts/             Import, Experimente, Zertifikat, Autostart
 tests/               automatische Tests
 ```

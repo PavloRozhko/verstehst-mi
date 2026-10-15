@@ -1,6 +1,6 @@
 # Experimente mit dem lokalen Sprachmodell (LLM)
 
-Stand: 08.10.2026 · Modell: `gemma3:4b` über Ollama auf dem Jetson Orin Nano Super (GPU),
+Stand: 15.10.2026 · Modell: `gemma3:4b` über Ollama auf dem Jetson Orin Nano Super (GPU),
 gleichzeitig mit Whisper (CPU). Temperatur 0.
 
 ## Frage
@@ -242,7 +242,7 @@ laut Pavlo berechtigt.
 Über alle vier Sätze (Pavlo): 5 + 7 + 3 + 4 = **19 von 40 gut (48 %)**.
 
 **Entscheidung: unverändert.** Die KI bleibt ein Experiment („ungeprüft“), die Zahlen werden
-in der Vorführung offen gezeigt. Dateien: `docs/satz4/` im Projektordner.
+in der Vorführung offen gezeigt. Lauf und Bewertung von Claude: [`docs/protokolle/satz4/`](protokolle/satz4/).
 
 ## Experiment A: Verbformen (Testsatz festgelegt am 09.10.)
 
@@ -421,10 +421,42 @@ Einzelwerte: `docs/filtertest_protokoll.csv`.
 **Entscheidung: go.** Der Filter bleibt. Tippen bleibt trotzdem der Hauptweg in der
 Vorführung (Experiment S: Whisper verhört sich bei nicht geübten Sätzen oft).
 
+## Schritt 5b: Ausspracheregeln rückwärts (festgelegt am 13.10.)
+
+**Frage:** Können 6 verlässliche Ausspracheregeln (3, 4, 5, 11, 12, 16) Wörter übersetzen,
+die nicht im Wörterbuch stehen? Die Regeln laufen rückwärts, z. B. `wassa` → `wasser`,
+`essn` → `essen`. Ein Vorschlag zählt nur, wenn es das Wort in der hochdeutschen Spalte des
+Wörterbuchs gibt. Code: `app/lautregeln.py`, Lauf: `python scripts/regeln_test.py`.
+Die App benutzt die Regeln **nicht**.
+
+Kriterien und Testmengen wurden vor dem Lauf festgelegt und mit sha256 festgehalten
+(Dateien unverändert in [`docs/protokolle/5b/`](protokolle/5b/), auf Ukrainisch).
+
+| Lauf | Zielwörter | richtig | falsch | Präzision | Kriterium | Entscheidung |
+|---|---|---|---|---|---|---|
+| 1: alle 210 Phrasen | 50 | 2 (`wieda` → wieder, 2×) | 0 | 100 % | ≥ 10 richtig | **no-go** |
+| 2: 10 neue Sätze (`satz_5b.csv`) | 25 | 1 (`morgn` → morgen) | 0 | 100 % | ≥ 30 % richtig | **no-go** (4 %) |
+
+**Warum so wenig:**
+
+- In den Phrasen gibt es kaum unbekannte Wörter: Die Wörter des Wörterbuchs wurden aus
+  genau diesen Phrasen gewonnen. Die übrigen sind meist derbe Wörter, Redewendungen oder
+  Wörter, die wie im Hochdeutschen geschrieben werden.
+- Die hochdeutsche Spalte hat nur 856 verschiedene Wörter. Richtige Vorschläge wie
+  `schule`, `schwester`, `offen` wurden deshalb verworfen.
+- Die häufigsten Unterschiede sind Vokale (`Gortn`, `kolt`, `friah`, `Bruada`) – dafür gibt
+  es unter den 6 Regeln keine.
+
+**Nebenbefund:** In „Mei Schwesta …“ fand die Wortsuche `Mei` = „ach; ach Gott“ statt
+„meine“. Daraus wurde vor Satz 4 der Eintrag `mei` ergänzt.
+
+**Einschränkungen:** Die 10 neuen Sätze hat Claude geschrieben, Muttersprachler haben sie
+nicht geprüft. Das Skript für den zweiten Lauf ist nicht im Repository, nur seine Ergebnisse.
+
 ## Einschränkungen
 
-- Nur 3 × 10 Sätze: Die Ergebnisse (5/10, 7/10, 3/10) schwanken stark – eine Tendenz,
-  keine genaue Messung. Zusammen: 15 von 30 gut.
+- Nur 4 × 10 Sätze: Die Ergebnisse (5/10, 7/10, 3/10, 4/10) schwanken stark – eine
+  Tendenz, keine genaue Messung. Zusammen: 19 von 40 gut.
 - Die Testsätze stammen aus dem Wörterbuch. Ein Teil der Wörter wurde aus denselben Phrasen
   gewonnen, das Ergebnis ist also eher etwas zu gut.
 - Das erste Laden des Modells dauert etwa 70 s. Für die Vorführung muss das Modell beim Start
