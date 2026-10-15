@@ -54,8 +54,14 @@ im Speicher“ (`docs/experimente.md`).
 - **aa1cd77181b3** (normales `ollama pull`): wird nicht benutzt, belegt ca. 3,2 GB auf der SSD.
 
 Alle Modelle zusammen belegen 11 GB auf der SSD. Die zweite Kopie kostet nur SSD-Platz, **keinen
-RAM**, weil Ollama nur das geladene Modell im Speicher hält. Sie kann nach der Präsentation
-entfernt werden.
+RAM**, weil Ollama nur das geladene Modell im Speicher hält.
+
+**Nachtrag 15.10.: nicht löschen.** Der Name `gemma3:4b` gehört zum Manifest
+`library/gemma3/4b`, und genau dieses verweist auf die 3,2-GB-Datei (`sha256-aeda25…`).
+Geladen wird aber die llama.cpp-Fassung `c30276f7dffe` (`ollama show gemma3:4b` zeigt auf
+`sha256-e2979d2d…`, `ollama ps` auf `c30276f7dffe`). Die App ruft das Modell über den Namen
+`gemma3:4b` auf. Wer das Manifest `gemma3/4b` entfernt, entfernt wahrscheinlich auch den Weg
+von diesem Namen zur llama.cpp-Fassung. 3,2 GB Platz sind das Risiko nicht wert.
 
 ## Messung vom 15.10. (gemma3:4b + Whisper, App läuft)
 
