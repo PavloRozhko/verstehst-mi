@@ -1,0 +1,36 @@
+Oct 11 13:44:44 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: ''
+Oct 11 13:45:01 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.71 logprob=-0.17 kompression=4.94 tokens=49
+Oct 11 13:45:01 verstehst-mi uvicorn[21759]: INFO:     Whisper-Text verworfen (Token-Grenze erreicht (Schleife)): 'Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh! Puh!'
+Oct 11 13:45:01 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 2.1 s: ''
+Oct 11 13:45:12 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:45:29 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.90 logprob=-0.58 kompression=1.50 tokens=17
+Oct 11 13:45:29 verstehst-mi uvicorn[21759]: INFO:     Whisper-Text verworfen (Wiederholung): 'Hörn. Hörn. Hörn. Hörn.'
+Oct 11 13:45:29 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.4 s: ''
+Oct 11 13:45:43 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.62 logprob=-0.29 kompression=6.17 tokens=49
+Oct 11 13:45:43 verstehst-mi uvicorn[21759]: INFO:     Whisper-Text verworfen (Token-Grenze erreicht (Schleife)): 'Schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau, schau,'
+Oct 11 13:45:43 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 2.1 s: ''
+Oct 11 13:45:52 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:45:57 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:46:12 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:46:24 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:46:31 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 0.1 s: ''
+Oct 11 13:46:44 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.01 logprob=-0.12 kompression=0.53 tokens=5
+Oct 11 13:46:44 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Mahlzeit!'
+Oct 11 13:46:58 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.01 logprob=-0.54 kompression=0.62 tokens=6
+Oct 11 13:46:58 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.1 s: 'Woß ist los?'
+Oct 11 13:47:29 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.03 logprob=-0.53 kompression=0.62 tokens=6
+Oct 11 13:47:29 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Dispart scho.'
+Oct 11 13:48:32 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.05 logprob=-0.21 kompression=0.60 tokens=7
+Oct 11 13:48:32 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'I woaß ned.'
+Oct 11 13:48:50 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.01 logprob=-0.22 kompression=0.62 tokens=6
+Oct 11 13:48:50 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.1 s: 'Wos kost des?'
+Oct 11 13:49:02 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.01 logprob=-0.23 kompression=0.68 tokens=7
+Oct 11 13:49:02 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Ich hob an Hunga.'
+Oct 11 13:49:19 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.05 logprob=-0.12 kompression=0.65 tokens=8
+Oct 11 13:49:19 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Gemma wos essn.'
+Oct 11 13:49:30 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.01 logprob=-0.09 kompression=0.60 tokens=6
+Oct 11 13:49:30 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Zoin, bitte!'
+Oct 11 13:49:41 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.03 logprob=-0.47 kompression=0.72 tokens=8
+Oct 11 13:49:41 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.2 s: 'Ab hier geht scho no.'
+Oct 11 13:49:52 verstehst-mi uvicorn[21759]: INFO:     Whisper-Abschnitt: no_speech=0.02 logprob=-0.09 kompression=0.56 tokens=5
+Oct 11 13:49:52 verstehst-mi uvicorn[21759]: INFO:     Sprache erkannt in 1.1 s: 'Gemma ham.'

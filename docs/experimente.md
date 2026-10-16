@@ -486,6 +486,7 @@ python scripts/verbformen_test.py                   # Experiment A (ohne LLM)
 # jeweils mit --ohne-ollama: nur Wortsuche, ohne Sprachmodell
 ```
 
-Ergebnisse als CSV in `models/rag_test/` (nicht im Repository).
+Die Skripte schreiben die Ergebnisse als CSV nach `models/rag_test/` (nicht im Repository).
+Kopien der Läufe vom 08.–14.10. liegen in [`protokolle/rag_test/`](protokolle/rag_test/).
 Hinweis: Die Läufe mit dem alten Wörterbuch (Spike 1, Spike 2 Satz 1) liefern mit dem
 heutigen Wörterbuch andere Werte als oben.

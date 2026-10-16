@@ -1,0 +1,11 @@
+﻿dialekt;erwartet (geprüft);ki_uebersetzung;ohne_llm;gefundene_woerter;nicht_im_woerterbuch;bedeutung_fehlt;sekunden;bewertung (gut/teils/falsch);kommentar
+Des is ma Blunzn.;Das ist mir egal. (wörtl.: Das ist mir Blutwurst);Das ist eine Blutwurst.;das ist man blutwurst;"des=das (Demonstrativ), is=ist, ma=man; mir; wir (nachgestellt), Blunzn=die Blutwurst";;ma;0.7;;
+Es kummt a Gwitta.;Es kommt ein Gewitter.;Ein Gewitter kommt.;ihr kommt auch gewitter;es=ihr, kummt=kommt, a=auch (auch: ein/eine), Gwitta=das Gewitter;;es;0.6;;
+Is des koid heit!;Ist das kalt heute!;Es ist heute kalt!;ist das kalt heute;is=ist, des=das (Demonstrativ), koid=kalt, heit=heute;;des;0.6;;
+Moagn is a a Tog.;Morgen ist auch ein Tag.;Morgen ist ein Tag.;morgen ist auch auch tag;moagn=morgen, is=ist, a=auch (auch: ein/eine), Tog=der Tag;;;0.7;;
+Deis passt so, danke.;Das passt so, danke. (Stimmt so);Das passt, danke.;das in ordnung so danke;"deis=das; dies, Passt=in Ordnung; passt";so danke;;0.7;;
+I kenn mi ned aus.;Ich kenne mich nicht aus.;Ich kenne mich nicht aus.;ich können mich nicht aus;"i=ich, kenna=können; kennen, mi=mich, ned=nicht";aus;;0.7;;
+Pass auf, es is glott!;Pass auf, es ist glatt!;Pass auf, es passt!;passen auf ihr ist glott;"passn=passen; funktionieren, es=ihr, is=ist";auf glott;es, is;0.7;;
+A Bier geht scho no.;Ein Bier geht schon noch.;Auch ein Bier geht noch.;auch bier geht schon noch;a=auch (auch: ein/eine), scho=schon, no=noch;bier geht;scho;0.7;;
+Gib ma des amoi.;Gib mir das mal.;Nimm dieses Mal.;gib man das einmal;"ma=man; mir; wir (nachgestellt), des=das (Demonstrativ), amoi=einmal; mal";gib;ma, des;0.6;;
+A Brettljausn und a Gspritzta, bitte.;Eine Brotzeitplatte und eine Weinschorle, bitte.;Auch eine kalte Platte auf dem Holzbrett und eine Weinschorle, bitte.;auch kalte platte auf dem holzbrett und auch weinschorle bitte;a=auch (auch: ein/eine), Brettljausn=die kalte Platte auf dem Holzbrett, Gspritzta=die Weinschorle;und bitte;;1.3;;
