@@ -1,0 +1,11 @@
+﻿dialekt;erwartet (geprüft);ki_uebersetzung;ohne_llm;gefundene_woerter;nicht_im_woerterbuch;bedeutung_fehlt;sekunden;bewertung (gut/teils/falsch);kommentar
+Do hauts ma den Vogl aussi.;Das ist ja völlig irre.;Da hauts uns den Vogel hinaus.;da hauts man den vogl hinaus;"do=da; hier, ma=man; mir; wir (nachgestellt), aussi=hinaus";hauts den vogl;ma;0.8;;
+I bin gonz voi.;Ich bin ganz satt.;Ich bin ganz voll.;ich bin gonz voll;"i=ich, voi=voll; satt; (salopp) betrunken";bin gonz;;0.6;;
+Wos suderst denn scho wieda?;Warum jammerst du schon wieder?;Was machst du denn schon wieder hier?;was suderst denn schon wieda;wos=was, scho=schon;suderst denn wieda;;0.9;;
+Is no wos do?;Ist noch etwas da?;Ist da noch etwas?;ist noch was da;"is=ist, no=noch, wos=was, do=da; hier";;wos;0.7;;
+Hiaz moch ma Schluss für heit.;Jetzt machen wir Schluss für heute.;Jetzt machen wir Schluss für heute.;jetzt mache man schluss für heute;"hiaz=jetzt, moch=mache; mach (Befehl); machen (in: moch ma = machen wir), ma=man; mir; wir (nachgestellt), heit=heute";schluss für;;0.8;;
+Des is ma z'teia.;Das ist mir zu teuer.;Das ist teuer.;das ist man teuer;"des=das (Demonstrativ), is=ist, ma=man; mir; wir (nachgestellt), teia=teuer";;ma;0.6;;
+Der Chef is heit grantig.;Der Chef ist heute schlecht gelaunt.;Der Chef ist heute schlecht gelaunt.;der chef ist heute schlecht gelaunt;is=ist, heit=heute, grantig=schlecht gelaunt;der chef;;0.9;;
+Des schmeckt ma ned.;Das schmeckt mir nicht.;Das schmeckt mir nicht.;das riechen man nicht;"des=das (Demonstrativ), schmeckn=riechen; schmecken, ma=man; mir; wir (nachgestellt), ned=nicht";;;0.7;;
+Sei ned so gschamig!;Sei nicht so schüchtern!;Sei nicht so schüchtern!;sei nicht so schüchtern;ned=nicht, gschamig=schüchtern;sei so;;0.9;;
+Mia mochn a Paus.;Wir machen eine Pause.;Wir machen eine Pause.;wir machen auch paus;"mia=wir; mir, mochn=machen, a=auch (auch: ein/eine)";paus;;0.6;;

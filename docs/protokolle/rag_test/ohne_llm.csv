@@ -1,0 +1,11 @@
+﻿satz;gefundene_woerter;ohne_llm;vorschlag;markiert;verdaechtig;sekunden;bewertung (gut/teils/falsch);kommentar
+Heute habe ich keinen Hunger.;heute=heit, ich=i;heit habe i keinen hunger;heit habe i keinen hunger;heit[✓] habe[=] i[✓] keinen[=] hunger[=];;0.0;;
+Machen wir heute früher Feierabend?;machen=mochn, machen=tuan, wir=mia, wir=ma, heute=heit, feierabend=Feierobnd;mochn mia heit früher Feierobnd;mochn mia heit früher Feierobnd;mochn[✓] mia[✓] heit[✓] früher[=] feierobnd[✓];;0.0;;
+Die Arbeit ist heute anstrengend.;arbeit=Hackn, arbeit=hackln, heute=heit;die Hackn ist heit anstrengend;die Hackn ist heit anstrengend;die[=] hackn[✓] ist[=] heit[✓] anstrengend[=];;0.0;;
+Gehen wir nach der Pause etwas essen?;wir=mia, wir=ma, etwas=ebbas, essen=essn;gehen mia nach der pause ebbas essn;gehen mia nach der pause ebbas essn;gehen[=] mia[✓] nach[=] der[=] pause[=] ebbas[✓] essn[✓];;0.0;;
+Ich verstehe die Frage nicht.;ich=i, nicht=ned;i verstehe die frage ned;i verstehe die frage ned;i[✓] verstehe[=] die[=] frage[=] ned[✓];;0.0;;
+Am Donnerstag haben wir frei.;donnerstag=Pfinsta, haben=hom, wir=mia, wir=ma;am Pfinsta hom mia frei;am Pfinsta hom mia frei;am[=] pfinsta[✓] hom[✓] mia[✓] frei[=];;0.0;;
+Hast du den Schlüssel gesehen?;;hast du den schlüssel gesehen;hast du den schlüssel gesehen;hast[=] du[=] den[=] schlüssel[=] gesehen[=];;0.0;;
+Das Wetter ist heute schlecht.;das=des, wetter=Wetta, heute=heit;des Wetta ist heit schlecht;des Wetta ist heit schlecht;des[✓] wetta[✓] ist[=] heit[✓] schlecht[=];;0.0;;
+Mir ist kalt, mach bitte das Fenster zu.;mir=mia, mir=ma, kalt=koid, das=des, zu=z';mia ist koid mach bitte des fenster z';mia ist koid mach bitte des fenster z';mia[✓] ist[=] koid[✓] mach[=] bitte[=] des[✓] fenster[=] z[✓];;0.0;;
+Der Bus kommt schon wieder zu spät.;schon=scho, zu=z';der bus kommt scho wieder z' spät;der bus kommt scho wieder z' spät;der[=] bus[=] kommt[=] scho[✓] wieder[=] z[✓] spät[=];;0.0;;

@@ -1,0 +1,11 @@
+﻿dialekt;erwartet (geprüft);ki_uebersetzung;ohne_llm;gefundene_woerter;nicht_im_woerterbuch;bedeutung_fehlt;sekunden;bewertung (gut/teils/falsch);kommentar
+Des geht si ned aus.;Das geht sich nicht aus. (Das reicht nicht / klappt zeitlich nicht);Das geht nicht aus.;das geht si nicht aus;des=das (Demonstrativ), ned=nicht;geht si aus;;0.6;;
+I bin im Krankenstand.;Ich bin krankgeschrieben.;Ich bin im Krankschreibung.;ich bin im krankschreibung;i=ich, Krankenstand=die Krankschreibung;bin im;;0.8;;
+I hob an Hunga.;Ich habe Hunger.;Ich habe einen Hunger.;ich habe einen hunga;"i=ich, hob=habe (ich), an=einen; ein";hunga;;0.6;;
+Do legst di nieda!;Da legst du dich nieder! (Ausruf des Staunens);Du legst dich nieder!;da legst dich nieda;"do=da; hier, di=dich";legst nieda;do;0.7;;
+I gfrei mi scho drauf.;Ich freue mich schon darauf.;Ich freue mich schon darauf.;ich freuen mich schon drauf;i=ich, gfrein=freuen, mi=mich, scho=schon;drauf;;0.7;;
+Gebm S' ma a Viertl Kilo Topfn.;Geben Sie mir ein Viertelkilo Quark.;Geben Sie mir ein Viertel Kilo Quark.;geben sie man eine viertl kilo quark;"gebm=geben, S'=Sie (Höflichkeitsform), ma=man; mir; wir (nachgestellt), a=ein/eine; auch, Topfn=der Quark";viertl kilo;;1.0;;
+Mia hom a Hetz ghobt.;Wir hatten viel Spaß.;Wir hatten Spaß.;wir haben eine spass gehabt;"mia=wir; mir, hom=haben, a=ein/eine; auch, Hetz=der Spaß (steirisch auch: Hez), ghobt=gehabt";;hom, a, ghobt;0.6;;
+Wia kumm i auf'n Schöckl?;Wie komme ich auf den Schöckl? (Grazer Hausberg);Wie komme ich auf einen Berg?;wie komm ich aufn schöckl;"wia=wie, kumm=komm (Befehl); komme (ich), i=ich";aufn schöckl;;0.7;;
+I hob mi vagangen.;Ich habe mich verlaufen.;Ich habe mich verlaufen.;ich habe mich vagangen;i=ich, hob=habe (ich), mi=mich;vagangen;;0.7;;
+Du host jo an festn Poscha.;Du bist ja völlig verrückt.;Du hast einen großen Schaden.;du hast ja einen festn schaden;"host=hast (du), jo=ja, an=einen; ein, Poscha=der Schaden; der Spleen (an Poscha hobn = verrückt sein)";du festn;jo;0.7;;
